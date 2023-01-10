@@ -1,6 +1,21 @@
+using CookieBL.Helper;
+using CookieBL.Repository.Interfaces;
+using CookieBL.Repository;
+using CookieBL.Service.Interfaces;
+using CookieBL.Service;
+using CookieData.Mapper;
+using Microsoft.EntityFrameworkCore;
+using CookieData.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<CookieContext>(options => options.UseSqlServer(connection));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddAutoMapper(typeof(UserProfile));
+builder.Services.AddCors();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -15,6 +30,15 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors(x => x
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+
+app.UseAuthorization();
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
