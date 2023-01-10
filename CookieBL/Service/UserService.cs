@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CookieBL.Helper;
-using CookieBL.Repository.Interfaces;
+using CookieBL.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
@@ -25,7 +25,7 @@ namespace CookieBL.Service
         {
             var user = await _userRepository.GetUserByCredentialsAsync(model.Login, model.Password);
 
-            if (user == null)
+            if (user is null)
             {
                 // todo: need to add logger
                 return null;
@@ -39,6 +39,8 @@ namespace CookieBL.Service
         public async Task<AuthenticateResponse> RegisterAsync(UserModel userModel)
         {
             var user = _mapper.Map<User>(userModel);
+
+            user.GameAccount = AccountCreator.CreateGameAccount();
 
             await _userRepository.AddUserAsync(user);
 
