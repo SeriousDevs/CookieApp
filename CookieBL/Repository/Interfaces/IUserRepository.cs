@@ -1,7 +1,7 @@
 ﻿using CookieData.Entities;
 using CookieData.Entities.Interfaces;
 
-namespace CookieBL.Repository.Interfaces
+namespace CookieBL.IRepository.Interfaces
 {
     public interface IUserRepository
     {

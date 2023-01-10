@@ -13,6 +13,11 @@ namespace CookieData.Entities.Configuration
             builder.Property(u => u.Password).HasMaxLength(50).IsRequired();
             builder.Property(u => u.Name).HasMaxLength(50).IsRequired();
             builder.Property(u => u.Email).HasMaxLength(100).IsRequired();
+
+            builder.HasOne(u => u.GameAccount)
+                .WithOne(ga => ga.User)
+                .HasForeignKey<User>(u => u.GameAccountId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

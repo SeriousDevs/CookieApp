@@ -13,7 +13,7 @@ namespace CookieData.Model
             Token = token;
         }
 
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Login { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }

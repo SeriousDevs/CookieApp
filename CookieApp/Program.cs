@@ -1,6 +1,6 @@
 using CookieBL.Helper;
-using CookieBL.Repository.Interfaces;
-using CookieBL.Repository;
+using CookieBL.IRepository.Interfaces;
+using CookieBL.IRepository;
 using CookieBL.Service.Interfaces;
 using CookieBL.Service;
 using CookieData.Mapper;

@@ -1,9 +1,9 @@
-﻿using CookieBL.Repository.Interfaces;
+﻿using CookieBL.IRepository.Interfaces;
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CookieBL.Repository
+namespace CookieBL.IRepository
 {
     public class UserRepository : IUserRepository
     {
@@ -21,25 +21,25 @@ namespace CookieBL.Repository
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            var users = await _context.Users.ToListAsync();
+            IEnumerable<User> users = await _context.Users.ToListAsync();
             return users;
         }
 
         public async Task<User> GetUserByCredentialsAsync(string login, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
+            User user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
             return user;
         }
 
         public async Task<User> GetUserByIdAsync(int id)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            User user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
         public async Task RemoveUserAsync(int id)
         {
-            var user = await _context.Users
+            User user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is not null)
