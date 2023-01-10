@@ -21,19 +21,19 @@ namespace CookieBL.IRepository
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            IEnumerable<User> users = await _context.Users.ToListAsync();
+            IEnumerable<User> users = await _context.Users.Include(u => u.GameAccount).ToListAsync();
             return users;
         }
 
         public async Task<User> GetUserByCredentialsAsync(string login, string password)
         {
-            User user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
+            User user = await _context.Users.Include(u => u.GameAccount).ThenInclude(ga => ga.Upgrades).FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
             return user;
         }
 
         public async Task<User> GetUserByIdAsync(int id)
         {
-            User user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            User user = await _context.Users.Include(u => u.GameAccount).ThenInclude(ga => ga.Upgrades).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 

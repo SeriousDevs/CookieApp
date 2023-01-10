@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+﻿using System.Text.Json.Serialization;
 
 namespace CookieData.Entities
 {
@@ -10,6 +10,7 @@ namespace CookieData.Entities
         public int Level { get; set; }
         public int Amount { get; set; }
         public int GameAccountId { get; set; }
+        [JsonIgnore]
         public GameAccount GameAccount { get; set; }
     }
 }
