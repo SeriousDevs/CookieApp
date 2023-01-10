@@ -9,4 +9,5 @@ const SignUp = () => {
   )
 }
 
-export default WithNoAuthRedirect(SignUp, '/home');
+export default SignUp;
+// export default WithNoAuthRedirect(SignUp, '/home');
