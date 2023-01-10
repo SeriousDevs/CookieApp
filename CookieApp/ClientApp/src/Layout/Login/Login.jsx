@@ -9,5 +9,6 @@ const Login = () => {
   )
 }
 
-export default WithNoAuthRedirect(Login, '/home');
+// export default WithNoAuthRedirect(Login, '/home');
+export default Login;
 
