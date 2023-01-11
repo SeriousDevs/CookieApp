@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { getUpgrades } from 'redux/gameAcc';
+import { getUpgrades } from 'redux/gameAccSlice';
 import { UpgradesListItem } from './UpgradesListItem';
 import {
     Store,
