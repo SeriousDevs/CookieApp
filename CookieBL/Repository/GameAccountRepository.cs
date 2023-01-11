@@ -16,13 +16,21 @@ namespace CookieBL.IRepository
 
         public async Task<IEnumerable<GameAccount>> GetAllEntitiesAsync()
         {
-            IEnumerable<GameAccount> gameAccounts = await _context.GameAccounts.AsNoTracking().ToListAsync();
+            IEnumerable<GameAccount> gameAccounts = await _context.GameAccounts
+                .Include(ga => ga.Upgrades)
+                .AsNoTracking()
+                .ToListAsync();
+
             return gameAccounts;
         }
 
         public async Task<GameAccount> GetEntityByIdAsync(int id)
         {
-            GameAccount gameAccount = await _context.GameAccounts.FirstOrDefaultAsync(ga => ga.Id == id);
+            GameAccount? gameAccount = await _context.GameAccounts
+                .Include(ga => ga.Upgrades)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(ga => ga.Id == id);
+
             return gameAccount;
         }
 
