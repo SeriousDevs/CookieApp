@@ -27,19 +27,27 @@ namespace CookieBL.IRepository
 
         public async Task<User> GetUserByCredentialsAsync(string login, string password)
         {
-            User user = await _context.Users.Include(u => u.GameAccount).ThenInclude(ga => ga.Upgrades).FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
+            User? user = await _context.Users.Include(u => u.GameAccount)
+                .ThenInclude(ga => ga.Upgrades)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
+
             return user;
         }
 
         public async Task<User> GetUserByIdAsync(int id)
         {
-            User user = await _context.Users.Include(u => u.GameAccount).ThenInclude(ga => ga.Upgrades).FirstOrDefaultAsync(u => u.Id == id);
+            User? user = await _context.Users.Include(u => u.GameAccount)
+                .ThenInclude(ga => ga.Upgrades)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == id);
+
             return user;
         }
 
         public async Task RemoveUserAsync(int id)
         {
-            User user = await _context.Users
+            User? user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is not null)
