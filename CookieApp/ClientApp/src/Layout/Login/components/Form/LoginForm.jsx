@@ -1,10 +1,10 @@
-// import { login } from "redux/userSlice";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logIn } from "redux/userSlice";
 import { Form, Label, Button, Input, Container } from "Layout/common/common.styled";
 
 export const LoginForm = ({ isLoading }) => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [passwordInvalid, setPasswordInvalid] = useState(false);
@@ -47,7 +47,7 @@ export const LoginForm = ({ isLoading }) => {
         }
         console.log(formData);
 
-        // dispatch(login(formData));
+        dispatch(logIn(formData));
         setLogin('');
         setPassword('');
     };

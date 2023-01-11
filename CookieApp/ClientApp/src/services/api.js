@@ -26,10 +26,10 @@ export const signUpRequest = async (formData) => {
   return data;
 };
 
-// export const loginRequest = async (formData) => {
-//   const { data } = await $publicHost.post("/users/login", formData);
-//   return data;
-// };
+export const loginRequest = async (formData) => {
+  const { data } = await $publicHost.post("/users/authenticate", formData);
+  return data;
+};
 
 // export const getAuthRequest = async (formData) => {
 //   const { data } = await $privateHost.get("/users/current", formData);
