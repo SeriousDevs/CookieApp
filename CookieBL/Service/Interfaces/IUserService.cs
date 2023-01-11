@@ -7,7 +7,8 @@ namespace CookieBL.Service.Interfaces
     {
         Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest model);
         Task<AuthenticateResponse> RegisterAsync(UserModel userModel);
-        Task<IEnumerable<User>> GetAllAsync();
+        Task<IEnumerable<UserModel>> GetAllUsersAsync();
+        Task<UserModel> GetUserAsync(int id);
         Task<User> GetByIdAsync(int id);
     }
 }

@@ -26,7 +26,7 @@ namespace CookieApp.Controllers
                 return Ok(gameAccount);
             }
 
-            return NotFound(new { Message = "Critical Error =)))" });
+            return NotFound(new { Message = "Account not found!" });
         }
 
         [Authorize]

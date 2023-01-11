@@ -4,6 +4,7 @@ using CookieBL.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace CookieBL.Service
@@ -53,9 +54,20 @@ namespace CookieBL.Service
             return response;
         }
 
-        public async Task<IEnumerable<User>> GetAllAsync()
+        public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
         {
-            return await _usersRepository.GetAllUsersAsync();
+            IEnumerable<User> users = await _usersRepository.GetAllUsersAsync();
+            IEnumerable<UserModel> usersModel = users.Select(_mapper.Map<UserModel>);
+
+            return usersModel;
+        }
+
+        public async Task<UserModel> GetUserAsync(int id)
+        {
+            User user = await _usersRepository.GetUserByIdAsync(id);
+            UserModel userModel = _mapper.Map<UserModel>(user);
+
+            return userModel;
         }
 
         public async Task<User> GetByIdAsync(int id)

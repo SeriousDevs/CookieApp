@@ -1,5 +1,7 @@
 ﻿using CookieBL.Helper;
+using CookieBL.Service;
 using CookieBL.Service.Interfaces;
+using CookieData.Entities;
 using CookieData.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,8 +49,21 @@ namespace CookieApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _userService.GetAllAsync();
+            IEnumerable<UserModel> users = await _userService.GetAllUsersAsync();
             return Ok(users);
+        }
+
+        [Authorize]
+        [HttpGet("return")]
+        public async Task<IActionResult> GetUser()
+        {
+            if (HttpContext.Items["User"] is User user)
+            {
+                UserModel userModel = await _userService.GetUserAsync(user.Id);
+                return Ok(userModel);
+            }
+
+            return NotFound(new { Message = "Account not found!" });
         }
     }
 }

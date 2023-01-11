@@ -9,7 +9,7 @@ namespace CookieData.Mapper
         public UpgradeProfile()
         {
             CreateMap<UpgradeModel, Upgrade>()
-                .ForMember(u => u.Id, opt => opt.Ignore())
+                .ForMember(u => u.Id, opt => opt.MapFrom(um => um.Id))
                 .ForMember(u => u.Name, opt => opt.MapFrom(um => um.Name))
                 .ForMember(u => u.Price, opt => opt.MapFrom(um => um.Price))
                 .ForMember(u => u.BaseTick, opt => opt.MapFrom(um => um.BaseTick))
