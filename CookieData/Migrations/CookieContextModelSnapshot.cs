@@ -99,11 +99,6 @@ namespace CookieData.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(50)

@@ -37,7 +37,8 @@ namespace CookieApp.Controllers
             if (response is null)
             {
                 return StatusCode(444);
-                //return BadRequest(new { message = "Didn't register!" });
+
+                // return BadRequest(new { message = "Didn't register!" });
             }
 
             return Ok(response);

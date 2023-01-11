@@ -57,7 +57,6 @@ namespace CookieData.Migrations
                     Login = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     GameAccountId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
