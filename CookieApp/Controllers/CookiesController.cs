@@ -42,7 +42,7 @@ namespace CookieApp.Controllers
                 return BadRequest(new { ex.Message });
             }
 
-            return Ok();
+            return Ok(new { Message = "Saved" });
         }
 
         [Authorize]
