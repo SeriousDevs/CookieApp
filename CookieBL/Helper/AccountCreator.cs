@@ -19,6 +19,7 @@ namespace CookieBL.Helper
                         BaseTick = 1,
                         Level = 1,
                         Amount = 1,
+                        Image = "https://www.doctordick.de/media/image/e2/1e/d5/penis_duenn_normaleBrille_600x600.png"
                     }
                 }
             };

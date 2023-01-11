@@ -59,6 +59,10 @@ namespace CookieData.Migrations
                     b.Property<int>("GameAccountId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Level")
                         .HasColumnType("int");
 

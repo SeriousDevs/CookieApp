@@ -34,15 +34,21 @@ namespace CookieApp.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserModel userModel)
         {
-            // return StatusCode(444);
-            var response = await _userService.RegisterAsync(userModel);
-
-            if (response is null)
+            try
             {
-                return BadRequest(new { message = "Didn't register!" });
-            }
+                var response = await _userService.RegisterAsync(userModel);
 
-            return Ok(response);
+                if (response is null)
+                {
+                    return BadRequest(new { message = "Didn't register!" });
+                }
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(444, ex.Message);
+            }
         }
 
         [Authorize]
