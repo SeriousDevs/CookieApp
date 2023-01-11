@@ -11,7 +11,6 @@ namespace CookieData.Entities.Configuration
             builder.Property(u => u.Id).HasColumnName("UserId").ValueGeneratedOnAdd();
             builder.Property(u => u.Login).HasMaxLength(50).IsRequired();
             builder.Property(u => u.Password).HasMaxLength(50).IsRequired();
-            builder.Property(u => u.Name).HasMaxLength(50).IsRequired();
             builder.Property(u => u.Email).HasMaxLength(100).IsRequired();
 
             builder.HasOne(u => u.GameAccount)

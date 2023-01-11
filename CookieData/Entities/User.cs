@@ -8,7 +8,6 @@ namespace CookieData.Entities
         [JsonIgnore]
         public string Password { get; set; }
         public string Email { get; set; }
-        public string Name { get; set; }
         public int GameAccountId { get; set; }
         public GameAccount GameAccount { get; set; }
     }

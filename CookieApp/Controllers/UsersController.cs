@@ -21,7 +21,7 @@ namespace CookieApp.Controllers
         {
             var response = await _userService.AuthenticateAsync(model);
 
-            if (response == null)
+            if (response is null)
             {
                 return BadRequest(new { message = "Username or password is incorrect" });
             }
@@ -34,9 +34,10 @@ namespace CookieApp.Controllers
         {
             var response = await _userService.RegisterAsync(userModel);
 
-            if (response == null)
+            if (response is null)
             {
-                return BadRequest(new { message = "Didn't register!" });
+                return StatusCode(444);
+                //return BadRequest(new { message = "Didn't register!" });
             }
 
             return Ok(response);
