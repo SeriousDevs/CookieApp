@@ -1,30 +1,30 @@
-// import axios from "axios";
+import axios from "axios";
 
-// const $publicHost = axios.create({
-//   baseURL: "https://connections-api.herokuapp.com",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
+const $publicHost = axios.create({
+  baseURL: "https://localhost:7184/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-// const $privateHost = axios.create({
-//   baseURL: "https://connections-api.herokuapp.com",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
+const $privateHost = axios.create({
+  baseURL: "https://localhost:7184/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-// const authInterceptor = (config) => {
-//   config.headers["Authorization"] = localStorage.getItem("token");
-//   return config;
-// };
+const authInterceptor = (config) => {
+  config.headers["Authorization"] = localStorage.getItem("token");
+  return config;
+};
 
-// $privateHost.interceptors.request.use(authInterceptor);
+$privateHost.interceptors.request.use(authInterceptor);
 
-// export const signUpRequest = async (formData) => {
-//   const { data } = await $publicHost.post("/users/signup", formData);
-//   return data;
-// };
+export const signUpRequest = async (formData) => {
+  const { data } = await $publicHost.post("/users/register", formData);
+  return data;
+};
 
 // export const loginRequest = async (formData) => {
 //   const { data } = await $publicHost.post("/users/login", formData);

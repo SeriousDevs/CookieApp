@@ -5,7 +5,7 @@ import { Form, Label, Button, Input, Container } from "Layout/common/common.styl
 
 export const LoginForm = ({ isLoading }) => {
     // const dispatch = useDispatch();
-    const [email, setEmail] = useState('');
+    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [passwordInvalid, setPasswordInvalid] = useState(false);
 
@@ -21,8 +21,8 @@ export const LoginForm = ({ isLoading }) => {
         }
         
         switch (name) {
-            case 'email':
-                return setEmail(value);
+            case 'login':
+                return setLogin(value.toLowerCase());
             case 'password':
                 return setPassword(value);
             default:
@@ -42,13 +42,13 @@ export const LoginForm = ({ isLoading }) => {
         e.preventDefault();
 
         const formData = {
-            email,
+            login,
             password,
         }
         console.log(formData);
 
         // dispatch(login(formData));
-        setEmail('');
+        setLogin('');
         setPassword('');
     };
 
@@ -57,13 +57,13 @@ export const LoginForm = ({ isLoading }) => {
     return (
         <Container>
             <Form onSubmit={handleSubmit} autoComplete='off'>
-                <Label>Email
-                    <Input type="email" name='email' value={email} placeholder='example@gmail.com' onChange={handleChange} required={true} />
+                <Label>Login
+                    <Input type="login" name='login' value={login} placeholder='cooker229' onChange={handleChange} required={true} />
                 </Label>
                 <Label passwordInvalid={passwordInvalid}>Password
                     <Input type="password" name='password' value={password} title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handleChange} onFocus={onPassFocus} onBlur={() => setPasswordInvalid(false)} min={8} max={21} placeholder='Enter min 8 symbols' required={true} />
                 </Label>
-                <Button type="submit" disabled={isLoading || !email || pass}>LogIn</Button>
+                <Button type="submit" disabled={isLoading || !login || pass}>LogIn</Button>
             </Form>
         </Container>
     )
