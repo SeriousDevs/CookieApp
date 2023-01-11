@@ -18,7 +18,7 @@ namespace CookieBL.Helper
                         Price = 100,
                         BaseTick = 1,
                         Level = 1,
-                        Amount = 0,
+                        Amount = 1,
                     }
                 }
             };
