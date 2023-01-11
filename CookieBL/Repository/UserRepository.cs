@@ -21,7 +21,7 @@ namespace CookieBL.IRepository
 
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            IEnumerable<User> users = await _context.Users.Include(u => u.GameAccount).ToListAsync();
+            IEnumerable<User> users = await _context.Users.Include(u => u.GameAccount).AsNoTracking().ToListAsync();
             return users;
         }
 

@@ -10,20 +10,20 @@ namespace CookieBL.Service
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository _usersRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IConfiguration configuration, IMapper mapper)
+        public UserService(IUserRepository usersRepository, IConfiguration configuration, IMapper mapper)
         {
-            _userRepository = userRepository;
+            _usersRepository = usersRepository;
             _configuration = configuration;
             _mapper = mapper;
         }
 
         public async Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest model)
         {
-            var user = await _userRepository.GetUserByCredentialsAsync(model.Login, model.Password);
+            var user = await _usersRepository.GetUserByCredentialsAsync(model.Login, model.Password);
 
             if (user is null)
             {
@@ -42,7 +42,7 @@ namespace CookieBL.Service
 
             user.GameAccount = AccountCreator.CreateGameAccount();
 
-            await _userRepository.AddUserAsync(user);
+            await _usersRepository.AddUserAsync(user);
 
             var response = await AuthenticateAsync(new AuthenticateRequest
             {
@@ -55,12 +55,12 @@ namespace CookieBL.Service
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _userRepository.GetAllUsersAsync();
+            return await _usersRepository.GetAllUsersAsync();
         }
 
         public async Task<User> GetByIdAsync(int id)
         {
-            return await _userRepository.GetUserByIdAsync(id);
+            return await _usersRepository.GetUserByIdAsync(id);
         }
     }
 }

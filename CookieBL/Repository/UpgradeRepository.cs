@@ -22,7 +22,7 @@ namespace CookieBL.Repository
 
         public async Task<IEnumerable<Upgrade>> GetAllEntitiesAsync()
         {
-            IEnumerable<Upgrade> upgrades = await _context.Upgrades.ToListAsync();
+            IEnumerable<Upgrade> upgrades = await _context.Upgrades.AsNoTracking().ToListAsync();
             return upgrades;
         }
 

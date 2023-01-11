@@ -11,6 +11,6 @@ namespace CookieData.Entities
         public int Amount { get; set; }
         public int GameAccountId { get; set; }
         [JsonIgnore]
-        public GameAccount GameAccount { get; set; }
+        public GameAccount? GameAccount { get; set; }
     }
 }
