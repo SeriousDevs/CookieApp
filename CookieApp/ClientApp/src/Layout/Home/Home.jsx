@@ -1,4 +1,4 @@
-// import WithAuthRedirect from "HOC/WithAuthRedirect";
+import WithAuthRedirect from "HOC/WithAuthRedirect";
 import { Dashboard } from "./Dashboard/Dashboard";
 import { Main } from "./Main/Main";
 import { Upgrades } from "./Upgrades/Upgrades";
@@ -13,5 +13,5 @@ const Home = () => {
   )
 }
 
-// export default WithAuthRedirect(Home, '/login');
-export default Home;
+export default WithAuthRedirect(Home, '/login');
+// export default Home;
