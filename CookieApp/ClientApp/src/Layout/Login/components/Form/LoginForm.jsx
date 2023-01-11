@@ -45,7 +45,6 @@ export const LoginForm = ({ isLoading }) => {
             login,
             password,
         }
-        console.log(formData);
 
         dispatch(logIn(formData));
         setLogin('');

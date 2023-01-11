@@ -31,10 +31,10 @@ export const loginRequest = async (formData) => {
   return data;
 };
 
-// export const getAuthRequest = async (formData) => {
-//   const { data } = await $privateHost.get("/users/current", formData);
-//   return data;
-// };
+export const getGameAcc = async () => {
+  const { data } = await $privateHost.get("/cookies/user");
+  return data;
+};
 
 // export const logOutRequest = async () => {
 //   const { data } = await $privateHost.post("/users/logout");

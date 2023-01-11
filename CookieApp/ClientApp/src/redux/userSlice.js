@@ -48,7 +48,6 @@ export const userSlice = createSlice({
       state.user = payload.login;
       state.token = payload.token;
       state.id = payload.id;
-      console.log(payload);
     });
     builder.addCase(signUp.rejected, (state, { payload }) => {
       state.isLoading = false;
@@ -64,7 +63,6 @@ export const userSlice = createSlice({
       state.user = payload.login;
       state.token = payload.token;
       state.id = payload.id;
-      console.log(payload);
     });
     builder.addCase(logIn.rejected, (state, { payload }) => {
       state.isLoading = false;
