@@ -1,18 +1,22 @@
-import { lazy } from "react";
+import { lazy} from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "Layout/Layout";
 import { GlobalStyle } from "./App.styled";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-// import Home from "./Layout/Home/Home";
-// import Login from "./Layout/Login/Login";
-// import SignUp from "./Layout/SignUp/SignUp";
+import { getAcc, saveAcc } from "redux/gameAcc";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "redux/userSlice";
+
 
 const LazySignUpView = lazy(() => import("Layout/SignUp/SignUp"));
 const LazyLoginView = lazy(() => import("Layout/Login/Login"));
 const LazyHomeView = lazy(() => import("Layout/Home/Home"));
 
 const App = () => {
+  const dispatch = useDispatch();
+  const acc = useSelector(getAcc);
+
   return (
     <>
       <Routes>

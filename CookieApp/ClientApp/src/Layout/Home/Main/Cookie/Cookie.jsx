@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCookie, getClick } from 'redux/gameAcc';
+import { addCookie, getClickPerCookie } from 'redux/gameAcc';
 import { CookieButton, CookieContainer, CookieQuantity } from './Cookie.styled';
 
 export const Cookie = () => {
@@ -8,7 +8,7 @@ export const Cookie = () => {
     const [cookies, setCookies] = useState(0);
     const [shake, setShake] = useState(false);
     const [perClick, setPerClick] = useState(1);
-    const clickUpgrade = useSelector(getClick);
+    const clickUpgrade = useSelector(getClickPerCookie);
 
     
     useEffect(() => {

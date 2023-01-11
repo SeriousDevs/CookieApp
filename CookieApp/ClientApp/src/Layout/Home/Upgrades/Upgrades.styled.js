@@ -36,7 +36,7 @@ export const UpgradeList = styled.ul`
 
 export const UpgradeListItem = styled.li`
   display: flex;
-  padding-right: 20px;
+  padding: 10px 20px 10px 0;
   gap: 10px;
   align-items: center;
   justify-content: space-between;

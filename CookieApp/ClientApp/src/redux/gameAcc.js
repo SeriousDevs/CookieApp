@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGameAcc } from "services/api";
+import { getGameAcc, setSaveAcc } from "services/api";
 // import { toast } from "react-toastify";
 
 export const setGameAcc = createAsyncThunk(
@@ -7,7 +7,18 @@ export const setGameAcc = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const gameAcc = await getGameAcc();
-      // userData?.token && localStorage.setItem("token", userData.token);
+      return gameAcc;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const saveAcc = createAsyncThunk(
+  "user/saveAcc",
+  async (acc, { rejectWithValue }) => {
+    try {
+      const gameAcc = await setSaveAcc(acc);
       return gameAcc;
     } catch (error) {
       return rejectWithValue(error);
@@ -40,6 +51,13 @@ export const gameAccSlice = createSlice({
   reducers: {
     addCookie(state, { payload }) {
       state.cookies = payload + state.cookies;
+      state.clicks = 1 + state.clicks;
+    },
+    buyUpgrade(state, { payload }) {
+      const el = state.upgrades.find((el) => el.id === payload.id);
+      el.amount = payload.amount;
+      el.price = payload.price;
+      console.log(el);
     },
   },
   extraReducers: (builder) => {
@@ -54,16 +72,32 @@ export const gameAccSlice = createSlice({
       state.cookies = payload.cookies;
       state.id = payload.id;
       state.upgrades = payload.upgrades;
-      console.log(payload);
     });
     builder.addCase(setGameAcc.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload.message;
+    });
+    //SaveGameAcc
+    builder.addCase(saveAcc.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(saveAcc.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      console.log(payload);
+    });
+    builder.addCase(saveAcc.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload.message;
     });
   },
 });
 
-export const { addCookie } = gameAccSlice.actions;
+export const { addCookie, addClicks, buyUpgrade } = gameAccSlice.actions;
 
 //Selector
-export const getClick = (state) => state.gameAcc.upgrades[0];
+export const getClickPerCookie = (state) => state.gameAcc.upgrades[0];
+export const getTotalClicks = (state) => state.gameAcc.clicks;
+export const getUpgrades = (state) => state.gameAcc.upgrades;
+export const getCookies = (state) => state.gameAcc.cookies;
+export const getAcc = (state) => state.gameAcc;
