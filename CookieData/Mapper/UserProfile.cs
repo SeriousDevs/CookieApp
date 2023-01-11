@@ -9,16 +9,16 @@ namespace CookieData.Mapper
         public UserProfile()
         {
             CreateMap<UserModel, User>()
-                .ForMember(dst => dst.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dst => dst.Login, opt => opt.MapFrom(src => src.Login))
-                .ForMember(dst => dst.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dst => dst.Id, opt => opt.Ignore());
+                .ForMember(u => u.Email, opt => opt.MapFrom(um => um.Email))
+                .ForMember(u => u.Login, opt => opt.MapFrom(um => um.Login))
+                .ForMember(u => u.Password, opt => opt.MapFrom(um => um.Password))
+                .ForMember(u => u.Id, opt => opt.Ignore());
 
             CreateMap<User, AuthenticateResponse>()
-                .ForMember(dst => dst.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dst => dst.Login, opt => opt.MapFrom(src => src.Login))
-                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dst => dst.Token, opt => opt.Ignore());
+                .ForMember(ar => ar.Email, opt => opt.MapFrom(u => u.Email))
+                .ForMember(ar => ar.Login, opt => opt.MapFrom(u => u.Login))
+                .ForMember(ar => ar.Id, opt => opt.MapFrom(u => u.Id))
+                .ForMember(ar => ar.Token, opt => opt.Ignore());
         }
     }
 }

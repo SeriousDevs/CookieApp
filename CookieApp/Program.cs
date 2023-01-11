@@ -6,6 +6,8 @@ using CookieBL.Service;
 using CookieData.Mapper;
 using Microsoft.EntityFrameworkCore;
 using CookieData.Context;
+using CookieData.Entities;
+using CookieBL.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,17 @@ string? connection = builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddDbContext<CookieContext>(options => options.UseSqlServer(connection));
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRepository<GameAccount>, GameAccountRepository>();
+builder.Services.AddScoped<IRepository<Upgrade>, UpgradeRepository>();
+
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddAutoMapper(typeof(UserProfile));
+builder.Services.AddScoped<ICookieService, CookieService>();
+
+builder.Services.AddAutoMapper(
+    typeof(UserProfile),
+    typeof(GameAccountProfile),
+    typeof(UpgradeProfile));
+
 builder.Services.AddCors();
 builder.Services.AddControllersWithViews();
 
