@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginRequest, signUpRequest } from "services/api";
+import { getAuth, loginRequest, signUpRequest } from "services/api";
 
 export const signUp = createAsyncThunk(
   "user/signUp",
@@ -20,6 +20,18 @@ export const logIn = createAsyncThunk(
     try {
       const userData = await loginRequest(formData);
       userData?.token && localStorage.setItem("token", userData.token);
+      return userData;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const auth = createAsyncThunk(
+  "user/auth",
+  async (_, { rejectWithValue }) => {
+    try {
+      const userData = await getAuth();
       return userData;
     } catch (error) {
       return rejectWithValue(error);
@@ -65,6 +77,21 @@ export const userSlice = createSlice({
       state.id = payload.id;
     });
     builder.addCase(logIn.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload.message;
+    });
+    //Auth
+    builder.addCase(auth.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(auth.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.user = payload.login;
+      state.id = payload.id;
+      state.token = localStorage.getItem("token");
+    });
+    builder.addCase(auth.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload.message;
     });

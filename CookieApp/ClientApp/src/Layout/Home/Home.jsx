@@ -1,7 +1,7 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setGameAcc } from "redux/gameAcc";
+import { setGameAcc} from "redux/gameAcc";
 import { Dashboard } from "./Dashboard/Dashboard";
 import { Main } from "./Main/Main";
 import { Upgrades } from "./Upgrades/Upgrades";
@@ -12,12 +12,12 @@ const Home = () => {
   useEffect(() => {
     dispatch(setGameAcc());
   }, []);
-  
+
   return (
     <div style={{display: 'flex'}}>
           <Dashboard />
           <Main />
-          <Upgrades />
+      <Upgrades />
     </div>
   )
 }
