@@ -18,6 +18,7 @@ namespace CookieData.Entities.Configuration
 
             builder.HasOne(u => u.GameAccount)
                 .WithMany(ga => ga.Upgrades)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasForeignKey(u => u.GameAccountId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

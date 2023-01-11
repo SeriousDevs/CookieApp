@@ -15,6 +15,7 @@ namespace CookieData.Mapper
                 .ForMember(u => u.BaseTick, opt => opt.MapFrom(um => um.BaseTick))
                 .ForMember(u => u.Level, opt => opt.MapFrom(um => um.Level))
                 .ForMember(u => u.Amount, opt => opt.MapFrom(um => um.Amount))
+                .ForMember(u => u.Image, opt => opt.MapFrom(um => um.Image))
                 .ForMember(u => u.GameAccountId, opt => opt.MapFrom(um => um.GameAccountId));
 
             CreateMap<Upgrade, UpgradeModel>()
@@ -24,6 +25,7 @@ namespace CookieData.Mapper
                 .ForMember(um => um.BaseTick, opt => opt.MapFrom(u => u.BaseTick))
                 .ForMember(um => um.Level, opt => opt.MapFrom(u => u.Level))
                 .ForMember(um => um.Amount, opt => opt.MapFrom(u => u.Amount))
+                .ForMember(um => um.Image, opt => opt.MapFrom(u => u.Image))
                 .ForMember(um => um.GameAccountId, opt => opt.MapFrom(u => u.GameAccountId));
         }
     }
