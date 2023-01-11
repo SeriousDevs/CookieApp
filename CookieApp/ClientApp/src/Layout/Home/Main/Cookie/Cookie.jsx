@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCookie, getClickPerCookie } from 'redux/gameAcc';
+import { addCookie, getClickPerCookie } from 'redux/gameAccSlice';
 import { CookieButton, CookieContainer, CookieQuantity } from './Cookie.styled';
 
 export const Cookie = () => {

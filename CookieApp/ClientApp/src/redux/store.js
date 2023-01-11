@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { gameAccSlice } from "./gameAcc";
+import { gameAccSlice } from "./gameAccSlice";
 import { userSlice } from "./userSlice";
 
 export const store = configureStore({

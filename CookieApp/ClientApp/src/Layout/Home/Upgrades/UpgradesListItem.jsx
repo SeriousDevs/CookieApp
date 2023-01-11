@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { buyUpgrade, getCookies } from 'redux/gameAcc';
+import { buyUpgrade, getCookies } from 'redux/gameAccSlice';
 import { AdditionalWrapper, CentralDivTxt, ListItemCentralDiv, Quantities, UpgradeImage, UpgradeListItem } from './Upgrades.styled';
 
 export const UpgradesListItem = ({id, amount = 1, name = 'name', price = 100, img }) => {
