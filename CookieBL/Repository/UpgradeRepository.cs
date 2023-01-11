@@ -2,6 +2,7 @@
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace CookieBL.Repository
 {
@@ -34,8 +35,20 @@ namespace CookieBL.Repository
 
         public async Task UpdateEntityAsync(Upgrade upgrade)
         {
-            _context.Upgrades.Update(upgrade);
-            await _context.SaveChangesAsync();
+            Upgrade entity = await _context.Upgrades.FirstOrDefaultAsync(u => u.Id == upgrade.Id);
+
+            if (entity is not null)
+            {
+                entity.Id = upgrade.Id;
+                entity.Name = upgrade.Name;
+                entity.Price = upgrade.Price;
+                entity.BaseTick = upgrade.BaseTick;
+                entity.Level = upgrade.Level;
+                entity.Amount = upgrade.Amount;
+
+                _context.Update(entity);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

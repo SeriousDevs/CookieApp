@@ -14,6 +14,12 @@ namespace CookieData.Mapper
                 .ForMember(u => u.Password, opt => opt.MapFrom(um => um.Password))
                 .ForMember(u => u.Id, opt => opt.Ignore());
 
+            CreateMap<User, UserModel>()
+                .ForMember(um => um.Email, opt => opt.MapFrom(u => u.Email))
+                .ForMember(um => um.Login, opt => opt.MapFrom(u => u.Login))
+                .ForMember(um => um.Password, opt => opt.Ignore())
+                .ForMember(um => um.Id, opt => opt.MapFrom(u => u.Id));
+
             CreateMap<User, AuthenticateResponse>()
                 .ForMember(ar => ar.Email, opt => opt.MapFrom(u => u.Email))
                 .ForMember(ar => ar.Login, opt => opt.MapFrom(u => u.Login))
