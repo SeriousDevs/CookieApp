@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCookie, getClickPerCookie } from 'redux/gameAccSlice';
+import { addCookie, getClickPerCookie, getCookies } from 'redux/gameAccSlice';
 import { CookieButton, CookieContainer, CookieQuantity } from './Cookie.styled';
 
 export const Cookie = () => {
     const dispatch = useDispatch();
-    const [cookies, setCookies] = useState(0);
+    const cookie = useSelector(getCookies);
+    const clickUpgrade = useSelector(getClickPerCookie);
     const [shake, setShake] = useState(false);
     const [perClick, setPerClick] = useState(1);
-    const clickUpgrade = useSelector(getClickPerCookie);
 
-    
     useEffect(() => {
         const { baseTick, amount } = clickUpgrade;
         setPerClick(baseTick * amount);
@@ -18,7 +17,6 @@ export const Cookie = () => {
     
 
     const handleClicker = () => {
-        setCookies(p => p + perClick);
         dispatch(addCookie(perClick));
         //Animation
          setShake(true);
@@ -28,7 +26,7 @@ export const Cookie = () => {
     return (
         <>
             <CookieContainer>
-                <CookieQuantity>{cookies} Cookies</CookieQuantity>
+                <CookieQuantity>{cookie} Cookies</CookieQuantity>
                 <CookieButton onClick={handleClicker} className = {shake ? `shake` : null}>Cookie</CookieButton>
             </CookieContainer>
         </>

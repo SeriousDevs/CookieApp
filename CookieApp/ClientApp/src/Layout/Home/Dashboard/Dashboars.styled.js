@@ -91,6 +91,6 @@ export const Position = styled.p`
   font-size: 36px;
 `;
 
-export const CookiesAmount = styled.p`
+export const NetWorth = styled.p`
   font-size: 24px;
 `;
