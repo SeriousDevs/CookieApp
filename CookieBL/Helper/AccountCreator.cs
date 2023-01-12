@@ -19,7 +19,16 @@ namespace CookieBL.Helper
                         BaseTick = 1,
                         Level = 1,
                         Amount = 1,
-                        Image = "https://www.doctordick.de/media/image/e2/1e/d5/penis_duenn_normaleBrille_600x600.png"
+                        Image = "images/Upgrades/Clicker"
+                    },
+                    new Upgrade()
+                    {
+                        Name = "Rolling Pin",
+                        Price = 1000,
+                        BaseTick = 3,
+                        Level = 1,
+                        Amount = 0,
+                        Image = "images/Upgrades/RollingPin"
                     }
                 }
             };
