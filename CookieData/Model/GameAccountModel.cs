@@ -5,8 +5,9 @@ namespace CookieData.Model
     public class GameAccountModel
     {
         public int Id { get; set; }
-        public int Cookies { get; set; }
-        public int Clicks { get; set; }
+        public ulong Networth { get; set; }
+        public ulong Cookies { get; set; }
+        public ulong Clicks { get; set; }
         public IEnumerable<Upgrade> Upgrades { get; set; }
     }
 }

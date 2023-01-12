@@ -30,11 +30,14 @@ namespace CookieData.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Clicks")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Clicks")
+                        .HasColumnType("decimal(20,0)");
 
-                    b.Property<int>("Cookies")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Cookies")
+                        .HasColumnType("decimal(20,0)");
+
+                    b.Property<decimal>("Networth")
+                        .HasColumnType("decimal(20,0)");
 
                     b.HasKey("Id");
 
@@ -50,11 +53,11 @@ namespace CookieData.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(20,0)");
 
-                    b.Property<int>("BaseTick")
-                        .HasColumnType("int");
+                    b.Property<decimal>("BaseTick")
+                        .HasColumnType("decimal(20,0)");
 
                     b.Property<int>("GameAccountId")
                         .HasColumnType("int");
@@ -63,16 +66,16 @@ namespace CookieData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Level")
+                        .HasColumnType("decimal(20,0)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long>("Price")
-                        .HasColumnType("bigint");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(20,0)");
 
                     b.HasKey("Id");
 

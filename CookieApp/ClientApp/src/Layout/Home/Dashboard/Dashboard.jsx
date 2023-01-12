@@ -18,9 +18,9 @@ export const Dashboard = () => {
      <Statistics/>
       <LeadershipBlock>
         <Heading>Leadership</Heading>
-        <LeadershipList>
-          {usersList.length > 0 && usersList.sort((a, b) => a.id - b.id).map((el, idx) => <LeadershipElement key={el.id} name={el.login} position={idx+1} />)}
-        </LeadershipList>
+        {/*<LeadershipList>*/}
+        {/*  {usersList.length > 0 && usersList.sort((a, b) => a.id - b.id).map((el, idx) => <LeadershipElement key={el.id} name={el.login} position={idx+1} />)}*/}
+        {/*</LeadershipList>*/}
       </LeadershipBlock>
     </Wrapper>
   )

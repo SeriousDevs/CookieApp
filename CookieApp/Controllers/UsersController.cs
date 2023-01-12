@@ -55,7 +55,7 @@ namespace CookieApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            IEnumerable<UserModel> users = await _userService.GetAllUsersAsync();
+            IEnumerable<UserStatsModel> users = await _userService.GetAllUsersAsync();
             return Ok(users);
         }
 

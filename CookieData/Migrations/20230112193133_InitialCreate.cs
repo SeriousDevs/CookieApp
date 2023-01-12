@@ -16,8 +16,9 @@ namespace CookieData.Migrations
                 {
                     GameAccountId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Cookies = table.Column<int>(type: "int", nullable: false),
-                    Clicks = table.Column<int>(type: "int", nullable: false)
+                    Networth = table.Column<decimal>(type: "decimal(20,0)", nullable: false),
+                    Cookies = table.Column<decimal>(type: "decimal(20,0)", nullable: false),
+                    Clicks = table.Column<decimal>(type: "decimal(20,0)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,10 +32,10 @@ namespace CookieData.Migrations
                     UpgradeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Price = table.Column<long>(type: "bigint", nullable: false),
-                    BaseTick = table.Column<int>(type: "int", nullable: false),
-                    Level = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(20,0)", nullable: false),
+                    BaseTick = table.Column<decimal>(type: "decimal(20,0)", nullable: false),
+                    Level = table.Column<decimal>(type: "decimal(20,0)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(20,0)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GameAccountId = table.Column<int>(type: "int", nullable: false)
                 },

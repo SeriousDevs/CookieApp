@@ -54,10 +54,10 @@ namespace CookieBL.Service
             return response;
         }
 
-        public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
+        public async Task<IEnumerable<UserStatsModel>> GetAllUsersAsync()
         {
             IEnumerable<User> users = await _usersRepository.GetAllUsersAsync();
-            IEnumerable<UserModel> usersModel = users.Select(_mapper.Map<UserModel>);
+            IEnumerable<UserStatsModel> usersModel = users.Select(_mapper.Map<UserStatsModel>);
 
             return usersModel;
         }
