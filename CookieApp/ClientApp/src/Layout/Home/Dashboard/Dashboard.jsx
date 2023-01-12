@@ -1,32 +1,25 @@
 import { useSelector } from "react-redux"
+import { getUserList } from "redux/gameAccSlice";
 import { getUser } from "redux/userSlice"
-import { ProfileBlock, StatsBlock, Heading, StatsItem, StatsList, UserImage, UserName, Wrapper, LeadershipBlock, LeadershipList, LeadershipItem, Position, CookiesAmount } from "./Dashboars.styled"
+import { ProfileBlock, Heading, UserImage, UserName, Wrapper, LeadershipBlock, LeadershipList} from "./Dashboars.styled"
+import { LeadershipElement } from "./LeadershipItem/LeadershipElement";
+import { Statistics } from "./Statistics/Statistics";
 
 export const Dashboard = () => {
   const user = useSelector(getUser);
+  const usersList = useSelector(getUserList);
+
   return (
     <Wrapper>
       <ProfileBlock>
         <UserName>{user.toUpperCase()}</UserName>
         <UserImage src="#" alt="#" />
       </ProfileBlock>
-      <StatsBlock>
-        <Heading>Statistic</Heading>
-        <StatsList>
-        <StatsItem>Rating: 10</StatsItem>
-        <StatsItem>Clicks per second: 10</StatsItem>
-        <StatsItem>Total clicks: 10</StatsItem>
-        <StatsItem>Total upgrades: 10</StatsItem>
-        </StatsList>
-      </StatsBlock>
+     <Statistics/>
       <LeadershipBlock>
         <Heading>Leadership</Heading>
         <LeadershipList>
-          <LeadershipItem>
-            <Position>1</Position>
-            <p>Name</p>
-            <CookiesAmount>10</CookiesAmount>
-          </LeadershipItem>
+          {usersList.length > 0 && usersList.sort((a, b) => a.id - b.id).map((el, idx) => <LeadershipElement key={el.id} name={el.login} position={idx+1} />)}
         </LeadershipList>
       </LeadershipBlock>
     </Wrapper>

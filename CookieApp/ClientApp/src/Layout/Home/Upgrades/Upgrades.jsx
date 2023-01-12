@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { getUpgrades } from 'redux/gameAccSlice';
-import { UpgradesListItem } from './UpgradesListItem';
+import { UpgradesListItem } from './UpgradesListItem/UpgradesListItem';
 import {
     Store,
     UpgradeList,
@@ -23,8 +23,8 @@ export const Upgrades = () => {
             </UpgradesMini>
             <UpgradesLarge>
                 <UpgradeList>
-                    {upgrades.map(({ name, id, amount, price }) => {
-                        return <UpgradesListItem key={id} id={id} name={name} amount={amount} price={price} img={null} />
+                    {upgrades.map(({ name, id, amount, price, image }) => {
+                        return <UpgradesListItem key={id} id={id} name={name} amount={amount} price={price} img={image} />
                     })}
                 </UpgradeList>
             </UpgradesLarge>

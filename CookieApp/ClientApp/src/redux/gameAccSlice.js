@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGameAcc, setSaveAcc } from "services/api";
+import { getAllUsers, getGameAcc, saveAccRequest } from "services/api";
 // import { toast } from "react-toastify";
 
 export const setGameAcc = createAsyncThunk(
@@ -18,8 +18,20 @@ export const saveAcc = createAsyncThunk(
   "user/saveAcc",
   async (acc, { rejectWithValue }) => {
     try {
-      const gameAcc = await setSaveAcc(acc);
+      const gameAcc = await saveAccRequest(acc);
       return gameAcc;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getUsersList = createAsyncThunk(
+  "user/getUsersList",
+  async (_, { rejectWithValue }) => {
+    try {
+      const users = await getAllUsers();
+      return users;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -45,6 +57,7 @@ export const gameAccSlice = createSlice({
     cookies: 0,
     id: null,
     upgrades: initialUpgrades,
+    usersList: [],
     isLoading: false,
     error: null,
   },
@@ -57,7 +70,7 @@ export const gameAccSlice = createSlice({
       const el = state.upgrades.find((el) => el.id === payload.id);
       el.amount = payload.amount;
       el.price = payload.price;
-      console.log(el);
+      state.cookies = state.cookies - payload.prevPrice;
     },
   },
   extraReducers: (builder) => {
@@ -82,11 +95,24 @@ export const gameAccSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(saveAcc.fulfilled, (state, { payload }) => {
+    builder.addCase(saveAcc.fulfilled, (state) => {
       state.isLoading = false;
-      console.log(payload);
     });
     builder.addCase(saveAcc.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload.message;
+    });
+    //getUsersList
+    builder.addCase(getUsersList.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(getUsersList.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.usersList = payload;
+      console.log(payload);
+    });
+    builder.addCase(getUsersList.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload.message;
     });
@@ -101,3 +127,4 @@ export const getTotalClicks = (state) => state.gameAcc.clicks;
 export const getUpgrades = (state) => state.gameAcc.upgrades;
 export const getCookies = (state) => state.gameAcc.cookies;
 export const getAcc = (state) => state.gameAcc;
+export const getUserList = (state) => state.gameAcc.usersList;

@@ -41,32 +41,12 @@ export const getGameAcc = async () => {
   return data;
 };
 
-export const setSaveAcc = async (acc) => {
-  const { data } = await $privateHost.post("/cookies/user", acc);
+export const getAllUsers = async () => {
+  const { data } = await $privateHost.get("/users");
   return data;
 };
 
-// export const logOutRequest = async () => {
-//   const { data } = await $privateHost.post("/users/logout");
-//   return data;
-// };
-
-// export const getContactsRequest = async () => {
-//   const { data } = await $privateHost.get("/contacts");
-//   return data;
-// };
-
-// export const addContactRequest = async (contact) => {
-//   const { data } = await $privateHost.post("/contacts", contact);
-//   return data;
-// };
-
-// export const deleteContactRequest = async (id) => {
-//   const { data } = await $privateHost.delete(`/contacts/${id}`);
-//   return data;
-// };
-
-// export const editContactRequest = async (contact, id) => {
-//   const { data } = await $privateHost.patch(`/contacts/${id}`, contact);
-//   return data;
-// };
+export const saveAccRequest = async (acc) => {
+  const { data } = await $privateHost.post("/cookies/user", acc);
+  return data;
+};
