@@ -31,6 +31,7 @@ export const UserName = styled.p`
 `;
 
 export const StatsBlock = styled.div`
+  height: auto;
   border-bottom: 1px solid white;
   padding: 20px;
 `;
@@ -57,6 +58,7 @@ export const StatsItem = styled.li`
 `;
 
 export const LeadershipBlock = styled.div`
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -68,7 +70,7 @@ export const LeadershipList = styled.ul`
   margin: 0;
   padding: 0;
   overflow: auto;
-  height: 30vh;
+  height: 29vh;
   width: 100%;
 `;
 
