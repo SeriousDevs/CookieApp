@@ -25,6 +25,11 @@ namespace CookieData.Mapper
                 .ForMember(ar => ar.Login, opt => opt.MapFrom(u => u.Login))
                 .ForMember(ar => ar.Id, opt => opt.MapFrom(u => u.Id))
                 .ForMember(ar => ar.Token, opt => opt.Ignore());
+
+            CreateMap<User, UserStatsModel>()
+                .ForMember(um => um.Login, opt => opt.MapFrom(u => u.Login))
+                .ForMember(um => um.Networth, opt => opt.MapFrom(u => u.GameAccount.Networth))
+                .ForMember(um => um.Id, opt => opt.MapFrom(u => u.Id));
         }
     }
 }
