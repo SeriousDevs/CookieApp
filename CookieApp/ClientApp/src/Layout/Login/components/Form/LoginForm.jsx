@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { logIn } from "redux/userSlice";
 import { Form, Label, Button, Input, Container, ButtonBlock, RedirectLink } from "Layout/common/common.styled";
+import { toast } from 'react-toastify';
 
 export const LoginForm = ({ isLoading }) => {
     const dispatch = useDispatch();
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [passwordInvalid, setPasswordInvalid] = useState(false);
+
 
     const handleChange = ({ target: { name, value } }) => {
 
@@ -45,7 +47,7 @@ export const LoginForm = ({ isLoading }) => {
             login,
             password,
         }
-
+        
         dispatch(logIn(formData));
         setLogin('');
         setPassword('');
@@ -60,11 +62,11 @@ export const LoginForm = ({ isLoading }) => {
                     <Input type="login" name='login' value={login} placeholder='cooker229' onChange={handleChange} required={true} />
                 </Label>
                 <Label passwordInvalid={passwordInvalid}>Password
-                    <Input type="password" name='password' value={password} title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handleChange} onFocus={onPassFocus} onBlur={() => setPasswordInvalid(false)} min={8} max={21} placeholder='Enter min 8 symbols' required={true} />
+                    <Input type="password" name='password' value={password} title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" onBlur={() => setPasswordInvalid(false)} onChange={handleChange} onFocus={onPassFocus} min={8} max={21} placeholder='Enter min 8 symbols' required={true} />
                 </Label>
                 <ButtonBlock>
-                <Button type="submit" disabled={isLoading || !login || pass}>LogIn</Button>
-                <RedirectLink to='/sign-up'>SignUp</RedirectLink>
+                    <Button type="submit" disabled={isLoading || !login || pass}>LogIn</Button>
+                    <RedirectLink to='/sign-up'>SignUp</RedirectLink>
                 </ButtonBlock>
             </Form>
         </Container>
