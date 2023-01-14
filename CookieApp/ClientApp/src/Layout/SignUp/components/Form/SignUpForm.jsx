@@ -1,5 +1,5 @@
 import { signUp } from "redux/userSlice";
-import { Form, Label, Button, Input, Container } from "Layout/common/common.styled";
+import { Form, Label, Button, Input, Container, RedirectLink, ButtonBlock } from "Layout/common/common.styled";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -66,7 +66,10 @@ export const SignUpForm = ({ isLoading }) => {
                 <Label> Login <Input type='text' name='login' value={login} onChange={handleChange} placeholder='cooker229' required={true}/></Label>
                 <Label> Email <Input type='email' name='email' value={email} onChange={handleChange} placeholder='example@gmail.com' required={true}/></Label>
                 <Label passwordInvalid={passwordInvalid}> Password <Input type='password' title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name='password' value={password} onFocus={onPassFocus} onBlur={()=> setPasswordInvalid(false)} onChange={handleChange} min={8} max={21} placeholder='Enter min 8 symbols' required={true}/></Label>
+                <ButtonBlock>
                 <Button type="submit" disabled={isLoading || !login || !email || pass}>Register</Button>
+                <RedirectLink to='/login'>LogIn</RedirectLink>
+                </ButtonBlock>
             </Form>
         </Container>
     )

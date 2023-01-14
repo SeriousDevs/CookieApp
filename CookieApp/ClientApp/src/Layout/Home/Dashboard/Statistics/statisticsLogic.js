@@ -2,7 +2,6 @@ export const statisticsLogic = (totalClicks, upgrades, cookies) => {
   const totalUpgrades = upgrades.reduce((acc, el) => (acc += el.amount), 0);
   const totalUpgradesNetWorth = upgrades.reduce((acc, el) => {
     let currentPrice = el.price;
-    acc += acc = currentPrice;
     for (let i = 0; i < el.amount; i++) {
       currentPrice = currentPrice / 2;
       acc += acc = currentPrice;
