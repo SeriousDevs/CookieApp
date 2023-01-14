@@ -7,8 +7,7 @@ namespace CookieData.Entities
         public long Networth { get; set; }
         public long Cookies { get; set; }
         public long Clicks { get; set; }
-        public int ClickUpgradeId { get; set; }
-        public Upgrade ClickUpgrade { get; set; }
+        public ClickUpgrade ClickUpgrade { get; set; }
         public IEnumerable<Upgrade> Upgrades { get; set; }
 
         // [JsonIgnore]

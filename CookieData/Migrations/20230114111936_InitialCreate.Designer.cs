@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookieData.Migrations
 {
     [DbContext(typeof(CookieContext))]
-    [Migration("20230112193133_InitialCreate")]
+    [Migration("20230114111936_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,35 @@ namespace CookieData.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CookieData.Entities.ClickUpgrade", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ClickUpgradeId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("GameAccountId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Level")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("UpgradeInfoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameAccountId")
+                        .IsUnique();
+
+                    b.HasIndex("UpgradeInfoId")
+                        .IsUnique();
+
+                    b.ToTable("ClickUpgrade", (string)null);
+                });
+
             modelBuilder.Entity("CookieData.Entities.GameAccount", b =>
                 {
                     b.Property<int>("Id")
@@ -33,14 +62,14 @@ namespace CookieData.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Clicks")
-                        .HasColumnType("decimal(20,0)");
+                    b.Property<long>("Clicks")
+                        .HasColumnType("bigint");
 
-                    b.Property<decimal>("Cookies")
-                        .HasColumnType("decimal(20,0)");
+                    b.Property<long>("Cookies")
+                        .HasColumnType("bigint");
 
-                    b.Property<decimal>("Networth")
-                        .HasColumnType("decimal(20,0)");
+                    b.Property<long>("Networth")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -56,35 +85,55 @@ namespace CookieData.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(20,0)");
-
-                    b.Property<decimal>("BaseTick")
-                        .HasColumnType("decimal(20,0)");
+                    b.Property<long>("Amount")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("GameAccountId")
                         .HasColumnType("int");
 
+                    b.Property<long>("Level")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("UpgradeInfoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameAccountId");
+
+                    b.HasIndex("UpgradeInfoId")
+                        .IsUnique();
+
+                    b.ToTable("Upgrade", (string)null);
+                });
+
+            modelBuilder.Entity("CookieData.Entities.UpgradeInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("UpgradeInfoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<long>("BasePrice")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("BaseValue")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Level")
-                        .HasColumnType("decimal(20,0)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(20,0)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("GameAccountId");
-
-                    b.ToTable("Upgrade", (string)null);
+                    b.ToTable("UpgradeInfo", (string)null);
                 });
 
             modelBuilder.Entity("CookieData.Entities.User", b =>
@@ -122,6 +171,25 @@ namespace CookieData.Migrations
                     b.ToTable("User", (string)null);
                 });
 
+            modelBuilder.Entity("CookieData.Entities.ClickUpgrade", b =>
+                {
+                    b.HasOne("CookieData.Entities.GameAccount", "GameAccount")
+                        .WithOne("ClickUpgrade")
+                        .HasForeignKey("CookieData.Entities.ClickUpgrade", "GameAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CookieData.Entities.UpgradeInfo", "UpgradeInfo")
+                        .WithOne("ClickUpgrade")
+                        .HasForeignKey("CookieData.Entities.ClickUpgrade", "UpgradeInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GameAccount");
+
+                    b.Navigation("UpgradeInfo");
+                });
+
             modelBuilder.Entity("CookieData.Entities.Upgrade", b =>
                 {
                     b.HasOne("CookieData.Entities.GameAccount", "GameAccount")
@@ -130,7 +198,15 @@ namespace CookieData.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CookieData.Entities.UpgradeInfo", "UpgradeInfo")
+                        .WithOne("Upgrade")
+                        .HasForeignKey("CookieData.Entities.Upgrade", "UpgradeInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("GameAccount");
+
+                    b.Navigation("UpgradeInfo");
                 });
 
             modelBuilder.Entity("CookieData.Entities.User", b =>
@@ -146,10 +222,20 @@ namespace CookieData.Migrations
 
             modelBuilder.Entity("CookieData.Entities.GameAccount", b =>
                 {
+                    b.Navigation("ClickUpgrade")
+                        .IsRequired();
+
                     b.Navigation("Upgrades");
 
                     b.Navigation("User")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CookieData.Entities.UpgradeInfo", b =>
+                {
+                    b.Navigation("ClickUpgrade");
+
+                    b.Navigation("Upgrade");
                 });
 #pragma warning restore 612, 618
         }

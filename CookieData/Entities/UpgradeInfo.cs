@@ -7,5 +7,6 @@
         public long BasePrice { get; set; }
         public string Image { get; set; }
         public Upgrade? Upgrade { get; set; }
+        public ClickUpgrade? ClickUpgrade { get; set; }
     }
 }

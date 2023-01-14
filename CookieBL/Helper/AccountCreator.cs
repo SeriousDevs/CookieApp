@@ -10,7 +10,7 @@ namespace CookieBL.Helper
             {
                 Cookies = 0,
                 Clicks = 0,
-                Upgrades = new List<Upgrade>()
+                /*Upgrades = new List<Upgrade>()
                 {
                     new Upgrade()
                     {
@@ -30,7 +30,7 @@ namespace CookieBL.Helper
                         Amount = 0,
                         Image = "images/Upgrades/RollingPin"
                     }
-                }
+                }*/
             };
 
             return account;

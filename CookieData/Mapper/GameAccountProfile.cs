@@ -13,6 +13,7 @@ namespace CookieData.Mapper
                 .ForMember(ga => ga.Networth, opt => opt.MapFrom(gam => gam.Networth))
                 .ForMember(ga => ga.Cookies, opt => opt.MapFrom(gam => gam.Cookies))
                 .ForMember(ga => ga.Clicks, opt => opt.MapFrom(gam => gam.Clicks))
+                .ForMember(ga => ga.ClickUpgrade, opt => opt.MapFrom(gam => gam.ClickUpgrade))
                 .ForMember(ga => ga.Upgrades, opt => opt.MapFrom(gam => gam.Upgrades));
 
             CreateMap<GameAccount, GameAccountModel>()
@@ -20,6 +21,7 @@ namespace CookieData.Mapper
                 .ForMember(gam => gam.Networth, opt => opt.MapFrom(ga => ga.Networth))
                 .ForMember(gam => gam.Cookies, opt => opt.MapFrom(ga => ga.Cookies))
                 .ForMember(gam => gam.Clicks, opt => opt.MapFrom(ga => ga.Clicks))
+                .ForMember(gam => gam.ClickUpgrade, opt => opt.MapFrom(ga => ga.ClickUpgrade))
                 .ForMember(gam => gam.Upgrades, opt => opt.MapFrom(ga => ga.Upgrades));
         }
     }
