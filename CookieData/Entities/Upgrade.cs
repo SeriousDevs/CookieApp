@@ -4,14 +4,13 @@ namespace CookieData.Entities
 {
     public class Upgrade : BaseEntity
     {
-        public string Name { get; set; }
-        public ulong Price { get; set; }
-        public ulong BaseTick { get; set; }
-        public ulong Level { get; set; }
-        public ulong Amount { get; set; }
-        public string Image { get; set; }
+        public long Level { get; set; }
+        public long Amount { get; set; }
         public int GameAccountId { get; set; }
-        [JsonIgnore]
+
+        // [JsonIgnore]
         public GameAccount? GameAccount { get; set; }
+        public int UpgradeInfoId { get; set; }
+        public UpgradeInfo? UpgradeInfo { get; set; }
     }
 }

@@ -9,17 +9,17 @@ namespace CookieData.Entities.Configuration
         {
             builder.ToTable(nameof(Upgrade)).HasKey(u => u.Id);
             builder.Property(u => u.Id).HasColumnName("UpgradeId").ValueGeneratedOnAdd();
-            builder.Property(u => u.Name).HasMaxLength(50).IsRequired();
-            builder.Property(u => u.Price).IsRequired();
-            builder.Property(u => u.BaseTick).IsRequired();
             builder.Property(u => u.Amount).IsRequired();
             builder.Property(u => u.Level).IsRequired();
             builder.Property(u => u.GameAccountId).IsRequired();
 
             builder.HasOne(u => u.GameAccount)
                 .WithMany(ga => ga.Upgrades)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasForeignKey(u => u.GameAccountId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(u => u.UpgradeInfo)
+                .WithOne(u => u.Upgrade)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

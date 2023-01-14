@@ -11,6 +11,11 @@ namespace CookieData.Entities.Configuration
             builder.Property(ga => ga.Id).HasColumnName("GameAccountId").ValueGeneratedOnAdd();
             builder.Property(ga => ga.Cookies).IsRequired();
             builder.Property(ga => ga.Clicks).IsRequired();
+            builder.Property(ga => ga.ClickUpgradeId).IsRequired();
+
+            builder.HasOne(ga => ga.ClickUpgrade)
+                .WithOne(u => u.GameAccount)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
