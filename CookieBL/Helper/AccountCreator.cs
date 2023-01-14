@@ -4,33 +4,31 @@ namespace CookieBL.Helper
 {
     public static class AccountCreator
     {
+        private static readonly int _upgradesAmount = 11;
         public static GameAccount CreateGameAccount()
         {
+            var upgrades = new List<Upgrade>();
+
+            for (int i = 2; i < _upgradesAmount; i++)
+            {
+                upgrades.Add(new Upgrade()
+                {
+                    UpgradeInfoId = i,
+                    Level = 1,
+                    Amount = 0,
+                });
+            }
+
             var account = new GameAccount()
             {
                 Cookies = 0,
                 Clicks = 0,
-                /*Upgrades = new List<Upgrade>()
+                Upgrades = upgrades,
+                ClickUpgrade = new ClickUpgrade()
                 {
-                    new Upgrade()
-                    {
-                        Name = "Click",
-                        Price = 100,
-                        BaseTick = 1,
-                        Level = 1,
-                        Amount = 1,
-                        Image = "images/Upgrades/Clicker"
-                    },
-                    new Upgrade()
-                    {
-                        Name = "Rolling Pin",
-                        Price = 1000,
-                        BaseTick = 3,
-                        Level = 1,
-                        Amount = 0,
-                        Image = "images/Upgrades/RollingPin"
-                    }
-                }*/
+                    UpgradeInfoId = 1,
+                    Level = 1,
+                }
             };
 
             return account;

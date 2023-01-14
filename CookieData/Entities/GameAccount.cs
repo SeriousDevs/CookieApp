@@ -10,7 +10,7 @@ namespace CookieData.Entities
         public ClickUpgrade ClickUpgrade { get; set; }
         public IEnumerable<Upgrade> Upgrades { get; set; }
 
-        // [JsonIgnore]
+        [JsonIgnore]
         public User User { get; set; }
     }
 }

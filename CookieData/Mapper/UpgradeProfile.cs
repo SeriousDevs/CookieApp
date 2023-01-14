@@ -10,12 +10,15 @@ namespace CookieData.Mapper
         {
             CreateMap<UpgradeModel, Upgrade>()
                 .ForMember(u => u.Id, opt => opt.MapFrom(um => um.Id))
-                .ForMember(u => u.UpgradeInfo.Name, opt => opt.MapFrom(um => um.Name))
-                .ForMember(u => u.UpgradeInfo.BasePrice, opt => opt.MapFrom(um => um.BasePrice))
-                .ForMember(u => u.UpgradeInfo.BaseValue, opt => opt.MapFrom(um => um.BaseValue))
+                .ForMember(u => u.UpgradeInfo, opt => opt.MapFrom(um => new UpgradeInfo()
+                {
+                    Name = um.Name,
+                    BasePrice = um.BasePrice,
+                    BaseValue = um.BaseValue,
+                    Image = um.Image,
+                }))
                 .ForMember(u => u.Level, opt => opt.MapFrom(um => um.Level))
                 .ForMember(u => u.Amount, opt => opt.MapFrom(um => um.Amount))
-                .ForMember(u => u.UpgradeInfo.Image, opt => opt.MapFrom(um => um.Image))
                 .ForMember(u => u.GameAccountId, opt => opt.MapFrom(um => um.GameAccountId));
 
             CreateMap<Upgrade, UpgradeModel>()

@@ -18,6 +18,9 @@ namespace CookieBL.IRepository
         {
             IEnumerable<GameAccount> gameAccounts = await _context.GameAccounts
                 .Include(ga => ga.Upgrades)
+                .ThenInclude(u => u.UpgradeInfo)
+                .Include(ga => ga.ClickUpgrade)
+                .ThenInclude(u => u.UpgradeInfo)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -28,6 +31,9 @@ namespace CookieBL.IRepository
         {
             GameAccount? gameAccount = await _context.GameAccounts
                 .Include(ga => ga.Upgrades)
+                .ThenInclude(u => u.UpgradeInfo)
+                .Include(ga => ga.ClickUpgrade)
+                .ThenInclude(u => u.UpgradeInfo)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(ga => ga.Id == id);
 

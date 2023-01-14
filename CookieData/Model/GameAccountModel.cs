@@ -8,7 +8,7 @@ namespace CookieData.Model
         public long Networth { get; set; }
         public long Cookies { get; set; }
         public long Clicks { get; set; }
-        public ClickUpgrade ClickUpgrade { get; set; }
-        public IEnumerable<Upgrade> Upgrades { get; set; }
+        public ClickUpgradeModel ClickUpgrade { get; set; }
+        public IEnumerable<UpgradeModel> Upgrades { get; set; }
     }
 }

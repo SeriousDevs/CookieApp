@@ -8,9 +8,9 @@ namespace CookieData.Entities
         public long Amount { get; set; }
         public int GameAccountId { get; set; }
 
-        // [JsonIgnore]
+        [JsonIgnore]
         public GameAccount? GameAccount { get; set; }
         public int UpgradeInfoId { get; set; }
-        public UpgradeInfo UpgradeInfo { get; set; } = new UpgradeInfo();
+        public UpgradeInfo? UpgradeInfo { get; set; }
     }
 }

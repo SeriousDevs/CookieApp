@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookieData.Migrations
 {
     [DbContext(typeof(CookieContext))]
-    [Migration("20230114111936_InitialCreate")]
+    [Migration("20230114123656_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -101,8 +101,7 @@ namespace CookieData.Migrations
 
                     b.HasIndex("GameAccountId");
 
-                    b.HasIndex("UpgradeInfoId")
-                        .IsUnique();
+                    b.HasIndex("UpgradeInfoId");
 
                     b.ToTable("Upgrade", (string)null);
                 });
@@ -119,8 +118,8 @@ namespace CookieData.Migrations
                     b.Property<long>("BasePrice")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("BaseValue")
-                        .HasColumnType("bigint");
+                    b.Property<double>("BaseValue")
+                        .HasColumnType("float");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -134,6 +133,96 @@ namespace CookieData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UpgradeInfo", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BasePrice = 100L,
+                            BaseValue = 1.0,
+                            Image = "images/Upgrades/Clicker",
+                            Name = "Click"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BasePrice = 15L,
+                            BaseValue = 0.10000000000000001,
+                            Image = "images/Upgrades/HandMate",
+                            Name = "Hand Mate"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BasePrice = 100L,
+                            BaseValue = 1.0,
+                            Image = "images/Upgrades/RollingPin",
+                            Name = "Rolling Pin"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BasePrice = 1100L,
+                            BaseValue = 8.0,
+                            Image = "images/Upgrades/Oven",
+                            Name = "Oven"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BasePrice = 12000L,
+                            BaseValue = 47.0,
+                            Image = "images/Upgrades/GrandDaughter",
+                            Name = "Grand Daughter"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BasePrice = 130000L,
+                            BaseValue = 260.0,
+                            Image = "images/Upgrades/Baker",
+                            Name = "Baker"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BasePrice = 1400000L,
+                            BaseValue = 1400.0,
+                            Image = "images/Upgrades/GrannyBoss",
+                            Name = "Granny Boss"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BasePrice = 20000000L,
+                            BaseValue = 7800.0,
+                            Image = "images/Upgrades/BunsStall",
+                            Name = "Buns Stall"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BasePrice = 330000000L,
+                            BaseValue = 44000.0,
+                            Image = "images/Upgrades/Bakery",
+                            Name = "Bakery"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BasePrice = 5100000000L,
+                            BaseValue = 260000.0,
+                            Image = "images/Upgrades/GrannysRestaurant",
+                            Name = "Granny's Restaurant"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BasePrice = 75000000000L,
+                            BaseValue = 1600000.0,
+                            Image = "images/Upgrades/CookieFranchise",
+                            Name = "Cookie Franchise"
+                        });
                 });
 
             modelBuilder.Entity("CookieData.Entities.User", b =>
@@ -199,8 +288,8 @@ namespace CookieData.Migrations
                         .IsRequired();
 
                     b.HasOne("CookieData.Entities.UpgradeInfo", "UpgradeInfo")
-                        .WithOne("Upgrade")
-                        .HasForeignKey("CookieData.Entities.Upgrade", "UpgradeInfoId")
+                        .WithMany("Upgrades")
+                        .HasForeignKey("UpgradeInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -235,7 +324,7 @@ namespace CookieData.Migrations
                 {
                     b.Navigation("ClickUpgrade");
 
-                    b.Navigation("Upgrade");
+                    b.Navigation("Upgrades");
                 });
 #pragma warning restore 612, 618
         }
