@@ -19,7 +19,7 @@ export const Upgrades = () => {
             
             <Store>Store</Store>
             <UpgradesMini>
-                Upgrades of the upgrades
+                Level ups
             </UpgradesMini>
             <UpgradesLarge>
                 <UpgradeList>
