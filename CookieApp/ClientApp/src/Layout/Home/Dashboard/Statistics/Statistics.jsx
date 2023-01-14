@@ -1,17 +1,14 @@
 import { useSelector } from "react-redux";
-import { getCookies, getTotalClicks, getUpgrades } from "redux/gameAccSlice";
+import { getTotalClicks, getUpgrades, getNetWorth } from "redux/gameAccSlice";
 import { StatsBlock, StatsItem, StatsList } from "./Statistics.styled";
-import { Heading } from '../Dashboard.styled'
-import { statisticsLogic } from "./statisticsLogic";
+import { Heading } from '../Dashboard.styled';
 
 export const Statistics = () => {
  const clicks = useSelector(getTotalClicks);
   const upgrades = useSelector(getUpgrades);
-  const cookies = useSelector(getCookies);
+  const netWorth = useSelector(getNetWorth);
   
-  const obj = statisticsLogic(clicks, upgrades, cookies);
- 
-  const {netWorth, totalClicks, totalUpgrades} = obj;
+  const totalUpgrades = upgrades.reduce((acc, el) => (acc += el.amount), 0);
 
   return (
      <StatsBlock>
@@ -19,7 +16,7 @@ export const Statistics = () => {
         <StatsList>
         <StatsItem>Net Worth: {netWorth}</StatsItem>
         <StatsItem>Clicks per second: 10</StatsItem>
-        <StatsItem>Total clicks: {totalClicks}</StatsItem>
+        <StatsItem>Total clicks: {clicks}</StatsItem>
         <StatsItem>Total upgrades: {totalUpgrades}</StatsItem>
         </StatsList>
       </StatsBlock>

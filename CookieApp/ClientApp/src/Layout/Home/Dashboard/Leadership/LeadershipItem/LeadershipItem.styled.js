@@ -5,7 +5,7 @@ export const LeadershipItem = styled.li`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  height: 75px;
+  max-height: 50px;
   background-color: rgba(180, 180, 180, 0.5);
   cursor: pointer;
   border: 1px solid white;
@@ -16,9 +16,9 @@ export const LeadershipItem = styled.li`
 `;
 
 export const Position = styled.p`
-  font-size: 36px;
+  //   font-size: 36px;
 `;
 
 export const NetWorth = styled.p`
-  font-size: 24px;
+  //   font-size: 24px;
 `;

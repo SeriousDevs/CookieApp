@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Heading = styled.h3`
-  diplay: block;
+  display: block;
   margin: 0;
   color: white;
   text-align: center;

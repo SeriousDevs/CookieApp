@@ -58,12 +58,14 @@ export const gameAccSlice = createSlice({
     id: null,
     upgrades: initialUpgrades,
     usersList: [],
+    networth: 0,
     isLoading: false,
     error: null,
   },
   reducers: {
     addCookie(state, { payload }) {
       state.cookies = payload + state.cookies;
+      state.networth = payload + state.networth;
       state.clicks = 1 + state.clicks;
     },
     buyUpgrade(state, { payload }) {
@@ -74,41 +76,50 @@ export const gameAccSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    //SetGameAcc
+    //==================SetGameAcc==================
     builder.addCase(setGameAcc.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
     builder.addCase(setGameAcc.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+
+      if (!payload) return;
+
       state.clicks = payload.clicks;
       state.cookies = payload.cookies;
       state.id = payload.id;
       state.upgrades = payload.upgrades;
+      state.networth = payload.networth;
     });
     builder.addCase(setGameAcc.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload.message;
     });
-    //SaveGameAcc
+    //==================SaveGameAcc==================
     builder.addCase(saveAcc.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(saveAcc.fulfilled, (state) => {
+    builder.addCase(saveAcc.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+
+      if (!payload) return;
     });
     builder.addCase(saveAcc.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload.message;
     });
-    //getUsersList
+    //==================GetUsersList==================
     builder.addCase(getUsersList.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
     builder.addCase(getUsersList.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+
+      if (!payload) return;
+
       state.usersList = payload;
       // console.log(payload);
     });
@@ -128,3 +139,4 @@ export const getUpgrades = (state) => state.gameAcc.upgrades;
 export const getCookies = (state) => state.gameAcc.cookies;
 export const getAcc = (state) => state.gameAcc;
 export const getUserList = (state) => state.gameAcc.usersList;
+export const getNetWorth = (state) => state.gameAcc.networth;
