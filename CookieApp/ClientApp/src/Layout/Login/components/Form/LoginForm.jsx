@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "redux/userSlice";
-import { Form, Label, Button, Input, Container } from "Layout/common/common.styled";
+import { Form, Label, Button, Input, Container, ButtonBlock, RedirectLink } from "Layout/common/common.styled";
 
 export const LoginForm = ({ isLoading }) => {
     const dispatch = useDispatch();
@@ -62,7 +62,10 @@ export const LoginForm = ({ isLoading }) => {
                 <Label passwordInvalid={passwordInvalid}>Password
                     <Input type="password" name='password' value={password} title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handleChange} onFocus={onPassFocus} onBlur={() => setPasswordInvalid(false)} min={8} max={21} placeholder='Enter min 8 symbols' required={true} />
                 </Label>
+                <ButtonBlock>
                 <Button type="submit" disabled={isLoading || !login || pass}>LogIn</Button>
+                <RedirectLink to='/sign-up'>SignUp</RedirectLink>
+                </ButtonBlock>
             </Form>
         </Container>
     )

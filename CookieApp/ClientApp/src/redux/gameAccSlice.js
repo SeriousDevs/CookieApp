@@ -110,7 +110,7 @@ export const gameAccSlice = createSlice({
     builder.addCase(getUsersList.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.usersList = payload;
-      console.log(payload);
+      // console.log(payload);
     });
     builder.addCase(getUsersList.rejected, (state, { payload }) => {
       state.isLoading = false;

@@ -1,11 +1,10 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
 `;
 
 export const Form = styled.form`
@@ -50,4 +49,32 @@ export const Input = styled.input`
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;
+`;
+
+export const ButtonBlock = styled.div`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+`;
+
+export const RedirectLink = styled(Link)`
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    color: teal;
+    text-decoration: none;
+  }
+`;
+
+export const WelcomePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 50px;
 `;

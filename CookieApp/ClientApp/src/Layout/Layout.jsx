@@ -5,12 +5,12 @@ import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 const Layout = () => {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!token) return;
-    dispath(auth());
+    dispatch(auth());
   }, []);
 
     return (

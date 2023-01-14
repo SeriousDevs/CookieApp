@@ -48,7 +48,11 @@ export const userSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    logOut(state) {
+      state.token = null;
+    },
+  },
   extraReducers: (builder) => {
     //SignUp
     builder.addCase(signUp.pending, (state) => {
@@ -97,6 +101,8 @@ export const userSlice = createSlice({
     });
   },
 });
+
+export const { logOut } = userSlice.actions;
 
 //Selectors
 export const getIsLoading = (state) => state.user.isLoading;

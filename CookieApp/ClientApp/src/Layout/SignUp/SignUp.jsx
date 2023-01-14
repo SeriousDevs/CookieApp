@@ -1,13 +1,14 @@
 import WithNoAuthRedirect from "HOC/WithNoAuthRedurect";
+import { Welcome } from "Layout/common/components/Welcome/Welcome";
 import { SignUpForm } from "./components/Form/SignUpForm";
-import { Link } from 'react-router-dom';
+import { WelcomePage } from "Layout/common/common.styled";
 
 const SignUp = () => {
   return (
-    <div>
-      <Link to='/login'>LogIn</Link>
+    <WelcomePage>
+      <Welcome/>
       <SignUpForm />
-    </div>
+    </WelcomePage>
   )
 }
 
