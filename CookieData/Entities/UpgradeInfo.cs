@@ -11,6 +11,6 @@ namespace CookieData.Entities
         [JsonIgnore]
         public IEnumerable<Upgrade>? Upgrades { get; set; }
         [JsonIgnore]
-        public ClickUpgrade? ClickUpgrade { get; set; }
+        public IEnumerable<ClickUpgrade>? ClickUpgrades { get; set; }
     }
 }

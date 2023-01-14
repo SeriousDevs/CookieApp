@@ -147,8 +147,7 @@ namespace CookieData.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ClickUpgrade_UpgradeInfoId",
                 table: "ClickUpgrade",
-                column: "UpgradeInfoId",
-                unique: true);
+                column: "UpgradeInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Upgrade_GameAccountId",

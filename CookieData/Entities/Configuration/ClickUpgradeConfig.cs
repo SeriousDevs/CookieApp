@@ -17,7 +17,7 @@ namespace CookieData.Entities.Configuration
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(u => u.UpgradeInfo)
-                .WithOne(u => u.ClickUpgrade)
+                .WithMany(u => u.ClickUpgrades)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

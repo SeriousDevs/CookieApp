@@ -44,8 +44,7 @@ namespace CookieData.Migrations
                     b.HasIndex("GameAccountId")
                         .IsUnique();
 
-                    b.HasIndex("UpgradeInfoId")
-                        .IsUnique();
+                    b.HasIndex("UpgradeInfoId");
 
                     b.ToTable("ClickUpgrade", (string)null);
                 });
@@ -266,8 +265,8 @@ namespace CookieData.Migrations
                         .IsRequired();
 
                     b.HasOne("CookieData.Entities.UpgradeInfo", "UpgradeInfo")
-                        .WithOne("ClickUpgrade")
-                        .HasForeignKey("CookieData.Entities.ClickUpgrade", "UpgradeInfoId")
+                        .WithMany("ClickUpgrades")
+                        .HasForeignKey("UpgradeInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -319,7 +318,7 @@ namespace CookieData.Migrations
 
             modelBuilder.Entity("CookieData.Entities.UpgradeInfo", b =>
                 {
-                    b.Navigation("ClickUpgrade");
+                    b.Navigation("ClickUpgrades");
 
                     b.Navigation("Upgrades");
                 });
