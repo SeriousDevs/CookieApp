@@ -2,10 +2,9 @@
 
 namespace CookieData.Entities
 {
-    public class Upgrade : BaseEntity
+    public class ClickUpgrade : BaseEntity
     {
         public long Level { get; set; }
-        public long Amount { get; set; }
         public int GameAccountId { get; set; }
 
         [JsonIgnore]

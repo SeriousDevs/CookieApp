@@ -14,12 +14,16 @@ namespace CookieData.Context
         public DbSet<User> Users { get; set; }
         public DbSet<GameAccount> GameAccounts { get; set; }
         public DbSet<Upgrade> Upgrades { get; set; }
+        public DbSet<ClickUpgrade> ClickUpgrades { get; set; }
+        public DbSet<UpgradeInfo> UpgradesInfo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new GameAccountConfig());
             modelBuilder.ApplyConfiguration(new UpgradeConfig());
+            modelBuilder.ApplyConfiguration(new UpgradeInfoConfig());
+            modelBuilder.ApplyConfiguration(new ClickUpgradeConfig());
         }
     }
 }
