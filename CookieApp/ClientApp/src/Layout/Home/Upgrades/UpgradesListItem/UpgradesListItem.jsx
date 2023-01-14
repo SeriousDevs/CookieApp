@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { buyUpgrade, getCookies } from 'redux/gameAccSlice';
-import { AdditionalWrapper, CentralDivTxt, ListItemCentralDiv, Quantities, UpgradeImage, UpgradeListItem } from '../Upgrades.styled';
+import { AdditionalWrapper, CentralDivTxt, ListItemCentralDiv, Quantities, UpgradeImage, UpgradeListItem } from './UpgradesListItem.styled';
 
 export const UpgradesListItem = ({id, amount = 1, name = 'name', price = 100, img }) => {
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export const UpgradesListItem = ({id, amount = 1, name = 'name', price = 100, im
     return (
         <UpgradeListItem onClick={()=> handlerUpgradesClick()}>
             <AdditionalWrapper>
-                <UpgradeImage src={img} alt="img of the upgrade" />
+                <UpgradeImage src={img} />
                 <ListItemCentralDiv>
                     <CentralDivTxt>{name}</CentralDivTxt>
                     <CentralDivTxt>{upgrPrice}</CentralDivTxt>

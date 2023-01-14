@@ -9,18 +9,19 @@ export const Cookie = () => {
     const clickUpgrade = useSelector(getClickPerCookie);
     const [shake, setShake] = useState(false);
     const [perClick, setPerClick] = useState(1);
-
+    
+    
     useEffect(() => {
-        const { baseTick, amount } = clickUpgrade;
-        setPerClick(baseTick * amount);
-    }, [clickUpgrade])
+        const { baseValue, level } = clickUpgrade;
+        setPerClick(baseValue * (2 ** (level - 1)));
+    }, [clickUpgrade]);
     
 
     const handleClicker = () => {
         dispatch(addCookie(perClick));
         //Animation
          setShake(true);
-        setTimeout(() => setShake(false), 50);
+        setTimeout(() => setShake(false), 0);
     };
 
     return (

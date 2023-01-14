@@ -40,25 +40,36 @@ export const getUsersList = createAsyncThunk(
 
 const initialUpgrades = [
   {
-    name: "Click",
+    name: "Hand Mate",
     amount: 0,
-    baseTick: 1,
-    id: null,
+    basePrice: 15,
+    baseValue: 0.1,
     gameAccountId: null,
+    id: null,
+    image: null,
     level: 1,
-    price: 100,
   },
 ];
 
 export const gameAccSlice = createSlice({
   name: "cookie",
   initialState: {
+    clickUpgrade: {
+      basePrice: 100,
+      baseValue: 1,
+      gameAccountId: null,
+      id: null,
+      image: null,
+      level: 1,
+      name: "Click",
+      upgradeInfoId: 1,
+    },
     clicks: 0,
     cookies: 0,
     id: null,
+    networth: 0,
     upgrades: initialUpgrades,
     usersList: [],
-    networth: 0,
     isLoading: false,
     error: null,
   },
@@ -85,12 +96,14 @@ export const gameAccSlice = createSlice({
       state.isLoading = false;
 
       if (!payload) return;
+      // console.log(payload);
 
       state.clicks = payload.clicks;
       state.cookies = payload.cookies;
       state.id = payload.id;
       state.upgrades = payload.upgrades;
       state.networth = payload.networth;
+      state.clickUpgrade = payload.clickUpgrade;
     });
     builder.addCase(setGameAcc.rejected, (state, { payload }) => {
       state.isLoading = false;
@@ -133,7 +146,7 @@ export const gameAccSlice = createSlice({
 export const { addCookie, addClicks, buyUpgrade } = gameAccSlice.actions;
 
 //Selector
-export const getClickPerCookie = (state) => state.gameAcc.upgrades[0];
+export const getClickPerCookie = (state) => state.gameAcc.clickUpgrade;
 export const getTotalClicks = (state) => state.gameAcc.clicks;
 export const getUpgrades = (state) => state.gameAcc.upgrades;
 export const getCookies = (state) => state.gameAcc.cookies;
