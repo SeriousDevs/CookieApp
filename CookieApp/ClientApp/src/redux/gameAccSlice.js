@@ -18,7 +18,11 @@ export const saveAcc = createAsyncThunk(
   "user/saveAcc",
   async (acc, { rejectWithValue }) => {
     try {
-      const gameAcc = await saveAccRequest(acc);
+      const obj = { ...acc };
+      delete obj.usersList;
+      delete obj.isLoading;
+      delete obj.error;
+      const gameAcc = await saveAccRequest(obj);
       return gameAcc;
     } catch (error) {
       return rejectWithValue(error);
