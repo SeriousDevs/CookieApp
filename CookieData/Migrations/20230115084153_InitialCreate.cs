@@ -18,7 +18,7 @@ namespace CookieData.Migrations
                 {
                     GameAccountId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Networth = table.Column<long>(type: "bigint", nullable: false),
+                    Networth = table.Column<double>(type: "float", nullable: false),
                     Cookies = table.Column<long>(type: "bigint", nullable: false),
                     Clicks = table.Column<long>(type: "bigint", nullable: false)
                 },

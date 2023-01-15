@@ -4,7 +4,7 @@ namespace CookieData.Entities
 {
     public class GameAccount : BaseEntity
     {
-        public long Networth { get; set; }
+        public double Networth { get; set; }
         public long Cookies { get; set; }
         public long Clicks { get; set; }
         public ClickUpgrade ClickUpgrade { get; set; }
