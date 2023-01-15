@@ -61,8 +61,8 @@ namespace CookieData.Migrations
                     b.Property<long>("Clicks")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("Cookies")
-                        .HasColumnType("bigint");
+                    b.Property<double>("Cookies")
+                        .HasColumnType("float");
 
                     b.Property<double>("Networth")
                         .HasColumnType("float");
