@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookieData.Migrations
 {
     [DbContext(typeof(CookieContext))]
-    [Migration("20230115084153_InitialCreate")]
+    [Migration("20230115212321_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -64,8 +64,8 @@ namespace CookieData.Migrations
                     b.Property<long>("Clicks")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("Cookies")
-                        .HasColumnType("bigint");
+                    b.Property<double>("Cookies")
+                        .HasColumnType("float");
 
                     b.Property<double>("Networth")
                         .HasColumnType("float");
