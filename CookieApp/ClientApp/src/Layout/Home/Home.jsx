@@ -13,6 +13,8 @@ const Home = () => {
   const [counter, setCounter] = useState(0);
   const [upgradesCounter, setUpgradesCounter] = useState(0);
 
+  const token = localStorage.getItem('token');
+  
   useEffect(() => {
     setInterval(() => {
       setCounter(p=> p +1)
@@ -26,8 +28,9 @@ const Home = () => {
     if (counter === 0) return;
     dispatch(saveAcc(acc));
   }, [counter]);
-
+  
   useEffect(() => {
+    if (!token) return;
     dispatch(setGameAcc());
     dispatch(getUsersList());
   }, []);
