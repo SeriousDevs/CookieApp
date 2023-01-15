@@ -26,11 +26,17 @@ export const UpgradesMini = styled.div`
   border-bottom: 1px solid black;
 `;
 
-export const UpgradesLarge = styled.div``;
+export const UpgradesLarge = styled.div`
+  position: relative;
+`;
 
 export const UpgradeList = styled.ul`
+  height: 608px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: auto;
   list-style: none;
   padding: 0;
   margin: 0;
 `;
-

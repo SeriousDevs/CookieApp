@@ -77,13 +77,19 @@ export const gameAccSlice = createSlice({
     addCookie(state, { payload }) {
       state.cookies = payload + state.cookies;
       state.networth = payload + state.networth;
-      state.clicks = 1 + state.clicks;
+      state.clicks += 1;
+    },
+    upgradeTick(state, { payload }) {
+      // state.cookies = payload + state.cookies;
+      state.cookies = Math.round((payload + state.cookies) * 10) / 10;
+      state.networth = Math.round((payload + state.networth) * 10) / 10;
     },
     buyUpgrade(state, { payload }) {
-      const el = state.upgrades.find((el) => el.id === payload.id);
-      el.amount = payload.amount;
-      el.price = payload.price;
-      state.cookies = state.cookies - payload.prevPrice;
+      const el = state.upgrades.find(
+        (el) => el.upgradeInfoId === payload.upgradeInfoId
+      );
+      el.amount += 1;
+      state.cookies = Math.round(state.cookies - payload.upgrPrice);
     },
   },
   extraReducers: (builder) => {
@@ -143,7 +149,8 @@ export const gameAccSlice = createSlice({
   },
 });
 
-export const { addCookie, addClicks, buyUpgrade } = gameAccSlice.actions;
+export const { addCookie, addClicks, buyUpgrade, upgradeTick } =
+  gameAccSlice.actions;
 
 //Selector
 export const getClickPerCookie = (state) => state.gameAcc.clickUpgrade;
