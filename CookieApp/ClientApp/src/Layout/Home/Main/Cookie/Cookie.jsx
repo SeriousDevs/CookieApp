@@ -27,7 +27,7 @@ export const Cookie = () => {
     return (
         <>
             <CookieContainer>
-                <CookieQuantity>{cookie} Cookies</CookieQuantity>
+                <CookieQuantity>{Math.round(cookie)} Cookies</CookieQuantity>
                 <CookieButton onClick={handleClicker} className = {shake ? `shake` : null}>Cookie</CookieButton>
             </CookieContainer>
         </>

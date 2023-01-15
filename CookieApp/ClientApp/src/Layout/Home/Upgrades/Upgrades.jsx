@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux';
 import { getUpgrades } from 'redux/gameAccSlice';
 import { UpgradesListItem } from './UpgradesListItem/UpgradesListItem';
@@ -11,7 +10,7 @@ import {
 } from './Upgrades.styled';
 
 
-export const Upgrades = () => {
+export const Upgrades = ({counter}) => {
     const upgrades = useSelector(getUpgrades);
     
     return (
@@ -23,8 +22,8 @@ export const Upgrades = () => {
             </UpgradesMini>
             <UpgradesLarge>
                 <UpgradeList>
-                    {upgrades.map(({ name, id, amount, price, image }) => {
-                        return <UpgradesListItem key={id} id={id} name={name} amount={amount} price={price} img={image} />
+                    {upgrades.map(({ id, ...props }) => {
+                        return <UpgradesListItem key={id} counter={counter} {...props} />
                     })}
                 </UpgradeList>
             </UpgradesLarge>

@@ -1,29 +1,30 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { buyUpgrade, getCookies } from 'redux/gameAccSlice';
-import { AdditionalWrapper, CentralDivTxt, ListItemCentralDiv, Quantities, UpgradeImage, UpgradeListItem } from './UpgradesListItem.styled';
+import { buyUpgrade, getCookies, upgradeTick } from 'redux/gameAccSlice';
+import { AdditionalWrapper, UpgradeName, ListItemCentralDiv, Amount, UpgradeImage, UpgradeListItem, UpgradePrice } from './UpgradesListItem.styled';
 
-export const UpgradesListItem = ({id, amount = 1, name = 'name', price = 100, img }) => {
+export const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, baseValue = 0, level = 1, img, upgradeInfoId=0 }) => {
     const dispatch = useDispatch();
-    const [quantity, setQuantity] = useState(amount);
-    const [upgrPrice, setUpgrPrice] = useState(price);
-
+    // const [upgrPrice, setUpgrPrice] = useState(Math.ceil(basePrice * (1.15 ** amount)));
     const cookies = useSelector(getCookies);
+    const upgrPrice = Math.ceil(basePrice * (1.15 ** amount));
+    // console.log(counter);
+    // const [availableUpgrade, setAvailableUpgrade] = useState(false);
+
+    useEffect(() => {
+        if (amount >= 1 && counter !== 0) {
+            dispatch(upgradeTick(baseValue*amount));
+        }
+    }, [counter])
+    
+    
 
     const handlerUpgradesClick = () => {
         if (upgrPrice <= cookies) {
-            setQuantity(p => p + 1);
-            setUpgrPrice(p => Math.round(p * 2));
-        
-            const obj = {
-                    id,
-                    price: upgrPrice*2,
-                    amount: quantity + 1,
-                    prevPrice: upgrPrice,
-            }
-            
-            dispatch(buyUpgrade(obj));
+
+            dispatch(buyUpgrade({ upgradeInfoId, upgrPrice }));
         }
+        
     }
 
     return (
@@ -31,11 +32,11 @@ export const UpgradesListItem = ({id, amount = 1, name = 'name', price = 100, im
             <AdditionalWrapper>
                 <UpgradeImage src={img} />
                 <ListItemCentralDiv>
-                    <CentralDivTxt>{name}</CentralDivTxt>
-                    <CentralDivTxt>{upgrPrice}</CentralDivTxt>
+                    <UpgradeName>{name}</UpgradeName>
+                    <UpgradePrice>{upgrPrice}</UpgradePrice>
                 </ListItemCentralDiv>
             </AdditionalWrapper>
-            <Quantities>{quantity}</Quantities>
+            <Amount>{amount}</Amount>
         </UpgradeListItem>
     )
 };
