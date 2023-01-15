@@ -10,16 +10,20 @@ import { useDispatch, useSelector } from "react-redux";
 const Home = () => {
   const dispatch = useDispatch();
   const acc = useSelector(getAcc);
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(0);
+  const [upgradesCounter, setUpgradesCounter] = useState(0);
 
   useEffect(() => {
     setInterval(() => {
       setCounter(p=> p +1)
     }, 30000);
+    setInterval(() => {
+      setUpgradesCounter(p=> p +1)
+    }, 1000);
   }, []);
   
   useEffect(() => {
-    if (counter === 1) return;
+    if (counter === 0) return;
     dispatch(saveAcc(acc));
   }, [counter]);
 
@@ -29,10 +33,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div style={{display: 'flex'}}>
-          <Dashboard />
-          <Main />
-      <Upgrades />
+    <div style={{ display: 'flex' }}>
+      <Dashboard />
+      <Main />
+      <Upgrades counter={upgradesCounter} />
     </div>
   )
 }

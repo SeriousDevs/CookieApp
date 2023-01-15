@@ -7,7 +7,7 @@ export const MainLeadership = ({ users }) => {
         <Leadership>
             <Heading>Leadership</Heading>
             <LeadershipList>
-                {users.length > 0 && [...users].sort((a,b) => a.networth - b.networth).map((el, idx) => <LeadershipElement key={el.id} name={el.login} position={idx + 1} />)}
+                {users.length > 0 && [...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <LeadershipElement key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
             </LeadershipList>
         </Leadership>
     )

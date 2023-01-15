@@ -14,8 +14,8 @@ export const Statistics = () => {
      <StatsBlock>
         <Heading>Statistic</Heading>
         <StatsList>
-        <StatsItem>Net Worth: {netWorth}</StatsItem>
-        <StatsItem>Clicks per second: 10</StatsItem>
+        <StatsItem>Net Worth: {Math.round(netWorth)}</StatsItem>
+        <StatsItem>Cookies per second: 10</StatsItem>
         <StatsItem>Total clicks: {clicks}</StatsItem>
         <StatsItem>Total upgrades: {totalUpgrades}</StatsItem>
         </StatsList>
