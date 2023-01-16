@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getUpgrades } from 'redux/gameAccSlice';
-import { UpgradesListItem } from './UpgradesListItem/UpgradesListItem';
+import UpgradesListItem from './UpgradesListItem/UpgradesListItem';
 import {
     Store,
     UpgradeList,
@@ -8,11 +8,12 @@ import {
     LevelUpBlock,
     UpgradesWrapper
 } from './Upgrades.styled';
-import { LevelUps } from './LvelUps/LevelUps';
-import { ClickUpgrade } from './ClickUpgrade/ClickUpgrade';
+import LevelUps from './LvelUps/LevelUps';
+import ClickUpgrade from './ClickUpgrade/ClickUpgrade';
+import { memo } from 'react';
 
 
-export const Upgrades = ({counter}) => {
+const Upgrades = ({counter}) => {
     const upgrades = useSelector(getUpgrades);
     
     return (
@@ -33,3 +34,5 @@ export const Upgrades = ({counter}) => {
         </UpgradesWrapper>
     )
 };
+
+export default memo(Upgrades)

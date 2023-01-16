@@ -1,19 +1,22 @@
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { buyClickUpgrade, getClickUpgr } from 'redux/gameAccSlice';
+import { buyClickUpgrade, getClickUpgr, getCookies } from 'redux/gameAccSlice';
 import { ClickUpgradeItem,  AdditionalWrapper, Amount, ListItemCentralDiv, UpgradeImage, UpgradeName, UpgradePrice } from './ClickUpgrade.styled';
 
-export const ClickUpgrade = () => {
+const ClickUpgrade = () => {
   const dispatch = useDispatch();
   const clickInfo = useSelector(getClickUpgr);
+  const cookies = useSelector(getCookies)
   const { level, basePrice, image } = clickInfo;
 
   let upgrPrice = basePrice;
-  
   for (let i = 1; i < level; i++){
-    upgrPrice = basePrice * 4
+    upgrPrice = upgrPrice * 4
   }
+  console.log({level, upgrPrice})
   
   const handleClick = () => {
+    if (cookies < upgrPrice) return;
         dispatch(buyClickUpgrade(upgrPrice))
     }
  
@@ -31,3 +34,4 @@ export const ClickUpgrade = () => {
         </ClickUpgradeItem>
   )
 }
+ export default memo(ClickUpgrade)

@@ -1,7 +1,8 @@
-import { Cookie } from './Cookie/Cookie';
+import { memo } from 'react';
+import Cookie from './Cookie/Cookie';
 import { Container } from './main.styled'
 
-export const Main = () => {
+const Main = () => {
 
   return (
     <Container>
@@ -9,5 +10,5 @@ export const Main = () => {
     </Container>
   )
 }
-
+ export default memo(Main)
 

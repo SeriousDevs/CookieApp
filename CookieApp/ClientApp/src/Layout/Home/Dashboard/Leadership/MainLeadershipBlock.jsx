@@ -1,8 +1,9 @@
-import { LeadershipElement } from './LeadershipItem/LeadershipElement'
+import LeadershipElement from './LeadershipItem/LeadershipElement'
 import { Heading } from '../Dashboard.styled';
 import { Leadership, LeadershipList } from './MainLeadershipBlock.styled';
+import { memo } from 'react';
 
-export const MainLeadership = ({ users }) => {
+const MainLeadership = ({ users }) => {
     return (
         <Leadership>
             <Heading>Leadership</Heading>
@@ -12,3 +13,5 @@ export const MainLeadership = ({ users }) => {
         </Leadership>
     )
 }
+
+export default memo(MainLeadership);

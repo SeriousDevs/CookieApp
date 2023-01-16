@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { NetWorth, LeadershipItem, Position } from "./LeadershipItem.styled";
 
-export const LeadershipElement = ({name, position, networth}) => {
+const LeadershipElement = ({name, position, networth}) => {
 
     return (
         <LeadershipItem>
@@ -10,3 +11,5 @@ export const LeadershipElement = ({name, position, networth}) => {
         </LeadershipItem>
     )
 };
+
+export default memo(LeadershipElement);

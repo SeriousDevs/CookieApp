@@ -1,12 +1,13 @@
+import { memo } from "react";
 import { useSelector } from "react-redux"
 import { getUserList } from "redux/gameAccSlice";
 import { getUser } from "redux/userSlice"
 import { Wrapper} from "./Dashboard.styled"
-import { MainLeadership } from "./Leadership/MainLeadershipBlock";
-import { MainProfileBlock } from "./Profile/MainProfileBlock";
-import { Statistics } from "./Statistics/Statistics";
+import MainLeadership from "./Leadership/MainLeadershipBlock";
+import MainProfileBlock from "./Profile/MainProfileBlock";
+import Statistics from "./Statistics/Statistics";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const user = useSelector(getUser);
   const usersList = useSelector(getUserList);
 
@@ -18,3 +19,4 @@ export const Dashboard = () => {
     </Wrapper>
   )
 }
+ export default memo(Dashboard)

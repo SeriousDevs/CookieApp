@@ -1,9 +1,10 @@
+import { memo } from "react"
 import { useSelector } from "react-redux"
 import { getUpgrades } from "redux/gameAccSlice"
 import { LevelUpList } from "./LevelUps.styled"
-import { LvlUpListItem } from "./LeveUpsItem/LvlUpListItem"
+import LvlUpListItem from "./LeveUpsItem/LvlUpListItem"
 
-export const LevelUps = () => {
+const LevelUps = () => {
     const upgradeList = useSelector(getUpgrades);
 
   return (
@@ -13,3 +14,4 @@ export const LevelUps = () => {
   )
 }
 
+export default memo(LevelUps)

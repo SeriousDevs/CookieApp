@@ -1,6 +1,7 @@
 import { getUser } from "redux/userSlice";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { memo } from "react";
 
 
 function WithAuthRedirect (Component, navigateTo) {
