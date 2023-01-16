@@ -1,9 +1,9 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
 import { useEffect, useState } from "react";
 import { getUsersList, setGameAcc} from "redux/gameAccSlice";
-import { Dashboard } from "./Dashboard/Dashboard";
-import { Main } from "./Main/Main";
-import { Upgrades } from "./Upgrades/Upgrades";
+import Dashboard from "./Dashboard/Dashboard";
+import Main from "./Main/Main";
+import Upgrades from "./Upgrades/Upgrades";
 import { getAcc, saveAcc } from "redux/gameAccSlice";
 import { useDispatch, useSelector } from "react-redux";
 

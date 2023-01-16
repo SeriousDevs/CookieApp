@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buyLevelUpgrade, getCookies } from "redux/gameAccSlice";
 import { LevelUpListItem, LvlUpButton } from "./LvlUpListItem.styled"
 
-export const LvlUpListItem = ({ upgrade }) => {
+const LvlUpListItem = ({ upgrade }) => {
     const dispatch = useDispatch();
     const cookies = useSelector(getCookies);
     const { amount, upgradeInfoId, level, basePrice } = upgrade;
@@ -32,3 +33,5 @@ export const LvlUpListItem = ({ upgrade }) => {
         </LevelUpListItem>
     );
 }
+
+export default memo(LvlUpListItem)

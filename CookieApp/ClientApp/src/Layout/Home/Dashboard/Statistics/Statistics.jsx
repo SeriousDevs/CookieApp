@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { getTotalClicks, getUpgrades, getNetWorth } from "redux/gameAccSlice";
 import { StatsBlock, StatsItem, StatsList } from "./Statistics.styled";
 import { Heading } from '../Dashboard.styled';
+import { memo } from "react";
 
-export const Statistics = () => {
+const Statistics = () => {
  const clicks = useSelector(getTotalClicks);
   const upgrades = useSelector(getUpgrades);
   const netWorth = useSelector(getNetWorth);
@@ -22,3 +23,4 @@ export const Statistics = () => {
       </StatsBlock>
   )
 }
+ export default memo(Statistics)

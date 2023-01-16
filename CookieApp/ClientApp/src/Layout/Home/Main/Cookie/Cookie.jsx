@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCookie, getClickUpgr, getCookies } from 'redux/gameAccSlice';
 import { CookieButton, CookieContainer, CookieQuantity } from './Cookie.styled';
 
-export const Cookie = () => {
+ const Cookie = () => {
     const dispatch = useDispatch();
     const cookie = useSelector(getCookies);
     const clickUpgrade = useSelector(getClickUpgr);
@@ -33,3 +33,5 @@ export const Cookie = () => {
         </>
     )
 }
+
+export default memo(Cookie)

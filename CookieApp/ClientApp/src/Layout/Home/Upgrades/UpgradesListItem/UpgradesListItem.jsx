@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buyUpgrade, getCookies, upgradeTick } from 'redux/gameAccSlice';
 import { AdditionalWrapper, UpgradeName, ListItemCentralDiv, Amount, UpgradeImage, UpgradeListItem, UpgradePrice } from './UpgradesListItem.styled';
 
-export const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, baseValue = 0, level = 1, img, upgradeInfoId=0 }) => {
+const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, baseValue = 0, level = 1, img, upgradeInfoId=0 }) => {
     const dispatch = useDispatch();
     const cookies = useSelector(getCookies);
     const upgrPrice = Math.ceil(basePrice * (1.15 ** amount));
@@ -38,3 +38,5 @@ export const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice 
         </UpgradeListItem>
     )
 };
+
+export default memo(UpgradesListItem)

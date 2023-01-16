@@ -1,7 +1,8 @@
+import { memo } from "react"
 import { Logout } from "./Logout/Logout"
 import { ProfileBlock, UserImage, UserName } from "./MainProfileBlock.styled"
 
-export const MainProfileBlock = ({user}) => {
+const MainProfileBlock = ({user}) => {
     return (
         <ProfileBlock>
             <Logout/>
@@ -10,3 +11,5 @@ export const MainProfileBlock = ({user}) => {
         </ProfileBlock>
     )
 }
+
+export default memo(MainProfileBlock)
