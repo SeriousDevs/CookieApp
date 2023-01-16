@@ -5,9 +5,11 @@ import {
     Store,
     UpgradeList,
     UpgradesLarge,
-    UpgradesMini,
+    LevelUpBlock,
     UpgradesWrapper
 } from './Upgrades.styled';
+import { LevelUps } from './LvelUps/LevelUps';
+import { ClickUpgrade } from './ClickUpgrade/ClickUpgrade';
 
 
 export const Upgrades = ({counter}) => {
@@ -17,10 +19,11 @@ export const Upgrades = ({counter}) => {
         <UpgradesWrapper>
             
             <Store>Store</Store>
-            <UpgradesMini>
-                Level ups
-            </UpgradesMini>
+            <LevelUpBlock>
+                <LevelUps/>
+            </LevelUpBlock>
             <UpgradesLarge>
+                <ClickUpgrade/>
                 <UpgradeList>
                     {upgrades.map(({ id, ...props }) => {
                         return <UpgradesListItem key={id} counter={counter} {...props} />
