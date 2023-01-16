@@ -5,11 +5,9 @@ import { AdditionalWrapper, UpgradeName, ListItemCentralDiv, Amount, UpgradeImag
 
 export const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, baseValue = 0, level = 1, img, upgradeInfoId=0 }) => {
     const dispatch = useDispatch();
-    // const [upgrPrice, setUpgrPrice] = useState(Math.ceil(basePrice * (1.15 ** amount)));
     const cookies = useSelector(getCookies);
     const upgrPrice = Math.ceil(basePrice * (1.15 ** amount));
-    // console.log(counter);
-    // const [availableUpgrade, setAvailableUpgrade] = useState(false);
+
 
     useEffect(() => {
         if (amount >= 1 && counter !== 0) {
@@ -30,7 +28,7 @@ export const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice 
     return (
         <UpgradeListItem onClick={()=> handlerUpgradesClick()}>
             <AdditionalWrapper>
-                <UpgradeImage src={img} />
+                <UpgradeImage src={img} alt='upgrade img'/>
                 <ListItemCentralDiv>
                     <UpgradeName>{name}</UpgradeName>
                     <UpgradePrice>{upgrPrice}</UpgradePrice>
