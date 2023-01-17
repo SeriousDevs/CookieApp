@@ -27,6 +27,7 @@ const Home = () => {
   useEffect(() => {
     if (counter === 0) return;
     dispatch(saveAcc(acc));
+    dispatch(getUsersList());
   }, [counter]);
   
   useEffect(() => {

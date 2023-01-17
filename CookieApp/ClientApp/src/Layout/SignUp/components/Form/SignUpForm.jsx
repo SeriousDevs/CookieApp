@@ -1,5 +1,5 @@
 import { signUp } from "redux/userSlice";
-import { Form, Label, Button, Input, Container, RedirectLink, ButtonBlock } from "Layout/common/common.styled";
+import { Form, Label, Button, Input, Container, RedirectLink, ButtonBlock } from "common/common.styled";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
