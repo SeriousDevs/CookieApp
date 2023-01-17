@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch} from "react-redux";
 import { logIn } from "redux/userSlice";
-import { Form, Label, Button, Input, Container, ButtonBlock, RedirectLink } from "Layout/common/common.styled";
+import { Form, Label, Button, Input, Container, ButtonBlock, RedirectLink } from "common/common.styled";
 import { toast } from 'react-toastify';
 
 export const LoginForm = ({ isLoading }) => {

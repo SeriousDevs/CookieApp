@@ -78,3 +78,19 @@ export const WelcomePage = styled.div`
   height: 100vh;
   gap: 50px;
 `;
+
+export const BoxStyle = styled.div`
+  max-height: 105px;
+  width: 150px;
+  font-size: 12px;
+  cursor: pointer;
+`;
+
+export const BoxStyleList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;

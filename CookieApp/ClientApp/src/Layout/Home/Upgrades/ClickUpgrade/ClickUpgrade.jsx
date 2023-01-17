@@ -2,6 +2,10 @@ import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buyClickUpgrade, getClickUpgr, getCookies } from 'redux/gameAccSlice';
 import { ClickUpgradeItem,  AdditionalWrapper, Amount, ListItemCentralDiv, UpgradeImage, UpgradeName, UpgradePrice } from './ClickUpgrade.styled';
+import { Hover } from 'common/components/Hover/Hover.jsx';
+
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css';
 
 const ClickUpgrade = () => {
   const dispatch = useDispatch();
@@ -13,7 +17,6 @@ const ClickUpgrade = () => {
   for (let i = 1; i < level; i++){
     upgrPrice = upgrPrice * 4
   }
-  console.log({level, upgrPrice})
   
   const handleClick = () => {
     if (cookies < upgrPrice) return;
@@ -21,7 +24,8 @@ const ClickUpgrade = () => {
     }
  
 
-  return (
+  return (<>
+    <Tooltip placement="left" trigger={'hover'} overlay={<p>test</p>}>
         <ClickUpgradeItem onClick={()=> handleClick()}>
             <AdditionalWrapper>
                 <UpgradeImage src={image} alt='clickImage'/>
@@ -31,7 +35,9 @@ const ClickUpgrade = () => {
                 </ListItemCentralDiv>
           </AdditionalWrapper>
             <Amount>Lvl:{level}</Amount>
-        </ClickUpgradeItem>
+    </ClickUpgradeItem>
+  </Tooltip>
+  </>
   )
 }
  export default memo(ClickUpgrade)

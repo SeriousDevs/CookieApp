@@ -13,8 +13,8 @@ const LvlUpListItem = ({ upgrade }) => {
     const amountArr = [1, 5, 25, 50, 100, 150, 1200, 250, 300, 350, 400, 450, 500, 550];
     const priceArr = [10, 50, 500, 50000, 5000000, 500000000, 500000000000, 500000000000000, 500000000000000000, 500000000000000000000, 5000000000000000000000000, 50000000000000000000000000, 500000000000000000000000000000000, 5000000000000000000000000000000000000];
     
-    const condition = amount >= amountArr[level - 1];
     const price = basePrice * priceArr[level -1];
+    const condition = amount >= amountArr[level - 1] && cookies >= price;
     
     const handleOnClick = () => {
         if (price > cookies) return;
