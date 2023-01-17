@@ -1,4 +1,5 @@
-﻿using CookieBL.Helper;
+﻿using CookieBL.Exceptions;
+using CookieBL.Helper;
 using CookieBL.Service;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
@@ -27,7 +28,7 @@ namespace CookieApp.Controllers
 
                 return Ok(response);
             }
-            catch (Exception ex)
+            catch (AuthorizationException ex)
             {
                 return StatusCode(444, ex.Message);
             }
@@ -47,7 +48,7 @@ namespace CookieApp.Controllers
 
                 return Ok(response);
             }
-            catch (Exception ex)
+            catch (AuthorizationException ex)
             {
                 return StatusCode(444, ex.Message);
             }
