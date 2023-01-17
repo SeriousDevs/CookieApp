@@ -15,6 +15,22 @@ export const LeadershipItem = styled.li`
   }
 `;
 
+export const LeadershipItemUser = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  max-height: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  border: 2px solid gold;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+`;
+
 export const Position = styled.p`
   //   font-size: 36px;
 `;

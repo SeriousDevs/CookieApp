@@ -13,11 +13,24 @@ const SignUp = () => {
   
   useEffect(() => {
     if (!error) return;
-    dispatch(clearError());
-    toast.error("We alredy have user with this email or login", {
-      position: toast.POSITION.TOP_RIGHT
-    });
+    if (error.errorMessage === 'The user with same Login is also created!') {
+      dispatch(clearError());
+      toast.error('A user with this Login is already registered!', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+    if (error.errorMessage === 'The user with same Email is also created!') {
+      dispatch(clearError());
+      toast.error('A user with this Email is already registered!', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
   }, [error]);
+
+
+
 
   return (
     <WelcomePage>

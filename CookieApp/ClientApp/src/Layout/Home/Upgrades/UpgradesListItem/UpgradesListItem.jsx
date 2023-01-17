@@ -32,7 +32,7 @@ const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, 
     }
 
     return (
-        <Tooltip placement="left" trigger={'hover'} overlay={<Hover upgrade={{ name, baseValue, amount }} />}>
+        <Tooltip placement="left" destroyTooltipOnHide={true} overlay={<Hover upgrade={{ name, baseValue, amount }} />}>
             <UpgradeListItem onClick={() => handlerUpgradesClick()}>
                 <AdditionalWrapper>
                     <UpgradeImage src={image} alt='upgrade img' />
