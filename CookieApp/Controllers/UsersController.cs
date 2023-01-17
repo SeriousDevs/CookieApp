@@ -21,14 +21,16 @@ namespace CookieApp.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate(AuthenticateRequest model)
         {
-            var response = await _userService.AuthenticateAsync(model);
-
-            if (response is null)
+            try
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
-            }
+                var response = await _userService.AuthenticateAsync(model);
 
-            return Ok(response);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(444, ex.Message);
+            }
         }
 
         [HttpPost("register")]

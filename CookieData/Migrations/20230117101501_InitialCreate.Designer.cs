@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookieData.Migrations
 {
     [DbContext(typeof(CookieContext))]
-    [Migration("20230115212321_InitialCreate")]
+    [Migration("20230117101501_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -248,8 +248,8 @@ namespace CookieData.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 

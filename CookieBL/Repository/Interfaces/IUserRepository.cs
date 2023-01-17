@@ -7,7 +7,7 @@ namespace CookieBL.IRepository.Interfaces
     {
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(int id);
-        Task<User> GetUserByCredentialsAsync(string login, string password);
+        Task<User> GetUserByLoginAsync(string login);
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
         Task RemoveUserAsync(int id);
