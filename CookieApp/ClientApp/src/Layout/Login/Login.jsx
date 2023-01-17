@@ -11,12 +11,22 @@ const Login = () => {
   const dispatch = useDispatch();
   const error = useSelector(getErrorUser);
   
-  useEffect(() => {
+ useEffect(() => {
     if (!error) return;
-    dispatch(clearError());
-    toast.error("Incorrect login or password!", {
-      position: toast.POSITION.TOP_RIGHT
-    });
+    if (error.errorMessage === 'User not found') {
+      dispatch(clearError());
+      toast.error('User not found!', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
+    if (error.errorMessage === 'Incorrect password') {
+      dispatch(clearError());
+      toast.error('Incorrect password!', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+      return;
+    }
   }, [error]);
 
   return (

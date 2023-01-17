@@ -80,10 +80,9 @@ export const WelcomePage = styled.div`
 `;
 
 export const BoxStyle = styled.div`
-  max-height: 105px;
+  max-height: 115px;
   width: 150px;
   font-size: 12px;
-  cursor: pointer;
 `;
 
 export const BoxStyleList = styled.ul`

@@ -19,6 +19,7 @@ export const saveAcc = createAsyncThunk(
   async (acc, { rejectWithValue }) => {
     try {
       const obj = { ...acc };
+      delete obj.cookiesPerSec;
       delete obj.usersList;
       delete obj.isLoading;
       delete obj.error;
@@ -55,19 +56,22 @@ const initialUpgrades = [
   },
 ];
 
+const initialClickUpgrade = {
+  basePrice: 100,
+  baseValue: 1,
+  gameAccountId: null,
+  id: null,
+  image: null,
+  level: 1,
+  name: "Click",
+  upgradeInfoId: 1,
+};
+
 export const gameAccSlice = createSlice({
   name: "cookie",
   initialState: {
-    clickUpgrade: {
-      basePrice: 100,
-      baseValue: 1,
-      gameAccountId: null,
-      id: null,
-      image: null,
-      level: 1,
-      name: "Click",
-      upgradeInfoId: 1,
-    },
+    clickUpgrade: initialClickUpgrade,
+    cookiesPerSec: 0,
     clicks: 0,
     cookies: 0,
     id: null,
@@ -88,6 +92,13 @@ export const gameAccSlice = createSlice({
       // state.cookies = payload + state.cookies;
       state.cookies = Math.round((payload + state.cookies) * 10) / 10;
       state.networth = Math.round((payload + state.networth) * 10) / 10;
+      state.cookiesPerSec =
+        Math.round(
+          state.upgrades.reduce(
+            (acc, upgrade) => (acc += upgrade.amount * upgrade.baseValue),
+            0
+          ) * 10
+        ) / 10;
     },
 
     buyUpgrade(state, { payload }) {
@@ -100,6 +111,7 @@ export const gameAccSlice = createSlice({
 
     buyClickUpgrade(state, { payload }) {
       state.clickUpgrade.level += 1;
+      state.clickUpgrade.baseValue *= 2;
       state.cookies = Math.round(state.cookies - payload);
     },
 
@@ -110,6 +122,18 @@ export const gameAccSlice = createSlice({
       el.level += 1;
       el.baseValue *= 2;
       state.cookies = Math.round(state.cookies - payload.price);
+    },
+
+    logOutFromAcc(state) {
+      state.clickUpgrade = initialClickUpgrade;
+      state.clicks = 0;
+      state.cookiesPerSec = 0;
+      state.clicks = 0;
+      state.cookies = 0;
+      state.id = null;
+      state.networth = 0;
+      state.upgrades = initialUpgrades;
+      state.usersList = [];
     },
   },
   extraReducers: (builder) => {
@@ -176,6 +200,7 @@ export const {
   upgradeTick,
   buyClickUpgrade,
   buyLevelUpgrade,
+  logOutFromAcc,
 } = gameAccSlice.actions;
 
 //Selector
@@ -187,3 +212,4 @@ export const getAcc = (state) => state.gameAcc;
 export const getUserList = (state) => state.gameAcc.usersList;
 export const getNetWorth = (state) => state.gameAcc.networth;
 export const getClickUpgr = (state) => state.gameAcc.clickUpgrade;
+export const getPerSec = (state) => state.gameAcc.cookiesPerSec;

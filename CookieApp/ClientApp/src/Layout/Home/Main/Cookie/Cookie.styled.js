@@ -26,7 +26,15 @@ export const CookieButton = styled.button`
 `;
 
 export const CookieQuantity = styled.p`
+  margin: 0;
   font-size: 32px;
+  font-family: serif;
+  font-weight: 700;
+`;
+
+export const PerSecond = styled.p`
+  margin-top: 0;
+  font-size: 20px;
   font-family: serif;
   font-weight: 700;
 `;

@@ -6,9 +6,17 @@ export const LevelUpListItem = styled.li`
   width: 40px;
 `;
 
-export const LvlUpButton = styled.button`
-  display: block;
+export const LvlUpButton = styled.div`
+  display: felx;
+  justify-content: center;
+  align-items: center;
+
+  // cursor: ${(props) => (!props.condition ? "default" : "pointer")};
   cursor: pointer;
+  background-color: ${(props) =>
+    !props.condition ? "rgba(133,133,133, 0.3)" : "rgba(133,133,133, 1)"};
+  color: ${(props) => (!props.condition ? "black" : "white")};
   height: 40px;
   width: 40px;
+  font-size: 12px;
 `;

@@ -51,6 +51,8 @@ export const userSlice = createSlice({
   reducers: {
     logOut(state) {
       state.token = null;
+      state.id = null;
+      state.user = null;
     },
     clearError(state) {
       state.error = null;
@@ -64,7 +66,9 @@ export const userSlice = createSlice({
     });
     builder.addCase(signUp.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-
+      if (payload.error === "Request failed with status code 444") {
+        state.error = payload;
+      }
       if (!payload) return;
 
       state.user = payload.login;
@@ -82,7 +86,9 @@ export const userSlice = createSlice({
     });
     builder.addCase(logIn.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-
+      if (payload.error === "Request failed with status code 444") {
+        state.error = payload;
+      }
       if (!payload) return;
 
       state.user = payload.login;
@@ -100,7 +106,7 @@ export const userSlice = createSlice({
     });
     builder.addCase(auth.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      
+
       if (!payload) return;
 
       state.user = payload.login;
