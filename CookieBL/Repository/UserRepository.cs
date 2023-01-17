@@ -1,4 +1,5 @@
-﻿using CookieBL.IRepository.Interfaces;
+﻿using CookieBL.Exceptions;
+using CookieBL.IRepository.Interfaces;
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +20,14 @@ namespace CookieBL.IRepository
 
             if (exists)
             {
-                throw new Exception("The user with same Login is also created!");
+                throw new AuthorizationException("The user with same Login is also created!");
             }
 
             exists = await ExistWithEmailAsync(user.Email);
 
             if (exists)
             {
-                throw new Exception("The user with same Email is also created!");
+                throw new AuthorizationException("The user with same Email is also created!");
             }
 
             await _context.AddAsync(user);

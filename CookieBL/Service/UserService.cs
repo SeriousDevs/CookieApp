@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CookieBL.Exceptions;
 using CookieBL.Helper;
 using CookieBL.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
@@ -31,13 +32,13 @@ namespace CookieBL.Service
 
             if (user is null)
             {
-                throw new Exception("User not found");
+                throw new AuthorizationException("User not found");
             }
 
             var hashResult = _hasher.VerifyHashedPassword(user, user.Password, model.Password);
             if (hashResult == PasswordVerificationResult.Failed)
             {
-                throw new Exception("Incorrect password");
+                throw new AuthorizationException("Incorrect password");
             }
 
             var token = _configuration.GenerateJwtToken(user);
