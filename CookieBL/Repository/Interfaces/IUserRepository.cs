@@ -1,5 +1,4 @@
 ﻿using CookieData.Entities;
-using CookieData.Entities.Interfaces;
 
 namespace CookieBL.IRepository.Interfaces
 {

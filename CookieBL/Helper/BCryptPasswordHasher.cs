@@ -15,11 +15,6 @@ namespace CookieBL.Helper
         {
             var isValid = BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword);
 
-            if (isValid && BCrypt.Net.BCrypt.PasswordNeedsRehash(hashedPassword, 12))
-            {
-                return PasswordVerificationResult.SuccessRehashNeeded;
-            }
-
             return isValid ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
         }
     }
