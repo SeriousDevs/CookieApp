@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CookieData.Context;
 using CookieData.Entities;
 using CookieBL.Repository;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<CookieContext>(options => options.UseSqlServer(con
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRepository<GameAccount>, GameAccountRepository>();
 builder.Services.AddScoped<IRepository<Upgrade>, UpgradeRepository>();
+
+builder.Services.AddScoped<IPasswordHasher<User>, BCryptPasswordHasher<User>>();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICookieService, CookieService>();

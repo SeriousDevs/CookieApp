@@ -4,6 +4,7 @@ using CookieBL.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -14,22 +15,29 @@ namespace CookieBL.Service
         private readonly IUserRepository _usersRepository;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
+        private readonly IPasswordHasher<User> _hasher;
 
-        public UserService(IUserRepository usersRepository, IConfiguration configuration, IMapper mapper)
+        public UserService(IUserRepository usersRepository, IConfiguration configuration, IMapper mapper, IPasswordHasher<User> hasher)
         {
             _usersRepository = usersRepository;
             _configuration = configuration;
             _mapper = mapper;
+            _hasher = hasher;
         }
 
         public async Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest model)
         {
-            var user = await _usersRepository.GetUserByCredentialsAsync(model.Login, model.Password);
+            var user = await _usersRepository.GetUserByLoginAsync(model.Login);
 
             if (user is null)
             {
-                // todo: need to add logger
-                return null;
+                throw new Exception("User not found");
+            }
+
+            var hashResult = _hasher.VerifyHashedPassword(user, user.Password, model.Password);
+            if (hashResult == PasswordVerificationResult.Failed)
+            {
+                throw new Exception("Incorrect password");
             }
 
             var token = _configuration.GenerateJwtToken(user);
@@ -40,15 +48,17 @@ namespace CookieBL.Service
         public async Task<AuthenticateResponse> RegisterAsync(UserModel userModel)
         {
             var user = _mapper.Map<User>(userModel);
+            string clearPass = user.Password;
 
             user.GameAccount = AccountCreator.CreateGameAccount();
+            user.Password = _hasher.HashPassword(user, clearPass);
 
             await _usersRepository.AddUserAsync(user);
 
             var response = await AuthenticateAsync(new AuthenticateRequest
             {
                 Login = user.Login,
-                Password = user.Password
+                Password = clearPass
             });
 
             return response;

@@ -43,13 +43,13 @@ namespace CookieBL.IRepository
             return users;
         }
 
-        public async Task<User> GetUserByCredentialsAsync(string login, string password)
+        public async Task<User> GetUserByLoginAsync(string login)
         {
             User? user = await _context.Users
                 .Include(u => u.GameAccount)
                 .ThenInclude(ga => ga.Upgrades)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
+                .FirstOrDefaultAsync(u => u.Login == login);
 
             return user;
         }
