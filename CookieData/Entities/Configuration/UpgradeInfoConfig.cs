@@ -109,6 +109,46 @@ namespace CookieData.Entities.Configuration
                     BasePrice = 75_000_000_000,
                     Image = "images/Upgrades/CookieFranchise"
                 },
+                new UpgradeInfo
+                {
+                    Id = 12,
+                    Name = "Factory",
+                    BaseValue = 10_000_000,
+                    BasePrice = 1_000_000_000_000,
+                    Image = "images/Upgrades/Factory"
+                },
+                new UpgradeInfo
+                {
+                    Id = 13,
+                    Name = "Worldwide Shipping",
+                    BaseValue = 65_000_000,
+                    BasePrice = 14_000_000_000_000,
+                    Image = "images/Upgrades/WorldwideShipping"
+                },
+                new UpgradeInfo
+                {
+                    Id = 14,
+                    Name = "Space Devilery",
+                    BaseValue = 430_000_000,
+                    BasePrice = 170_000_000_000_000,
+                    Image = "images/Upgrades/SpaceDevilery"
+                },
+                new UpgradeInfo
+                {
+                    Id = 15,
+                    Name = "Time Machine",
+                    BaseValue = 2_900_000_000,
+                    BasePrice = 2_100_000_000_000_000,
+                    Image = "images/Upgrades/TimeMachine"
+                },
+                new UpgradeInfo
+                {
+                    Id = 16,
+                    Name = "!Gamer || Cheater!",
+                    BaseValue = 21_000_000_000,
+                    BasePrice = 26_000_000_000_000_000,
+                    Image = "images/Upgrades/GamerCheater"
+                },
             };
 
             return list;
