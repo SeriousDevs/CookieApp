@@ -35,7 +35,6 @@ export const loginRequest = async (formData) => {
     const { data } = await $publicHost.post("/users/authenticate", formData);
     return data;
   } catch (error) {
-    console.log(error.response.data);
     return { errorMessage: error.response.data, error: error.message };
   }
 };
@@ -45,7 +44,6 @@ export const getAuth = async () => {
     const { data } = await $privateHost.get("/users/return");
     return data;
   } catch (error) {
-    console.log(error.response.data);
     return { errorMessage: error.response.data, error: error.message };
   }
 };
@@ -55,7 +53,6 @@ export const getGameAcc = async () => {
     const { data } = await $privateHost.get("/cookies/user");
     return data;
   } catch (error) {
-    console.log(error.response.data);
     return { errorMessage: error.response.data, error: error.message };
   }
 };
@@ -65,7 +62,6 @@ export const getAllUsers = async () => {
     const { data } = await $privateHost.get("/users");
     return data;
   } catch (error) {
-    console.log(error.response.data);
     return { errorMessage: error.response.data, error: error.message };
   }
 };
@@ -75,7 +71,6 @@ export const saveAccRequest = async (acc) => {
     const { data } = await $privateHost.post("/cookies/user", acc);
     return data;
   } catch (error) {
-    console.log(error.response.data);
     return { errorMessage: error.response.data, error: error.message };
   }
 };

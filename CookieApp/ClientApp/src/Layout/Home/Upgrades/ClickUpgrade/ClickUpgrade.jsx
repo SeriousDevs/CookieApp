@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buyClickUpgrade, getClickUpgr, getCookies } from 'redux/gameAccSlice';
 import { ClickUpgradeItem,  AdditionalWrapper, Amount, ListItemCentralDiv, UpgradeImage, UpgradeName, UpgradePrice } from './ClickUpgrade.styled';
-
+import aveta from "aveta";
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import { ClickHover } from './Hover/ClickHover';
@@ -31,10 +31,10 @@ const ClickUpgrade = () => {
                 <UpgradeImage src={image} alt='clickImage'/>
                 <ListItemCentralDiv>
                     <UpgradeName>Click</UpgradeName>
-                    <UpgradePrice>{upgrPrice}</UpgradePrice>
+                    <UpgradePrice>{aveta(upgrPrice)}</UpgradePrice>
                 </ListItemCentralDiv>
           </AdditionalWrapper>
-            <Amount>Lvl:{level}</Amount>
+            <Amount>Lvl:{aveta(level)}</Amount>
     </ClickUpgradeItem>
   </Tooltip>
   )

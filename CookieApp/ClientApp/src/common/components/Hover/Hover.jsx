@@ -1,11 +1,13 @@
 import { BoxStyle, BoxStyleList } from '../../common.styled';
+import aveta from "aveta";
 
-export const Hover = ({ upgrade }) => {
+export const Hover = ({upgrade }) => {
+    const {name, amount, baseValue} = upgrade;
     return (
         <BoxStyle>
             <BoxStyleList>
-                <li>Each {upgrade.name} produces <b style={{color: 'teal'}}>{Math.round((upgrade.baseValue) * 10) / 10} cookies</b></li>
-                <li>{upgrade.amount} {upgrade.name} producing <b style={{color: 'teal'}}>{Math.round((upgrade.baseValue * upgrade.amount) * 10) / 10} cookies </b> per second</li>
+                <li>Each {name} produces <b style={{color: 'teal'}}>{aveta(Math.round((baseValue) * 10) / 10)} cookies</b></li>
+                <li>{aveta(amount)} {name} producing <b style={{color: 'teal'}}>{aveta(Math.round((baseValue * amount) * 10) / 10)} cookies </b> per second</li>
             </BoxStyleList>
         </BoxStyle>
     )
