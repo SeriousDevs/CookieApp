@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
+    "aveta": "^1.2.0",
     "axios": "^1.2.2",
     "bootstrap": "^5.2.0",
     "http-proxy-middleware": "^2.0.6",

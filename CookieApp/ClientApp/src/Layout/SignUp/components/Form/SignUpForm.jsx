@@ -44,7 +44,7 @@ export const SignUpForm = ({ isLoading }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-            
+        if (password.length < 8 && login.length < 1 && email.length < 3) return;
         const formData = {
             login,
             email,
