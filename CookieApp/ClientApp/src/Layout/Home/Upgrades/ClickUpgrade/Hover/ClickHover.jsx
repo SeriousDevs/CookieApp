@@ -1,8 +1,9 @@
 import { BoxStyle, BoxStyleList } from "common/common.styled"
 import { seriousNumbers } from "common/ConvertFunc/convertFunc";
+import { memo } from "react";
 
 
-export const ClickHover = ({value}) => {
+const ClickHover = ({value}) => {
     return (
         <BoxStyle>
             <BoxStyleList>
@@ -12,3 +13,5 @@ export const ClickHover = ({value}) => {
         </BoxStyle>
     )
 }
+
+export default memo(ClickHover)

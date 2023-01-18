@@ -1,5 +1,5 @@
 import WithNoAuthRedirect from "HOC/WithNoAuthRedurect";
-import { Welcome } from "common/components/Welcome/Welcome";
+import Welcome from "common/components/Welcome/Welcome";
 import { SignUpForm } from "./components/Form/SignUpForm";
 import { WelcomePage } from "common/common.styled";
 import { useDispatch, useSelector } from "react-redux";

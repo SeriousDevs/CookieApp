@@ -1,7 +1,8 @@
 import { BoxStyle, BoxStyleList } from '../../common.styled';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
+import { memo } from 'react';
 
-export const Hover = ({upgrade }) => {
+const Hover = ({upgrade }) => {
     const {name, amount, baseValue} = upgrade;
     
     return (
@@ -13,3 +14,5 @@ export const Hover = ({upgrade }) => {
         </BoxStyle>
     )
 } 
+
+export default memo(Hover)
