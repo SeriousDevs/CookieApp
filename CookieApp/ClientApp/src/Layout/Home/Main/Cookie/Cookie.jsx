@@ -22,7 +22,7 @@ import { ClickEffect } from './ClickEffect/ClickEffect';
     }, [clickUpgrade]);
     
 
-     const handleClicker = (e) => {
+     const handleClicker = (e) => { 
          setClicked(true);
          dispatch(addCookie(perClick));
          //Animation
