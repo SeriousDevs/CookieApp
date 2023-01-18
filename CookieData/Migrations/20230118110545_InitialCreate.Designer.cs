@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookieData.Migrations
 {
     [DbContext(typeof(CookieContext))]
-    [Migration("20230117101501_InitialCreate")]
+    [Migration("20230118110545_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -221,6 +221,46 @@ namespace CookieData.Migrations
                             BaseValue = 1600000.0,
                             Image = "images/Upgrades/CookieFranchise",
                             Name = "Cookie Franchise"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BasePrice = 1000000000000L,
+                            BaseValue = 10000000.0,
+                            Image = "images/Upgrades/Factory",
+                            Name = "Factory"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BasePrice = 14000000000000L,
+                            BaseValue = 65000000.0,
+                            Image = "images/Upgrades/WorldwideShipping",
+                            Name = "Worldwide Shipping"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BasePrice = 170000000000000L,
+                            BaseValue = 430000000.0,
+                            Image = "images/Upgrades/SpaceDevilery",
+                            Name = "Space Devilery"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BasePrice = 2100000000000000L,
+                            BaseValue = 2900000000.0,
+                            Image = "images/Upgrades/TimeMachine",
+                            Name = "Time Machine"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BasePrice = 26000000000000000L,
+                            BaseValue = 21000000000.0,
+                            Image = "images/Upgrades/GamerCheater",
+                            Name = "!Gamer || Cheater!"
                         });
                 });
 

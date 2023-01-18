@@ -2,10 +2,10 @@ import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buyClickUpgrade, getClickUpgr, getCookies } from 'redux/gameAccSlice';
 import { ClickUpgradeItem,  AdditionalWrapper, Amount, ListItemCentralDiv, UpgradeImage, UpgradeName, UpgradePrice } from './ClickUpgrade.styled';
-import aveta from "aveta";
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import { ClickHover } from './Hover/ClickHover';
+import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
 
 const ClickUpgrade = () => {
   const dispatch = useDispatch();
@@ -31,10 +31,10 @@ const ClickUpgrade = () => {
                 <UpgradeImage src={image} alt='clickImage'/>
                 <ListItemCentralDiv>
                     <UpgradeName>Click</UpgradeName>
-                    <UpgradePrice>{aveta(upgrPrice)}</UpgradePrice>
+                    <UpgradePrice>{seriousNumbers(upgrPrice)}</UpgradePrice>
                 </ListItemCentralDiv>
           </AdditionalWrapper>
-            <Amount>Lvl:{aveta(level)}</Amount>
+            <Amount>Lvl:{level}</Amount>
     </ClickUpgradeItem>
   </Tooltip>
   )

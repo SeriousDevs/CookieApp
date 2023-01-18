@@ -135,7 +135,12 @@ namespace CookieData.Migrations
                     { 8, 20000000L, 7800.0, "images/Upgrades/BunsStall", "Buns Stall" },
                     { 9, 330000000L, 44000.0, "images/Upgrades/Bakery", "Bakery" },
                     { 10, 5100000000L, 260000.0, "images/Upgrades/GrannysRestaurant", "Granny's Restaurant" },
-                    { 11, 75000000000L, 1600000.0, "images/Upgrades/CookieFranchise", "Cookie Franchise" }
+                    { 11, 75000000000L, 1600000.0, "images/Upgrades/CookieFranchise", "Cookie Franchise" },
+                    { 12, 1000000000000L, 10000000.0, "images/Upgrades/Factory", "Factory" },
+                    { 13, 14000000000000L, 65000000.0, "images/Upgrades/WorldwideShipping", "Worldwide Shipping" },
+                    { 14, 170000000000000L, 430000000.0, "images/Upgrades/SpaceDevilery", "Space Devilery" },
+                    { 15, 2100000000000000L, 2900000000.0, "images/Upgrades/TimeMachine", "Time Machine" },
+                    { 16, 26000000000000000L, 21000000000.0, "images/Upgrades/GamerCheater", "!Gamer || Cheater!" }
                 });
 
             migrationBuilder.CreateIndex(
