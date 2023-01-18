@@ -11,7 +11,6 @@ export const LvlUpButton = styled.div`
   justify-content: center;
   align-items: center;
 
-  // cursor: ${(props) => (!props.condition ? "default" : "pointer")};
   cursor: pointer;
   background-color: ${(props) =>
     !props.condition ? "rgba(133,133,133, 0.3)" : "rgba(133,133,133, 1)"};
