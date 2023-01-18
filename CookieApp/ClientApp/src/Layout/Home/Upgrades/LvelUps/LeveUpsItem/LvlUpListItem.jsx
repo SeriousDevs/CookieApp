@@ -1,5 +1,5 @@
 import { useHover } from "hooks/useHover";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buyLevelUpgrade, getCookies } from "redux/gameAccSlice";
 import { LevelUpListItem, LvlUpButton } from "./LvlUpListItem.styled"

@@ -4,7 +4,7 @@ import { buyClickUpgrade, getClickUpgr, getCookies } from 'redux/gameAccSlice';
 import { ClickUpgradeItem,  AdditionalWrapper, Amount, ListItemCentralDiv, UpgradeImage, UpgradeName, UpgradePrice } from './ClickUpgrade.styled';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
-import { ClickHover } from './Hover/ClickHover';
+import ClickHover from './Hover/ClickHover';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
 
 const ClickUpgrade = () => {

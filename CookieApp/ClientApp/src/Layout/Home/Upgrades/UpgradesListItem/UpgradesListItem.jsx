@@ -2,7 +2,7 @@ import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buyUpgrade, getCookies, upgradeTick } from 'redux/gameAccSlice';
 import { AdditionalWrapper, UpgradeName, ListItemCentralDiv, Amount, UpgradeImage, UpgradeListItem, UpgradePrice } from './UpgradesListItem.styled';
-import { Hover } from 'common/components/Hover/Hover.jsx';
+import Hover from 'common/components/Hover/Hover.jsx';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';

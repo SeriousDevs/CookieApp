@@ -1,8 +1,9 @@
+import { memo } from "react"
 import { WelcomeText } from "./Welcome.styled"
 
-export const Welcome = () => {
+const Welcome = () => {
   return (
     <WelcomeText>Wecome to Cookie App</WelcomeText>
   )
 }
-
+export default memo(Welcome)
