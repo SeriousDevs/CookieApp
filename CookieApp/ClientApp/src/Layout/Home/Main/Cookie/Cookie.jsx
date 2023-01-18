@@ -4,6 +4,7 @@ import { addCookie, getClickUpgr, getCookies, getPerSec } from 'redux/gameAccSli
 import { CookieButton, CookieContainer, CookieQuantity, PerSecond } from './Cookie.styled';
 import { ClickEffect } from './ClickEffect/ClickEffect';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
+import image from 'images/Upgrades/Clicker.png';
 
  const Cookie = () => {
     const dispatch = useDispatch();
@@ -39,8 +40,7 @@ import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
             <CookieContainer>
                 <CookieQuantity>{seriousNumbers(Math.round(cookie))} Cookies</CookieQuantity>
                 <PerSecond> per second: {seriousNumbers(perSec)} </PerSecond>
-                <CookieButton onMouseDown={handleClicker} className={shake ? `shake` : null}>
-                </CookieButton>
+                <CookieButton onMouseDown={handleClicker} className={shake ? `shake` : null}/>
                     {clicked && <ClickEffect obj={mouseCoordinates} value={perClick} />}
             </CookieContainer>
         </>

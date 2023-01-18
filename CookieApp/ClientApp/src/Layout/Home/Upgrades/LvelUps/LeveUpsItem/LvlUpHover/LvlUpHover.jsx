@@ -1,12 +1,12 @@
 import { BoxStyle, BoxStyleList } from 'common/common.styled'
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
+import { memo } from 'react';
 
-export const LvlUpHover = ({ upgrade }) => {
+const LvlUpHover = ({ upgrade }) => {
+    if (upgrade === null) return;
     const { price = 0, name, amount, level } = upgrade;
     const amountArr = [1, 5, 25, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550];
-
     const condition = amount >= amountArr[level - 1];
-
     return (
         <BoxStyle>
             <BoxStyleList>
@@ -17,3 +17,5 @@ export const LvlUpHover = ({ upgrade }) => {
         </BoxStyle>
     )
 }
+
+export default memo(LvlUpHover);

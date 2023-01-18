@@ -11,12 +11,13 @@ export const useHover = (ref) => {
     node.addEventListener("mouseenter", on);
     node.addEventListener("mousemove", on);
     node.addEventListener("mouseleave", off);
+
     return () => {
       node.removeEventListener("mouseenter", on);
       node.removeEventListener("mousemove", on);
       node.removeEventListener("mouseleave", off);
     };
-  }, []);
+  }, [ref.current]);
 
   return isHovering;
 };

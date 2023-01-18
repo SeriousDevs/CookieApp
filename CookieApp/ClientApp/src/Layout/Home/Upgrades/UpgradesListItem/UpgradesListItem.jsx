@@ -13,22 +13,16 @@ const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, 
     
     const upgrPrice = Math.ceil(basePrice * (1.15 ** amount));
 
-
-
     useEffect(() => {
         if (amount >= 1 && counter !== 0) {
             dispatch(upgradeTick(baseValue*amount));
         }
-    }, [counter])
-    
-    
+    }, [counter])    
 
     const handlerUpgradesClick = () => {
         if (upgrPrice <= cookies) {
-            
             dispatch(buyUpgrade({ upgradeInfoId, upgrPrice }));
         }
-        
     }
 
     return (
