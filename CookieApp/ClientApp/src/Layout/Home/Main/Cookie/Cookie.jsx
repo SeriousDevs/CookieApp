@@ -2,8 +2,8 @@ import { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCookie, getClickUpgr, getCookies, getPerSec } from 'redux/gameAccSlice';
 import { CookieButton, CookieContainer, CookieQuantity, PerSecond } from './Cookie.styled';
-import aveta from 'aveta';  
 import { ClickEffect } from './ClickEffect/ClickEffect';
+import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
 
  const Cookie = () => {
     const dispatch = useDispatch();
@@ -37,8 +37,8 @@ import { ClickEffect } from './ClickEffect/ClickEffect';
     return (
         <>
             <CookieContainer>
-                <CookieQuantity>{aveta(Math.round(cookie))} Cookies</CookieQuantity>
-                <PerSecond> per second: {aveta(perSec)} </PerSecond>
+                <CookieQuantity>{seriousNumbers(Math.round(cookie))} Cookies</CookieQuantity>
+                <PerSecond> per second: {seriousNumbers(perSec)} </PerSecond>
                 <CookieButton onMouseDown={handleClicker} className={shake ? `shake` : null}>
                 </CookieButton>
                     {clicked && <ClickEffect obj={mouseCoordinates} value={perClick} />}
