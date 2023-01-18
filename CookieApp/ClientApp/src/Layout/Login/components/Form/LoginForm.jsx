@@ -42,6 +42,8 @@ export const LoginForm = ({ isLoading }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        if (password.length < 8 && login.length < 1 ) return;
+
 
         const formData = {
             login,
