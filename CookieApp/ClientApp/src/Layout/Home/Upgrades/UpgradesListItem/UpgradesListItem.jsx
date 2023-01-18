@@ -2,7 +2,7 @@ import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buyUpgrade, getCookies, upgradeTick } from 'redux/gameAccSlice';
 import { AdditionalWrapper, UpgradeName, ListItemCentralDiv, Amount, UpgradeImage, UpgradeListItem, UpgradePrice } from './UpgradesListItem.styled';
-
+import aveta from "aveta";
 import { Hover } from 'common/components/Hover/Hover.jsx';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
@@ -38,10 +38,10 @@ const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, 
                     <UpgradeImage src={image} alt='upgrade img' />
                     <ListItemCentralDiv>
                         <UpgradeName>{name}</UpgradeName>
-                        <UpgradePrice>{upgrPrice}</UpgradePrice>
+                        <UpgradePrice>{aveta(upgrPrice)}</UpgradePrice>
                     </ListItemCentralDiv>
                 </AdditionalWrapper>
-                <Amount>{amount}</Amount>
+                <Amount>{aveta(amount)}</Amount>
             </UpgradeListItem>
         </Tooltip>
     )
