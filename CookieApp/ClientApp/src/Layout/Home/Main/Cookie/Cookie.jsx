@@ -4,7 +4,6 @@ import { addCookie, getClickUpgr, getCookies, getPerSec } from 'redux/gameAccSli
 import { CookieButton, CookieContainer, CookieQuantity, PerSecond } from './Cookie.styled';
 import { ClickEffect } from './ClickEffect/ClickEffect';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
-import image from 'images/Upgrades/Clicker.png';
 
  const Cookie = () => {
     const dispatch = useDispatch();

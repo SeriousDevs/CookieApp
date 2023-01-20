@@ -24,6 +24,7 @@ const UpgradesListItem = ({counter, amount = 0, name = 'name', basePrice = 100, 
             dispatch(buyUpgrade({ upgradeInfoId, upgrPrice }));
         }
     }
+    console.log(process.env.PUBLIC_URL);
 
     return (
         <Tooltip placement="left" destroyTooltipOnHide={true} overlay={<Hover upgrade={{ name, baseValue, amount }} />}>
