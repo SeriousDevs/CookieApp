@@ -136,7 +136,7 @@ namespace CookieData.Migrations
                             Id = 1,
                             BasePrice = 100L,
                             BaseValue = 1.0,
-                            Image = "images/Upgrades/Clicker",
+                            Image = "images/Upgrades/Clicker.png",
                             Name = "Click"
                         },
                         new
@@ -144,7 +144,7 @@ namespace CookieData.Migrations
                             Id = 2,
                             BasePrice = 15L,
                             BaseValue = 0.10000000000000001,
-                            Image = "images/Upgrades/HandMate",
+                            Image = "images/Upgrades/HandMate.png",
                             Name = "Hand Mate"
                         },
                         new
@@ -152,7 +152,7 @@ namespace CookieData.Migrations
                             Id = 3,
                             BasePrice = 100L,
                             BaseValue = 1.0,
-                            Image = "images/Upgrades/RollingPin",
+                            Image = "images/Upgrades/RollingPin.png",
                             Name = "Rolling Pin"
                         },
                         new
@@ -160,7 +160,7 @@ namespace CookieData.Migrations
                             Id = 4,
                             BasePrice = 1100L,
                             BaseValue = 8.0,
-                            Image = "images/Upgrades/Oven",
+                            Image = "images/Upgrades/Oven.png",
                             Name = "Oven"
                         },
                         new
@@ -168,7 +168,7 @@ namespace CookieData.Migrations
                             Id = 5,
                             BasePrice = 12000L,
                             BaseValue = 47.0,
-                            Image = "images/Upgrades/GrandDaughter",
+                            Image = "images/Upgrades/GrandDaughter.png",
                             Name = "Grand Daughter"
                         },
                         new
@@ -176,7 +176,7 @@ namespace CookieData.Migrations
                             Id = 6,
                             BasePrice = 130000L,
                             BaseValue = 260.0,
-                            Image = "images/Upgrades/Baker",
+                            Image = "images/Upgrades/Baker.png",
                             Name = "Baker"
                         },
                         new
@@ -184,7 +184,7 @@ namespace CookieData.Migrations
                             Id = 7,
                             BasePrice = 1400000L,
                             BaseValue = 1400.0,
-                            Image = "images/Upgrades/GrannyBoss",
+                            Image = "images/Upgrades/GrannyBoss.png",
                             Name = "Granny Boss"
                         },
                         new
@@ -192,7 +192,7 @@ namespace CookieData.Migrations
                             Id = 8,
                             BasePrice = 20000000L,
                             BaseValue = 7800.0,
-                            Image = "images/Upgrades/BunsStall",
+                            Image = "images/Upgrades/BunsStall.png",
                             Name = "Buns Stall"
                         },
                         new
@@ -200,7 +200,7 @@ namespace CookieData.Migrations
                             Id = 9,
                             BasePrice = 330000000L,
                             BaseValue = 44000.0,
-                            Image = "images/Upgrades/Bakery",
+                            Image = "images/Upgrades/Bakery.png",
                             Name = "Bakery"
                         },
                         new
@@ -208,7 +208,7 @@ namespace CookieData.Migrations
                             Id = 10,
                             BasePrice = 5100000000L,
                             BaseValue = 260000.0,
-                            Image = "images/Upgrades/GrannysRestaurant",
+                            Image = "images/Upgrades/GrannysRestaurant.png",
                             Name = "Granny's Restaurant"
                         },
                         new
@@ -216,7 +216,7 @@ namespace CookieData.Migrations
                             Id = 11,
                             BasePrice = 75000000000L,
                             BaseValue = 1600000.0,
-                            Image = "images/Upgrades/CookieFranchise",
+                            Image = "images/Upgrades/CookieFranchise.png",
                             Name = "Cookie Franchise"
                         },
                         new
@@ -224,7 +224,7 @@ namespace CookieData.Migrations
                             Id = 12,
                             BasePrice = 1000000000000L,
                             BaseValue = 10000000.0,
-                            Image = "images/Upgrades/Factory",
+                            Image = "images/Upgrades/Factory.png",
                             Name = "Factory"
                         },
                         new
@@ -232,7 +232,7 @@ namespace CookieData.Migrations
                             Id = 13,
                             BasePrice = 14000000000000L,
                             BaseValue = 65000000.0,
-                            Image = "images/Upgrades/WorldwideShipping",
+                            Image = "images/Upgrades/WorldwideShipping.png",
                             Name = "Worldwide Shipping"
                         },
                         new
@@ -240,7 +240,7 @@ namespace CookieData.Migrations
                             Id = 14,
                             BasePrice = 170000000000000L,
                             BaseValue = 430000000.0,
-                            Image = "images/Upgrades/SpaceDevilery",
+                            Image = "images/Upgrades/SpaceDevilery.png",
                             Name = "Space Devilery"
                         },
                         new
@@ -248,7 +248,7 @@ namespace CookieData.Migrations
                             Id = 15,
                             BasePrice = 2100000000000000L,
                             BaseValue = 2900000000.0,
-                            Image = "images/Upgrades/TimeMachine",
+                            Image = "images/Upgrades/TimeMachine.png",
                             Name = "Time Machine"
                         },
                         new
@@ -256,7 +256,7 @@ namespace CookieData.Migrations
                             Id = 16,
                             BasePrice = 26000000000000000L,
                             BaseValue = 21000000000.0,
-                            Image = "images/Upgrades/GamerCheater",
+                            Image = "images/Upgrades/GamerCheater.png",
                             Name = "!Gamer || Cheater!"
                         });
                 });
