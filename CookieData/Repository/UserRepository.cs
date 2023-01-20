@@ -1,10 +1,10 @@
-﻿using CookieBL.Exceptions;
-using CookieBL.IRepository.Interfaces;
+﻿using CookieData.Exceptions;
+using CookieData.IRepository.Interfaces;
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CookieBL.IRepository
+namespace CookieData.IRepository
 {
     public class UserRepository : IUserRepository
     {

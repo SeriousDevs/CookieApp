@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CookieBL.IRepository.Interfaces;
+using CookieData.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
