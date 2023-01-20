@@ -146,7 +146,6 @@ export const gameAccSlice = createSlice({
       state.isLoading = false;
 
       if (!payload) return;
-      // console.log(payload);
 
       state.clicks = payload.clicks;
       state.cookies = payload.cookies;
@@ -184,7 +183,6 @@ export const gameAccSlice = createSlice({
       if (!payload) return;
 
       state.usersList = payload;
-      // console.log(payload);
     });
     builder.addCase(getUsersList.rejected, (state, { payload }) => {
       state.isLoading = false;

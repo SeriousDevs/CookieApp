@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState} from "react";
+import { lazy} from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "Layout/Layout";
 import { GlobalStyle } from "./App.styled";
@@ -11,7 +11,6 @@ const LazyLoginView = lazy(() => import("Layout/Login/Login"));
 const LazyHomeView = lazy(() => import("Layout/Home/Home"));
 
 const App = () => {
- 
   
   return (
     <>

@@ -3,7 +3,7 @@ import { getTotalClicks, getUpgrades, getNetWorth, getPerSec } from "redux/gameA
 import { StatsBlock, StatsItem, StatsList } from "./Statistics.styled";
 import { Heading } from '../Dashboard.styled';
 import { memo } from "react";
-import aveta from "aveta";
+import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
 
 const Statistics = () => {
   const clicks = useSelector(getTotalClicks);
@@ -17,8 +17,8 @@ const Statistics = () => {
      <StatsBlock>
         <Heading>Statistic</Heading>
         <StatsList>
-        <StatsItem>Net Worth: {aveta(Math.round(netWorth))}</StatsItem>
-        <StatsItem>Cookies per second: {aveta(perSec)}</StatsItem>
+        <StatsItem>Net Worth: {seriousNumbers(Math.round(netWorth))}</StatsItem>
+        <StatsItem>Cookies per second: {seriousNumbers(perSec)}</StatsItem>
         <StatsItem>Total clicks: {clicks}</StatsItem>
         <StatsItem>Total upgrades: {totalUpgrades}</StatsItem>
         </StatsList>

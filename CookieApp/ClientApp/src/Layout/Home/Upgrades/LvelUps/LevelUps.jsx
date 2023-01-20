@@ -5,11 +5,11 @@ import { getUpgrades } from "redux/gameAccSlice"
 import { LevelUpList } from "./LevelUps.styled"
 import LvlUpListItem from "./LeveUpsItem/LvlUpListItem"
 import 'rc-tooltip/assets/bootstrap.css';
-import { LvlUpHover } from "./LeveUpsItem/LvlUpHover/LvlUpHover"
+import LvlUpHover from "./LeveUpsItem/LvlUpHover/LvlUpHover"
 
 const LevelUps = () => {
   const upgradeList = useSelector(getUpgrades);
-  const [upgrade, setUpgrade] = useState({});
+  const [upgrade, setUpgrade] = useState(null);
   
   const onLevelUpHover = (upgr) => {
     setUpgrade(upgr);
@@ -18,7 +18,7 @@ const LevelUps = () => {
   return (
     <Tooltip placement="left" destroyTooltipOnHide={true} overlay={<LvlUpHover upgrade={upgrade}/>}>
       <LevelUpList>
-        {upgradeList && upgradeList.map(upgrade => <LvlUpListItem key={upgrade.id} onHover={onLevelUpHover} upgrade={upgrade} />)}
+        {upgradeList && upgradeList.map((upgrade, idx) => <LvlUpListItem key={upgrade.id} onHover={onLevelUpHover} upgrade={upgrade} />)}
       </LevelUpList>
     </Tooltip>
   )

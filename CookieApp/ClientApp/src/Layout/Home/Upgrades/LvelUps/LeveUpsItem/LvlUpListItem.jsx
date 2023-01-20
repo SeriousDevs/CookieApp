@@ -10,12 +10,13 @@ const LvlUpListItem = ({ onHover, upgrade }) => {
     const ref = useRef();
     const isHovering = useHover(ref);
     const { amount, upgradeInfoId, level, basePrice, name } = upgrade;
-    
-        useEffect(() => {
-            if (!isHovering) return;
-            onHover({...upgrade, price});
-        }, [isHovering]);
-    
+
+    useEffect(() => {
+        if (!isHovering) return;
+        const obj = { ...upgrade, price };
+        onHover(obj);
+    }, [isHovering]);
+
     if (amount < 1) return;
     
     const amountArr = [1, 5, 25, 50, 100, 150, 1200, 250, 300, 350, 400, 450, 500, 550];
@@ -31,14 +32,15 @@ const LvlUpListItem = ({ onHover, upgrade }) => {
             price,
             upgradeInfoId,
         }
-
+        
         dispatch(buyLevelUpgrade(obj));
     }
     
-    return (
-            <LevelUpListItem ref={ref}>
+    return (<>
+           <LevelUpListItem ref={ref}>
                 <LvlUpButton condition={condition} onClick={handleOnClick}>{name}</LvlUpButton>
             </LevelUpListItem>
+    </>
     );
 }
 

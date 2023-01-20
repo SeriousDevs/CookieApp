@@ -1,8 +1,9 @@
+import { seriousNumbers } from "common/ConvertFunc/convertFunc";
 import { memo } from "react";
 import { useSelector } from "react-redux";
 import { getUser } from "redux/userSlice";
 import { NetWorth, LeadershipItem, Position, LeadershipItemUser } from "./LeadershipItem.styled";
-import aveta from 'aveta';  
+
 
 const LeadershipElement = ({name, position, networth}) => {
     const user = useSelector(getUser);
@@ -12,7 +13,7 @@ const LeadershipElement = ({name, position, networth}) => {
             <LeadershipItemUser>
                 <Position>{position}</Position>
                 <p>{name.toUpperCase()}</p>
-                <NetWorth>{aveta(networth)}</NetWorth>
+                <NetWorth>{seriousNumbers(networth)}</NetWorth>
             </LeadershipItemUser>
         )
     }
@@ -21,7 +22,7 @@ const LeadershipElement = ({name, position, networth}) => {
         <LeadershipItem>
             <Position>{position}</Position>
             <p>{name.toUpperCase()}</p>
-            <NetWorth>{aveta(networth)}</NetWorth>
+            <NetWorth>{seriousNumbers(networth)}</NetWorth>
         </LeadershipItem>
     )
 };
