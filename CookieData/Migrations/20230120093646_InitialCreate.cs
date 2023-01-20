@@ -125,22 +125,22 @@ namespace CookieData.Migrations
                 columns: new[] { "UpgradeInfoId", "BasePrice", "BaseValue", "Image", "Name" },
                 values: new object[,]
                 {
-                    { 1, 100L, 1.0, "images/Upgrades/Clicker", "Click" },
-                    { 2, 15L, 0.10000000000000001, "images/Upgrades/HandMate", "Hand Mate" },
-                    { 3, 100L, 1.0, "images/Upgrades/RollingPin", "Rolling Pin" },
-                    { 4, 1100L, 8.0, "images/Upgrades/Oven", "Oven" },
-                    { 5, 12000L, 47.0, "images/Upgrades/GrandDaughter", "Grand Daughter" },
-                    { 6, 130000L, 260.0, "images/Upgrades/Baker", "Baker" },
-                    { 7, 1400000L, 1400.0, "images/Upgrades/GrannyBoss", "Granny Boss" },
-                    { 8, 20000000L, 7800.0, "images/Upgrades/BunsStall", "Buns Stall" },
-                    { 9, 330000000L, 44000.0, "images/Upgrades/Bakery", "Bakery" },
-                    { 10, 5100000000L, 260000.0, "images/Upgrades/GrannysRestaurant", "Granny's Restaurant" },
-                    { 11, 75000000000L, 1600000.0, "images/Upgrades/CookieFranchise", "Cookie Franchise" },
-                    { 12, 1000000000000L, 10000000.0, "images/Upgrades/Factory", "Factory" },
-                    { 13, 14000000000000L, 65000000.0, "images/Upgrades/WorldwideShipping", "Worldwide Shipping" },
-                    { 14, 170000000000000L, 430000000.0, "images/Upgrades/SpaceDevilery", "Space Devilery" },
-                    { 15, 2100000000000000L, 2900000000.0, "images/Upgrades/TimeMachine", "Time Machine" },
-                    { 16, 26000000000000000L, 21000000000.0, "images/Upgrades/GamerCheater", "!Gamer || Cheater!" }
+                    { 1, 100L, 1.0, "images/Upgrades/Clicker.png", "Click" },
+                    { 2, 15L, 0.10000000000000001, "images/Upgrades/HandMate.png", "Hand Mate" },
+                    { 3, 100L, 1.0, "images/Upgrades/RollingPin.png", "Rolling Pin" },
+                    { 4, 1100L, 8.0, "images/Upgrades/Oven.png", "Oven" },
+                    { 5, 12000L, 47.0, "images/Upgrades/GrandDaughter.png", "Grand Daughter" },
+                    { 6, 130000L, 260.0, "images/Upgrades/Baker.png", "Baker" },
+                    { 7, 1400000L, 1400.0, "images/Upgrades/GrannyBoss.png", "Granny Boss" },
+                    { 8, 20000000L, 7800.0, "images/Upgrades/BunsStall.png", "Buns Stall" },
+                    { 9, 330000000L, 44000.0, "images/Upgrades/Bakery.png", "Bakery" },
+                    { 10, 5100000000L, 260000.0, "images/Upgrades/GrannysRestaurant.png", "Granny's Restaurant" },
+                    { 11, 75000000000L, 1600000.0, "images/Upgrades/CookieFranchise.png", "Cookie Franchise" },
+                    { 12, 1000000000000L, 10000000.0, "images/Upgrades/Factory.png", "Factory" },
+                    { 13, 14000000000000L, 65000000.0, "images/Upgrades/WorldwideShipping.png", "Worldwide Shipping" },
+                    { 14, 170000000000000L, 430000000.0, "images/Upgrades/SpaceDevilery.png", "Space Devilery" },
+                    { 15, 2100000000000000L, 2900000000.0, "images/Upgrades/TimeMachine.png", "Time Machine" },
+                    { 16, 26000000000000000L, 21000000000.0, "images/Upgrades/GamerCheater.png", "!Gamer || Cheater!" }
                 });
 
             migrationBuilder.CreateIndex(
