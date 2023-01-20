@@ -1,9 +1,9 @@
-﻿using CookieBL.IRepository.Interfaces;
+﻿using CookieData.IRepository.Interfaces;
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CookieBL.IRepository
+namespace CookieData.IRepository
 {
     public class GameAccountRepository : IRepository<GameAccount>
     {

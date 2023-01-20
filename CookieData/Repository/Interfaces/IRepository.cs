@@ -1,7 +1,6 @@
 ﻿using CookieData.Entities;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace CookieBL.IRepository.Interfaces
+namespace CookieData.IRepository.Interfaces
 {
     public interface IRepository<TEntity>
         where TEntity : BaseEntity

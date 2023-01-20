@@ -1,4 +1,4 @@
-﻿using CookieBL.Exceptions;
+﻿using CookieData.Exceptions;
 using CookieBL.Helper;
 using CookieBL.Service;
 using CookieBL.Service.Interfaces;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using CookieBL.Exceptions;
+using CookieData.Exceptions;
 using CookieBL.Helper;
-using CookieBL.IRepository.Interfaces;
+using CookieData.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
