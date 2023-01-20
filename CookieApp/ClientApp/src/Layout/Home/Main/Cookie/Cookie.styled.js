@@ -15,10 +15,20 @@ const click = keyframes`
 100%{ transform: translate(1px, -2px)  rotate(-1deg); }`;
 
 export const CookieButton = styled.button`
+  position: relative;
   cursor: pointer;
   border-radius: 50%;
+  border-style: none;
   height: 300px;
   width: 300px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  user-drag: none;
+  user-select: none;
 
   &.shake {
     animation: ${click} 0.01s;
@@ -37,4 +47,27 @@ export const PerSecond = styled.p`
   font-size: 20px;
   font-family: serif;
   font-weight: 700;
+`;
+
+export const CookieImage = styled.img`
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border-radius: 50%;
+  user-drag: none;
+  user-select: none;
+`;
+
+export const CookieLight = styled.div`
+  box-shadow: rgb(255 255 255 / 56%) 0px 0 150px 40px;
+  border: 0px;
+  position: absolute;
+  background-color: transparent;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 `;
