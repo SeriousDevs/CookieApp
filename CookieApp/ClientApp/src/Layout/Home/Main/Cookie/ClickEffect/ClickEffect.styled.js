@@ -18,8 +18,10 @@ export const ClickedComponent = styled.p`
   font-size: 16px;
   font-family: serif;
   font-weight: 700;
-  top: ${(props) => props.obj.top - 30}px;
-  left: ${(props) => props.obj.left}px;
+  top: ${(props) => props.top - 30}px;
+  left: ${(props) => props.left}px;
+  // top: ${(props) => (props.top ? props.top - 30 : 600)}px;
+  // left: ${(props) => (props.left ? props.left : 600)}px;
   animation: ${click} 1s linear;
   z-index: 2;
 

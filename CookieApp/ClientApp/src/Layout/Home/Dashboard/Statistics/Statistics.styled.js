@@ -15,5 +15,5 @@ export const StatsList = styled.ul`
 
 export const StatsItem = styled.li`
   color: white;
-  font-size: 16px;
+  font-size: 20px;
 `;

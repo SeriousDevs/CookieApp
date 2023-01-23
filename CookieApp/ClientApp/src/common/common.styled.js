@@ -19,7 +19,7 @@ export const Label = styled.label`
   height: 66px;
   font-weight: bold;
   width: 300px;
-  color: ${(props) => (props.passwordInvalid ? "red" : "black")};
+  color: ${(props) => (props?.passwordInvalid ? "red" : "black")};
 `;
 
 export const Button = styled.button`
