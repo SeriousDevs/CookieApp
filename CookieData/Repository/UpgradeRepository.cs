@@ -2,7 +2,6 @@
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace CookieData.Repository
 {
