@@ -174,7 +174,7 @@ export const gameAccSlice = createSlice({
       state.upgrades = payload.upgrades;
       state.networth = payload.networth;
       state.clickUpgrade = payload.clickUpgrade;
-      state.fairyTail = payload.fairyTail;
+      state.story = payload.story;
     });
     builder.addCase(setGameAcc.rejected, (state, { payload }) => {
       state.isLoading = false;
