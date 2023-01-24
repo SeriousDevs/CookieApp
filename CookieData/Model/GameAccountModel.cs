@@ -1,4 +1,6 @@
-﻿namespace CookieData.Model
+﻿using CookieData.Entities;
+
+namespace CookieData.Model
 {
     public class GameAccountModel
     {
@@ -6,7 +8,8 @@
         public double Networth { get; set; }
         public double Cookies { get; set; }
         public long Clicks { get; set; }
-        public ClickUpgradeModel ClickUpgrade { get; set; }
-        public IEnumerable<UpgradeModel> Upgrades { get; set; }
+        public ClickUpgradeModel ClickUpgrade { get; set; } = null!;
+        public FairyTailModel FairyTail { get; set; } = null!;
+        public IEnumerable<UpgradeModel> Upgrades { get; set; } = null!;
     }
 }

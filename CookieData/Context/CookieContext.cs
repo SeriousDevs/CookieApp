@@ -16,6 +16,7 @@ namespace CookieData.Context
         public DbSet<Upgrade> Upgrades { get; set; }
         public DbSet<ClickUpgrade> ClickUpgrades { get; set; }
         public DbSet<UpgradeInfo> UpgradesInfo { get; set; }
+        public DbSet<FairyTail> FairyTails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +25,7 @@ namespace CookieData.Context
             modelBuilder.ApplyConfiguration(new UpgradeConfig());
             modelBuilder.ApplyConfiguration(new UpgradeInfoConfig());
             modelBuilder.ApplyConfiguration(new ClickUpgradeConfig());
+            modelBuilder.ApplyConfiguration(new FairyTailConfig());
         }
     }
 }
