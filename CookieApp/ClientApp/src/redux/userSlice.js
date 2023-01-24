@@ -106,8 +106,11 @@ export const userSlice = createSlice({
     });
     builder.addCase(auth.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-
       if (!payload) return;
+
+      if (payload.errorMessage) {
+        state.error = payload.errorMessage.message;
+      }
 
       state.user = payload.login;
       state.id = payload.id;

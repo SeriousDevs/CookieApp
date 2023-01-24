@@ -1,23 +1,33 @@
-import { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
-import { auth} from 'redux/userSlice';
-import { Suspense } from 'react'
-import { Outlet } from 'react-router-dom'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { auth, getErrorUser } from "redux/userSlice";
+import { Suspense } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { Loader } from "common/components/Loader/Loader";
 
 const Layout = () => {
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
+  const error = useSelector(getErrorUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) return;
     dispatch(auth());
   }, []);
 
-    return (
-        <Suspense fallback={null}>
-            <Outlet />
-        </Suspense>
-    )
-}
+  useEffect(() => {
+    if (error === "Unauthorized") {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+  }, [error]);
 
-export default Layout
+  return (
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
+  );
+};
+
+export default Layout;

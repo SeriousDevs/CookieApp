@@ -10,20 +10,20 @@ import { toast } from "react-toastify";
 const Login = () => {
   const dispatch = useDispatch();
   const error = useSelector(getErrorUser);
-  
- useEffect(() => {
+
+  useEffect(() => {
     if (!error) return;
-    if (error.errorMessage === 'User not found') {
+    if (error.errorMessage === "User not found") {
       dispatch(clearError());
-      toast.error('User not found!', {
-        position: toast.POSITION.TOP_RIGHT
+      toast.error("User not found!", {
+        position: toast.POSITION.TOP_RIGHT,
       });
       return;
     }
-    if (error.errorMessage === 'Incorrect password') {
+    if (error.errorMessage === "Incorrect password") {
       dispatch(clearError());
-      toast.error('Incorrect password!', {
-        position: toast.POSITION.TOP_RIGHT
+      toast.error("Incorrect password!", {
+        position: toast.POSITION.TOP_RIGHT,
       });
       return;
     }
@@ -31,12 +31,11 @@ const Login = () => {
 
   return (
     <WelcomePage>
-      <Welcome/>
-      <LoginForm/>
+      <Welcome />
+      <LoginForm />
     </WelcomePage>
-  )
-}
+  );
+};
 
-export default WithNoAuthRedirect(Login, '/home');
+export default WithNoAuthRedirect(Login, "/home");
 // export default Login;
-
