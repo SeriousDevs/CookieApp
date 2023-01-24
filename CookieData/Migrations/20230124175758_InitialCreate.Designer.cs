@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookieData.Migrations
 {
     [DbContext(typeof(CookieContext))]
-    [Migration("20230124133504_InitialCreate")]
+    [Migration("20230124175758_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -258,6 +258,10 @@ namespace CookieData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LvlImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -274,6 +278,7 @@ namespace CookieData.Migrations
                             BasePrice = 100L,
                             BaseValue = 1.0,
                             Image = "images/Upgrades/Clicker.png",
+                            LvlImage = "images/LvlUps/Clicker.png",
                             Name = "Click"
                         },
                         new
@@ -282,6 +287,7 @@ namespace CookieData.Migrations
                             BasePrice = 15L,
                             BaseValue = 0.10000000000000001,
                             Image = "images/Upgrades/HandMate.png",
+                            LvlImage = "images/LvlUps/HandMate.png",
                             Name = "Hand Mate"
                         },
                         new
@@ -290,6 +296,7 @@ namespace CookieData.Migrations
                             BasePrice = 100L,
                             BaseValue = 1.0,
                             Image = "images/Upgrades/RollingPin.png",
+                            LvlImage = "images/LvlUps/RollingPin.png",
                             Name = "Rolling Pin"
                         },
                         new
@@ -298,6 +305,7 @@ namespace CookieData.Migrations
                             BasePrice = 1100L,
                             BaseValue = 8.0,
                             Image = "images/Upgrades/Oven.png",
+                            LvlImage = "images/LvlUps/Oven.png",
                             Name = "Oven"
                         },
                         new
@@ -306,6 +314,7 @@ namespace CookieData.Migrations
                             BasePrice = 12000L,
                             BaseValue = 47.0,
                             Image = "images/Upgrades/GrandDaughter.png",
+                            LvlImage = "images/LvlUps/GrandDaughter.png",
                             Name = "Grand Daughter"
                         },
                         new
@@ -314,6 +323,7 @@ namespace CookieData.Migrations
                             BasePrice = 130000L,
                             BaseValue = 260.0,
                             Image = "images/Upgrades/Baker.png",
+                            LvlImage = "images/LvlUps/Baker.png",
                             Name = "Baker"
                         },
                         new
@@ -322,6 +332,7 @@ namespace CookieData.Migrations
                             BasePrice = 1400000L,
                             BaseValue = 1400.0,
                             Image = "images/Upgrades/GrannyBoss.png",
+                            LvlImage = "images/LvlUps/GrannyBoss.png",
                             Name = "Granny Boss"
                         },
                         new
@@ -330,6 +341,7 @@ namespace CookieData.Migrations
                             BasePrice = 20000000L,
                             BaseValue = 7800.0,
                             Image = "images/Upgrades/BunsStall.png",
+                            LvlImage = "images/LvlUps/BunsStall.png",
                             Name = "Buns Stall"
                         },
                         new
@@ -338,6 +350,7 @@ namespace CookieData.Migrations
                             BasePrice = 330000000L,
                             BaseValue = 44000.0,
                             Image = "images/Upgrades/Bakery.png",
+                            LvlImage = "images/LvlUps/Bakery.png",
                             Name = "Bakery"
                         },
                         new
@@ -346,6 +359,7 @@ namespace CookieData.Migrations
                             BasePrice = 5100000000L,
                             BaseValue = 260000.0,
                             Image = "images/Upgrades/GrannysRestaurant.png",
+                            LvlImage = "images/LvlUps/GrannysRestaurant.png",
                             Name = "Granny's Restaurant"
                         },
                         new
@@ -354,6 +368,7 @@ namespace CookieData.Migrations
                             BasePrice = 75000000000L,
                             BaseValue = 1600000.0,
                             Image = "images/Upgrades/CookieFranchise.png",
+                            LvlImage = "images/LvlUps/CookieFranchise.png",
                             Name = "Cookie Franchise"
                         },
                         new
@@ -362,6 +377,7 @@ namespace CookieData.Migrations
                             BasePrice = 1000000000000L,
                             BaseValue = 10000000.0,
                             Image = "images/Upgrades/Factory.png",
+                            LvlImage = "images/LvlUps/Factory.png",
                             Name = "Factory"
                         },
                         new
@@ -370,6 +386,7 @@ namespace CookieData.Migrations
                             BasePrice = 14000000000000L,
                             BaseValue = 65000000.0,
                             Image = "images/Upgrades/WorldwideShipping.png",
+                            LvlImage = "images/LvlUps/WorldwideShipping.png",
                             Name = "Worldwide Shipping"
                         },
                         new
@@ -378,6 +395,7 @@ namespace CookieData.Migrations
                             BasePrice = 170000000000000L,
                             BaseValue = 430000000.0,
                             Image = "images/Upgrades/SpaceDevilery.png",
+                            LvlImage = "images/LvlUps/SpaceDevilery.png",
                             Name = "Space Devilery"
                         },
                         new
@@ -386,6 +404,7 @@ namespace CookieData.Migrations
                             BasePrice = 2100000000000000L,
                             BaseValue = 2900000000.0,
                             Image = "images/Upgrades/TimeMachine.png",
+                            LvlImage = "images/LvlUps/TimeMachine.png",
                             Name = "Time Machine"
                         },
                         new
@@ -394,6 +413,7 @@ namespace CookieData.Migrations
                             BasePrice = 26000000000000000L,
                             BaseValue = 21000000000.0,
                             Image = "images/Upgrades/GamerCheater.png",
+                            LvlImage = "images/LvlUps/GamerCheater.png",
                             Name = "!Gamer || Cheater!"
                         });
                 });

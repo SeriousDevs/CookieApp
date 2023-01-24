@@ -35,7 +35,7 @@ namespace CookieBL.Helper
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_configuration["Secret"]);
+                var key = Encoding.ASCII.GetBytes(_configuration["Secret"] !);
 
                 tokenHandler.ValidateToken(
                     token,

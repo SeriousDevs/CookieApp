@@ -39,8 +39,7 @@ const ClickUpgrade = () => {
     >
       <ClickUpgradeItem onClick={() => handleClick()}>
         <AdditionalWrapper>
-          {/* <UpgradeImage src={image} alt={name} /> */}
-          <UpgradeImage src="images/Upgrades/click.png" alt={name} />
+          <UpgradeImage src={image} alt={name} />
           <ListItemCentralDiv>
             <UpgradeName>{name}</UpgradeName>
             <UpgradePrice>{seriousNumbers(upgrPrice)}</UpgradePrice>

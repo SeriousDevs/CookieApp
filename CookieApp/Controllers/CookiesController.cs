@@ -2,6 +2,7 @@
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
+using CookieData.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CookieApp.Controllers
@@ -59,6 +60,19 @@ namespace CookieApp.Controllers
             }
 
             return Ok();
+        }
+
+        [Authorize]
+        [HttpGet("story")]
+        public async Task<IActionResult> GetStory()
+        {
+            if (HttpContext.Items["User"] is User user)
+            {
+                FairyTailModel story = await _cookieService.GetStory(user.GameAccountId);
+                return Ok(story);
+            }
+
+            return NotFound(new { Message = "Account not found!" });
         }
     }
 }

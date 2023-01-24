@@ -52,7 +52,7 @@ namespace CookieData.IRepository
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Login == login);
 
-            return user;
+            return user!;
         }
 
         public async Task<User> GetUserByIdAsync(int id)
@@ -63,7 +63,7 @@ namespace CookieData.IRepository
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Id == id);
 
-            return user;
+            return user!;
         }
 
         public async Task RemoveUserAsync(int id)

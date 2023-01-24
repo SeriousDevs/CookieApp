@@ -7,5 +7,6 @@ namespace CookieBL.Service.Interfaces
         Task<GameAccountModel> GetGameAccountAsync(int id);
         Task SaveGameAccountAsync(GameAccountModel gameAccountModel);
         Task UpdateUpgradeAsync(UpgradeModel upgradeModel);
+        Task<FairyTailModel> GetStory(int id);
     }
 }

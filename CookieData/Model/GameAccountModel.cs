@@ -9,7 +9,7 @@ namespace CookieData.Model
         public double Cookies { get; set; }
         public long Clicks { get; set; }
         public ClickUpgradeModel ClickUpgrade { get; set; } = null!;
-        public FairyTailModel FairyTail { get; set; } = null!;
+        public FairyTailModel Story { get; set; } = null!;
         public IEnumerable<UpgradeModel> Upgrades { get; set; } = null!;
     }
 }

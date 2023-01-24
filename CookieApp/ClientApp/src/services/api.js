@@ -74,3 +74,12 @@ export const saveAccRequest = async (acc) => {
     return { errorMessage: error.response.data, error: error.message };
   }
 };
+
+export const getStory = async () => {
+  try {
+    const { data } = await $privateHost.get("/cookies/story");
+    return data;
+  } catch (error) {
+    return { errorMessage: error.response.data, error: error.message };
+  }
+};

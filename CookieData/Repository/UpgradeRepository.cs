@@ -28,8 +28,8 @@ namespace CookieData.Repository
 
         public async Task<Upgrade> GetEntityByIdAsync(int id)
         {
-            Upgrade upgrade = await _context.Upgrades.FirstOrDefaultAsync(ga => ga.Id == id);
-            return upgrade;
+            Upgrade? upgrade = await _context.Upgrades.FirstOrDefaultAsync(ga => ga.Id == id);
+            return upgrade!;
         }
 
         public async Task UpdateEntityAsync(Upgrade upgrade)

@@ -37,7 +37,7 @@ namespace CookieData.IRepository
                 .AsNoTracking()
                 .FirstOrDefaultAsync(ga => ga.Id == id);
 
-            return gameAccount;
+            return gameAccount!;
         }
 
         public async Task UpdateEntityAsync(GameAccount gameAccount)

@@ -16,7 +16,7 @@ namespace CookieData.Entities.Configuration
             builder.HasData(GetData());
         }
 
-        private IEnumerable<FairyTail> GetData()
+        private static IEnumerable<FairyTail> GetData()
         {
             var data = new List<FairyTail>()
             {
