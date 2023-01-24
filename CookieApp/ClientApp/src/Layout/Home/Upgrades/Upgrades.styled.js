@@ -31,10 +31,11 @@ export const LevelUpBlock = styled.div`
 
 export const UpgradesLarge = styled.div`
   position: relative;
+  max-height: 73%;
 `;
 
 export const UpgradeList = styled.ul`
-  height: 532px;
+  max-height: calc(80vh - 122px);
   display: flex;
   flex-direction: column;
   gap: 1px;

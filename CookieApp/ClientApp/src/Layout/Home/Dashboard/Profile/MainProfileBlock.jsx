@@ -1,15 +1,16 @@
-import { memo } from "react"
-import { Logout } from "./Logout/Logout"
-import { ProfileBlock, UserImage, UserName } from "./MainProfileBlock.styled"
+import { memo } from "react";
+import { Logout } from "./Logout/Logout";
+import { ProfileBlock, UserName } from "./MainProfileBlock.styled";
+import { UserStory } from "./UserStory/UserStory";
 
-const MainProfileBlock = ({user}) => {
-    return (
-        <ProfileBlock>
-            <Logout/>
-            <UserName>{user.toUpperCase()}</UserName>
-            <UserImage src="#" alt="#" />
-        </ProfileBlock>
-    )
-}
+const MainProfileBlock = ({ user }) => {
+  return (
+    <ProfileBlock>
+      <Logout />
+      <UserName>{user.toUpperCase()}</UserName>
+      <UserStory />
+    </ProfileBlock>
+  );
+};
 
-export default memo(MainProfileBlock)
+export default memo(MainProfileBlock);

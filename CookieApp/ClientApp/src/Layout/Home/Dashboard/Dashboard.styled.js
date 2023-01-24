@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 23vw;
   height: 100vh;
   background: teal;
+  position: relative;
 `;
 
 export const Heading = styled.h3`

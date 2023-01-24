@@ -18,7 +18,7 @@ export const UpgradeListItem = styled.li`
 export const UpgradeImage = styled.img`
   width: 80px;
   padding: 5px;
-  background-color: teal;
+  // background-color: teal;
   height: 75px;
   margin-right: 10px;
 `;
