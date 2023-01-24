@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ClickedComponent } from "./ClickEffect.styled";
 
 export const ClickEffect = ({ obj, value }) => {
+ 
   const [unmountMe, setUnmountMe] = useState(true);
 
   useEffect(() => {
