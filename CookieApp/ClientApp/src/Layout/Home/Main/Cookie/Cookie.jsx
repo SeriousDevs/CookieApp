@@ -28,7 +28,6 @@ const Cookie = () => {
   const [clicked, setClicked] = useState(false);
   const [cookieEmotion, setCookieEmotion] = useState(false);
   const [emotion, setEmotion] = useState(null);
-  // const [clickEffect, setClickEffect] = useState(null);
 
   useEffect(() => {
     const { level } = clickUpgrade;
@@ -49,12 +48,6 @@ const Cookie = () => {
         setCookieEmotion(false);
       }, 1500)
     );
-
-    // setClickEffect(
-    //     setTimeout(() => {
-    //         setClicked(false);
-    //     }, 3000)
-    // )
 
     setMouseCoordinates({ left: e.clientX, top: e.clientY });
     setTimeout(() => {
@@ -89,7 +82,6 @@ const Cookie = () => {
         </CookieButton>
       </CookieContainer>
       {clicked && <ClickEffect obj={mouseCoordinates} value={perClick} />}
-      {/* <ClickEffect obj={mouseCoordinates} value={perClick} /> */}
     </>
   );
 };
