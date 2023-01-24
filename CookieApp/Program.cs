@@ -1,6 +1,37 @@
+using CookieBL.Helper;
+using CookieData.IRepository.Interfaces;
+using CookieData.IRepository;
+using CookieBL.Service.Interfaces;
+using CookieBL.Service;
+using CookieData.Mapper;
+using Microsoft.EntityFrameworkCore;
+using CookieData.Context;
+using CookieData.Entities;
+using CookieData.Repository;
+using Microsoft.AspNetCore.Identity;
+using CookieData.Repository.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<CookieContext>(options => options.UseSqlServer(connection));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IStoryRepository, StoryRepository>();
+builder.Services.AddScoped<IRepository<GameAccount>, GameAccountRepository>();
+builder.Services.AddScoped<IRepository<Upgrade>, UpgradeRepository>();
+
+builder.Services.AddScoped<IPasswordHasher<User>, BCryptPasswordHasher<User>>();
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICookieService, CookieService>();
+
+builder.Services.AddAutoMapper(
+    typeof(UserProfile),
+    typeof(GameAccountProfile),
+    typeof(UpgradeProfile));
+
+builder.Services.AddCors();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -15,6 +46,15 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors(x => x
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+
+app.UseAuthorization();
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
