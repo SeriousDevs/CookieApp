@@ -33,6 +33,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!token) return;
+    dispatch(getUserTale());
     dispatch(setGameAcc());
     dispatch(getUsersList());
   }, []);

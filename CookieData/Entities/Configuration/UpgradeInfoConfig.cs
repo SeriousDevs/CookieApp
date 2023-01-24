@@ -13,6 +13,7 @@ namespace CookieData.Entities.Configuration
             builder.Property(u => u.BasePrice).IsRequired();
             builder.Property(u => u.BaseValue).IsRequired();
             builder.Property(u => u.Image).IsRequired();
+            builder.Property(u => u.LvlImage).IsRequired();
 
             builder.HasData(GetData());
         }
@@ -27,7 +28,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Click",
                     BaseValue = 1,
                     BasePrice = 100,
-                    Image = "images/Upgrades/Clicker.png"
+                    Image = "images/Upgrades/Clicker.png",
+                    LvlImage = "images/LvlUps/Clicker.png"
                 },
                 new UpgradeInfo
                 {
@@ -35,7 +37,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Hand Mate",
                     BaseValue = 0.1,
                     BasePrice = 15,
-                    Image = "images/Upgrades/HandMate.png"
+                    Image = "images/Upgrades/HandMate.png",
+                    LvlImage = "images/LvlUps/HandMate.png"
                 },
                 new UpgradeInfo
                 {
@@ -43,7 +46,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Rolling Pin",
                     BaseValue = 1,
                     BasePrice = 100,
-                    Image = "images/Upgrades/RollingPin.png"
+                    Image = "images/Upgrades/RollingPin.png",
+                    LvlImage = "images/LvlUps/RollingPin.png"
                 },
                 new UpgradeInfo
                 {
@@ -51,7 +55,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Oven",
                     BaseValue = 8,
                     BasePrice = 1100,
-                    Image = "images/Upgrades/Oven.png"
+                    Image = "images/Upgrades/Oven.png",
+                    LvlImage = "images/LvlUps/Oven.png"
                 },
                 new UpgradeInfo
                 {
@@ -59,7 +64,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Grand Daughter",
                     BaseValue = 47,
                     BasePrice = 12000,
-                    Image = "images/Upgrades/GrandDaughter.png"
+                    Image = "images/Upgrades/GrandDaughter.png",
+                    LvlImage = "images/LvlUps/GrandDaughter.png"
                 },
                 new UpgradeInfo
                 {
@@ -67,7 +73,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Baker",
                     BaseValue = 260,
                     BasePrice = 130_000,
-                    Image = "images/Upgrades/Baker.png"
+                    Image = "images/Upgrades/Baker.png",
+                    LvlImage = "images/LvlUps/Baker.png"
                 },
                 new UpgradeInfo
                 {
@@ -75,7 +82,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Granny Boss",
                     BaseValue = 1400,
                     BasePrice = 1_400_000,
-                    Image = "images/Upgrades/GrannyBoss.png"
+                    Image = "images/Upgrades/GrannyBoss.png",
+                    LvlImage = "images/LvlUps/GrannyBoss.png"
                 },
                 new UpgradeInfo
                 {
@@ -83,7 +91,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Buns Stall",
                     BaseValue = 7800,
                     BasePrice = 20_000_000,
-                    Image = "images/Upgrades/BunsStall.png"
+                    Image = "images/Upgrades/BunsStall.png",
+                    LvlImage = "images/LvlUps/BunsStall.png"
                 },
                 new UpgradeInfo
                 {
@@ -91,7 +100,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Bakery",
                     BaseValue = 44_000,
                     BasePrice = 330_000_000,
-                    Image = "images/Upgrades/Bakery.png"
+                    Image = "images/Upgrades/Bakery.png",
+                    LvlImage = "images/LvlUps/Bakery.png"
                 },
                 new UpgradeInfo
                 {
@@ -99,7 +109,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Granny's Restaurant",
                     BaseValue = 260_000,
                     BasePrice = 5_100_000_000,
-                    Image = "images/Upgrades/GrannysRestaurant.png"
+                    Image = "images/Upgrades/GrannysRestaurant.png",
+                    LvlImage = "images/LvlUps/GrannysRestaurant.png"
                 },
                 new UpgradeInfo
                 {
@@ -107,7 +118,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Cookie Franchise",
                     BaseValue = 1_600_000,
                     BasePrice = 75_000_000_000,
-                    Image = "images/Upgrades/CookieFranchise.png"
+                    Image = "images/Upgrades/CookieFranchise.png",
+                    LvlImage = "images/LvlUps/CookieFranchise.png"
                 },
                 new UpgradeInfo
                 {
@@ -115,7 +127,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Factory",
                     BaseValue = 10_000_000,
                     BasePrice = 1_000_000_000_000,
-                    Image = "images/Upgrades/Factory.png"
+                    Image = "images/Upgrades/Factory.png",
+                    LvlImage = "images/LvlUps/Factory.png"
                 },
                 new UpgradeInfo
                 {
@@ -123,7 +136,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Worldwide Shipping",
                     BaseValue = 65_000_000,
                     BasePrice = 14_000_000_000_000,
-                    Image = "images/Upgrades/WorldwideShipping.png"
+                    Image = "images/Upgrades/WorldwideShipping.png",
+                    LvlImage = "images/LvlUps/WorldwideShipping.png"
                 },
                 new UpgradeInfo
                 {
@@ -131,7 +145,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Space Devilery",
                     BaseValue = 430_000_000,
                     BasePrice = 170_000_000_000_000,
-                    Image = "images/Upgrades/SpaceDevilery.png"
+                    Image = "images/Upgrades/SpaceDevilery.png",
+                    LvlImage = "images/LvlUps/SpaceDevilery.png"
                 },
                 new UpgradeInfo
                 {
@@ -139,7 +154,8 @@ namespace CookieData.Entities.Configuration
                     Name = "Time Machine",
                     BaseValue = 2_900_000_000,
                     BasePrice = 2_100_000_000_000_000,
-                    Image = "images/Upgrades/TimeMachine.png"
+                    Image = "images/Upgrades/TimeMachine.png",
+                    LvlImage = "images/LvlUps/TimeMachine.png"
                 },
                 new UpgradeInfo
                 {
@@ -147,7 +163,8 @@ namespace CookieData.Entities.Configuration
                     Name = "!Gamer || Cheater!",
                     BaseValue = 21_000_000_000,
                     BasePrice = 26_000_000_000_000_000,
-                    Image = "images/Upgrades/GamerCheater.png"
+                    Image = "images/Upgrades/GamerCheater.png",
+                    LvlImage = "images/LvlUps/GamerCheater.png"
                 },
             };
 

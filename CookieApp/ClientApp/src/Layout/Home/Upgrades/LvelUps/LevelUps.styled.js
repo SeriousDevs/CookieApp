@@ -5,6 +5,6 @@ export const LevelUpList = styled.ul`
   flex-wrap: wrap;
   justify-content: stretch;
   gap: 1px;
-  padding: 0;
+  padding: 5px 5px 5px 0;
   margin: 0;
 `;

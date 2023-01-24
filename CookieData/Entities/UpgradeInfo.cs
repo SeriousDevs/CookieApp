@@ -8,6 +8,7 @@ namespace CookieData.Entities
         public double BaseValue { get; set; }
         public long BasePrice { get; set; }
         public string Image { get; set; } = null!;
+        public string LvlImage { get; set; } = null!;
         [JsonIgnore]
         public IEnumerable<Upgrade>? Upgrades { get; set; }
         [JsonIgnore]

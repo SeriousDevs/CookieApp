@@ -17,6 +17,7 @@ namespace CookieData.Mapper
                     BasePrice = um.BasePrice,
                     BaseValue = um.BaseValue,
                     Image = um.Image,
+                    LvlImage = um.LvlImage,
                 }))
                 .ForMember(u => u.Level, opt => opt.MapFrom(um => um.Level))
                 .ForMember(u => u.Amount, opt => opt.MapFrom(um => um.Amount))
@@ -30,6 +31,7 @@ namespace CookieData.Mapper
                 .ForMember(um => um.Level, opt => opt.MapFrom(u => u.Level))
                 .ForMember(um => um.Amount, opt => opt.MapFrom(u => u.Amount))
                 .ForMember(um => um.Image, opt => opt.MapFrom(u => u.UpgradeInfo.Image))
+                .ForMember(um => um.LvlImage, opt => opt.MapFrom(u => u.UpgradeInfo.LvlImage))
                 .ForMember(um => um.GameAccountId, opt => opt.MapFrom(u => u.GameAccountId))
                 .ForMember(um => um.UpgradeInfoId, opt => opt.MapFrom(u => u.UpgradeInfo.Id));
         }

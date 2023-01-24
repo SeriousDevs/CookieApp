@@ -12,7 +12,7 @@ namespace CookieBL.Helper
         public static string GenerateJwtToken(this IConfiguration configuration, User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration["Secret"]);
+            var key = Encoding.ASCII.GetBytes(configuration["Secret"] !);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

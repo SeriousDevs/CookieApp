@@ -5,10 +5,7 @@ import { ProfileImage, ProfileStory, UserImageBlock } from "./UserStory.styled";
 export const UserStory = () => {
   const userStory = useSelector(getUserStory);
   if (!userStory.image) return;
-  const {
-    story = "My life was not the best, and I decided that it was my time to change it all",
-    image = "images/Profile/1.png",
-  } = userStory;
+  const { story, image } = userStory;
 
   return (
     <UserImageBlock>
