@@ -22,6 +22,16 @@ export const Label = styled.label`
   color: ${(props) => (props?.passwordInvalid ? "red" : "black")};
 `;
 
+export const LabelCheckbox = styled.label`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 26px;
+  gap: 10px;
+  font-weight: 400;
+  width: 150px;
+`;
+
 export const Button = styled.button`
   display: flex;
   justify-content: center;

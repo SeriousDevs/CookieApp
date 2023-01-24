@@ -9,14 +9,15 @@ import {
   Container,
   ButtonBlock,
   RedirectLink,
+  LabelCheckbox,
 } from "common/common.styled";
-import { toast } from "react-toastify";
 
 export const LoginForm = ({ isLoading }) => {
   const dispatch = useDispatch();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordInvalid, setPasswordInvalid] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === "password") {
@@ -55,7 +56,6 @@ export const LoginForm = ({ isLoading }) => {
     };
 
     dispatch(logIn(formData));
-    // setLogin('');
     setPassword("");
   };
 
@@ -78,7 +78,7 @@ export const LoginForm = ({ isLoading }) => {
         <Label passwordInvalid={passwordInvalid}>
           Password
           <Input
-            type="password"
+            type={`${checked ? "text" : "password"}`}
             name="password"
             value={password}
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -91,6 +91,14 @@ export const LoginForm = ({ isLoading }) => {
             required={true}
           />
         </Label>
+        <LabelCheckbox>
+          <input
+            type="checkbox"
+            name="check"
+            onChange={() => setChecked((p) => !p)}
+          />
+          Check password
+        </LabelCheckbox>
         <ButtonBlock>
           <Button type="submit" disabled={isLoading || !login || pass}>
             LogIn

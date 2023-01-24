@@ -26,5 +26,4 @@ export const ClickedComponent = styled.p`
   z-index: 2;
 
   user-drag: none;
-  user-select: none;
 `;

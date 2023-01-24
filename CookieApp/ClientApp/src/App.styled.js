@@ -15,6 +15,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  user-select: none;
 }
 
   body {

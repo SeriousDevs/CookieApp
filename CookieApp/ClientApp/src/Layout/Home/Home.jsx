@@ -1,6 +1,6 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
 import { useEffect, useState } from "react";
-import { getUsersList, setGameAcc} from "redux/gameAccSlice";
+import { getUsersList, setGameAcc } from "redux/gameAccSlice";
 import Dashboard from "./Dashboard/Dashboard";
 import Main from "./Main/Main";
 import Upgrades from "./Upgrades/Upgrades";
@@ -13,23 +13,23 @@ const Home = () => {
   const [counter, setCounter] = useState(0);
   const [upgradesCounter, setUpgradesCounter] = useState(0);
 
-  const token = localStorage.getItem('token');
-  
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
     setInterval(() => {
-      setCounter(p=> p +1)
+      setCounter((p) => p + 1);
     }, 30000);
     setInterval(() => {
-      setUpgradesCounter(p=> p +1)
+      setUpgradesCounter((p) => p + 1);
     }, 1000);
   }, []);
-  
+
   useEffect(() => {
     if (counter === 0) return;
     dispatch(saveAcc(acc));
     dispatch(getUsersList());
   }, [counter]);
-  
+
   useEffect(() => {
     if (!token) return;
     dispatch(setGameAcc());
@@ -37,13 +37,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <Dashboard />
       <Main />
       <Upgrades counter={upgradesCounter} />
     </div>
-  )
-}
+  );
+};
 
-export default WithAuthRedirect(Home, '/login');
+export default WithAuthRedirect(Home, "/login");
 // export default Home;
