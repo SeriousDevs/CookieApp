@@ -64,7 +64,7 @@ namespace CookieApp.Controllers
 
         [Authorize]
         [HttpGet("story")]
-        public async Task<IActionResult> UpdateUpgrade()
+        public async Task<IActionResult> GetStory()
         {
             if (HttpContext.Items["User"] is User user)
             {

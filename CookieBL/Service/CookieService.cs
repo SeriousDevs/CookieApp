@@ -27,6 +27,8 @@ namespace CookieBL.Service
         {
             GameAccount gameAccount = await _accountsRepository.GetEntityByIdAsync(id);
             GameAccountModel gameAccountModel = _mapper.Map<GameAccountModel>(gameAccount);
+            FairyTail story = await _storyRepository.GetByNetworth(gameAccount.Networth);
+            gameAccountModel.Story = _mapper.Map<FairyTailModel>(story);
 
             return gameAccountModel;
         }

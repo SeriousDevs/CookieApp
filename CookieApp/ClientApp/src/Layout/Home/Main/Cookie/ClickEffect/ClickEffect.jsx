@@ -10,7 +10,6 @@ export const ClickEffect = ({ obj, value }) => {
       setUnmountMe(false);
     }, 1000);
   }, []);
-  console.log(obj);
   return (
     <>
       {unmountMe && (

@@ -1,6 +1,6 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
 import { useEffect, useState } from "react";
-import { getUsersList, setGameAcc } from "redux/gameAccSlice";
+import { getUsersList, getUserTale, setGameAcc } from "redux/gameAccSlice";
 import Dashboard from "./Dashboard/Dashboard";
 import Main from "./Main/Main";
 import Upgrades from "./Upgrades/Upgrades";
@@ -28,6 +28,7 @@ const Home = () => {
     if (counter === 0) return;
     dispatch(saveAcc(acc));
     dispatch(getUsersList());
+    dispatch(getUserTale());
   }, [counter]);
 
   useEffect(() => {

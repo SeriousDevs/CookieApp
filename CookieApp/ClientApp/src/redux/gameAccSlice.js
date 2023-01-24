@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getGameAcc, saveAccRequest } from "services/api";
+import {
+  getAllUsers,
+  getGameAcc,
+  getStory,
+  saveAccRequest,
+} from "services/api";
 // import { toast } from "react-toastify";
 
 export const setGameAcc = createAsyncThunk(
@@ -38,6 +43,17 @@ export const getUsersList = createAsyncThunk(
     try {
       const users = await getAllUsers();
       return users;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+export const getUserTale = createAsyncThunk(
+  "user/getUserTale",
+  async (_, { rejectWithValue }) => {
+    try {
+      const story = await getStory();
+      return story;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -149,6 +165,7 @@ export const gameAccSlice = createSlice({
     });
     builder.addCase(setGameAcc.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+      console.log(payload);
       if (!payload) return;
 
       state.clicks = payload.clicks;
@@ -190,6 +207,22 @@ export const gameAccSlice = createSlice({
       state.usersList = payload;
     });
     builder.addCase(getUsersList.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload.message;
+    });
+    //==================GetUserTale==================
+    builder.addCase(getUserTale.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(getUserTale.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      console.log(payload);
+      if (!payload) return;
+
+      state.fairyTail = payload;
+    });
+    builder.addCase(getUserTale.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload.message;
     });
