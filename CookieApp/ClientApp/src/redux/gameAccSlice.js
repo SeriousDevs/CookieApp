@@ -20,6 +20,7 @@ export const saveAcc = createAsyncThunk(
     try {
       const obj = { ...acc };
       delete obj.cookiesPerSec;
+      delete obj.fairyTail;
       delete obj.usersList;
       delete obj.isLoading;
       delete obj.error;
@@ -74,6 +75,11 @@ export const gameAccSlice = createSlice({
     cookiesPerSec: 0,
     clicks: 0,
     cookies: 0,
+    fairyTail: {
+      image: "images/Profile/1.png",
+      story:
+        "My life was not the best, and I decided that it was my time to change it all",
+    },
     id: null,
     networth: 0,
     upgrades: initialUpgrades,
@@ -89,7 +95,6 @@ export const gameAccSlice = createSlice({
     },
 
     upgradeTick(state, { payload }) {
-      // state.cookies = payload + state.cookies;
       state.cookies = Math.round((payload + state.cookies) * 10) / 10;
       state.networth = Math.round((payload + state.networth) * 10) / 10;
       state.cookiesPerSec =
@@ -144,7 +149,6 @@ export const gameAccSlice = createSlice({
     });
     builder.addCase(setGameAcc.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-
       if (!payload) return;
 
       state.clicks = payload.clicks;
@@ -153,6 +157,7 @@ export const gameAccSlice = createSlice({
       state.upgrades = payload.upgrades;
       state.networth = payload.networth;
       state.clickUpgrade = payload.clickUpgrade;
+      state.fairyTail = payload.fairyTail;
     });
     builder.addCase(setGameAcc.rejected, (state, { payload }) => {
       state.isLoading = false;
@@ -211,3 +216,4 @@ export const getUserList = (state) => state.gameAcc.usersList;
 export const getNetWorth = (state) => state.gameAcc.networth;
 export const getClickUpgr = (state) => state.gameAcc.clickUpgrade;
 export const getPerSec = (state) => state.gameAcc.cookiesPerSec;
+export const getUserStory = (state) => state.gameAcc.fairyTail;
