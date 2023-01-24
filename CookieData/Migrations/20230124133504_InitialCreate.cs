@@ -13,6 +13,21 @@ namespace CookieData.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "FairyTail",
+                columns: table => new
+                {
+                    FairyTailId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Image = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Story = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Trigger = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FairyTail", x => x.FairyTailId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GameAccount",
                 columns: table => new
                 {
@@ -121,6 +136,28 @@ namespace CookieData.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "FairyTail",
+                columns: new[] { "FairyTailId", "Image", "Story", "Trigger" },
+                values: new object[,]
+                {
+                    { 1, "images/Profile/1.png", "My life was not the best, and I decided that it was my time to change it all...", 0.0 },
+                    { 2, "images/Profile/2.png", "And that's how I became a simple cook...", 100.0 },
+                    { 3, "images/Profile/3.png", "It was very hard for me, and I was sick of this life, until one moment...", 2000.0 },
+                    { 4, "images/Profile/4.png", "I met her, my ray of sunshine in this gloomy life.", 20000.0 },
+                    { 5, "images/Profile/5.png", "I continued to work in the bakery, but I realized that I had someone else to live for.", 200000.0 },
+                    { 6, "images/Profile/6.png", "And unexpectedly, it turned out that her grandmother is the owner of this place.", 2500000.0 },
+                    { 7, "images/Profile/7.png", "Business was going well and grandmother decided to leave the bakery to us, but why? We didn't understand...", 45000000.0 },
+                    { 8, "images/Profile/8.png", "We didn't lose our cool and made this place very successful and attractive to everyone who passes by.", 1000000000.0 },
+                    { 9, "images/Profile/9.png", "Once grandmother came to visit us, and it turned out that she had opened a restaurant, and I became her head chef.", 12000000000.0 },
+                    { 10, "images/Profile/10.png", "Then I realized that I had to move on. And I opened a franchise", 201000000000.0 },
+                    { 11, "images/Profile/11.png", "There is no limit to progress, I need to build a factory", 3000000000000.0 },
+                    { 12, "images/Profile/12.png", "Since I have factories, I realized that I could do business all over the world.", 40000000000000.0 },
+                    { 13, "images/Profile/13.png", "Having done business all over the planet, you can go further, and I decided that it would be space.", 400000000000000.0 },
+                    { 14, "images/Profile/14.png", "There's more. And I decided to build my empire in the past so that people would learn what cookies are from me.", 5100000000000000.0 },
+                    { 15, "images/Profile/15.png", "Well, we don't believe that you got here on your own, so we just congratulate you. And if you did it all on your own, go ahead and write here: vut1111111@gmail.com or allonsy053@gmail.com, and share your experience and how you like our game. Have you checked out our RXY and ALG currencies?", 77000000000000000.0 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "UpgradeInfo",
                 columns: new[] { "UpgradeInfoId", "BasePrice", "BaseValue", "Image", "Name" },
                 values: new object[,]
@@ -176,6 +213,9 @@ namespace CookieData.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ClickUpgrade");
+
+            migrationBuilder.DropTable(
+                name: "FairyTail");
 
             migrationBuilder.DropTable(
                 name: "Upgrade");

@@ -4,7 +4,7 @@ using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
-namespace CookieBL.Repository
+namespace CookieData.Repository
 {
     public class UpgradeRepository : IRepository<Upgrade>
     {

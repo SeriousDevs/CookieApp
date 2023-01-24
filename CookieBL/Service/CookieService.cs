@@ -3,6 +3,8 @@ using CookieData.IRepository.Interfaces;
 using CookieBL.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
+using CookieData.Repository.Interfaces;
+using Microsoft.CodeAnalysis;
 
 namespace CookieBL.Service
 {
@@ -10,12 +12,14 @@ namespace CookieBL.Service
     {
         private readonly IRepository<GameAccount> _accountsRepository;
         private readonly IRepository<Upgrade> _upgradesRepository;
+        private readonly IStoryRepository _storyRepository;
         private readonly IMapper _mapper;
 
-        public CookieService(IRepository<GameAccount> accountsRepository, IRepository<Upgrade> upgradesRepository, IMapper mapper)
+        public CookieService(IRepository<GameAccount> accountsRepository, IRepository<Upgrade> upgradesRepository, IStoryRepository storyRepository, IMapper mapper)
         {
             _accountsRepository = accountsRepository;
             _upgradesRepository = upgradesRepository;
+            _storyRepository = storyRepository;
             _mapper = mapper;
         }
 
@@ -23,6 +27,8 @@ namespace CookieBL.Service
         {
             GameAccount gameAccount = await _accountsRepository.GetEntityByIdAsync(id);
             GameAccountModel gameAccountModel = _mapper.Map<GameAccountModel>(gameAccount);
+            FairyTail story = await _storyRepository.GetByNetworth(gameAccount.Networth);
+            gameAccountModel.FairyTail = _mapper.Map<FairyTailModel>(story);
 
             return gameAccountModel;
         }
