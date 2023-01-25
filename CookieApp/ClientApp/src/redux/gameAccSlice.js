@@ -165,7 +165,7 @@ export const gameAccSlice = createSlice({
     });
     builder.addCase(setGameAcc.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
+
       if (!payload) return;
 
       state.clicks = payload.clicks;
@@ -217,7 +217,7 @@ export const gameAccSlice = createSlice({
     });
     builder.addCase(getUserTale.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      console.log(payload);
+
       if (!payload) return;
 
       state.fairyTail = payload;

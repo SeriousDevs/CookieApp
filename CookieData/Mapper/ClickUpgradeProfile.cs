@@ -17,6 +17,7 @@ namespace CookieData.Mapper
                    BasePrice = um.BasePrice,
                    BaseValue = um.BaseValue,
                    Image = um.Image,
+                   LvlImage = "images/LvlUps/Clicker.png"
                }))
                .ForMember(u => u.Level, opt => opt.MapFrom(um => um.Level))
                .ForMember(u => u.GameAccountId, opt => opt.MapFrom(um => um.GameAccountId));
