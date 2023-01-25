@@ -51,10 +51,13 @@ const LvlUpListItem = ({ onHover, upgrade }) => {
   return (
     <>
       <LevelUpListItem ref={ref}>
-        <LvlUpButton condition={condition} onClick={handleOnClick}>
+        <LvlUpButton condition={condition}>
           <LvlUpImg src={lvlImage} alt={name} />
         </LvlUpButton>
-        <BackgroundBlock condition={condition}></BackgroundBlock>
+        <BackgroundBlock
+          onClick={handleOnClick}
+          condition={condition}
+        ></BackgroundBlock>
       </LevelUpListItem>
     </>
   );
