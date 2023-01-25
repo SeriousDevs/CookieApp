@@ -67,7 +67,7 @@ const Cookie = () => {
         <PerSecond> per second: {seriousNumbers(perSec)} </PerSecond>
 
         <CookieButton
-          onMouseDown={handleClicker}
+          onClick={handleClicker}
           className={shake ? `shake` : null}
         >
           <CookieLight></CookieLight>

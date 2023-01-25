@@ -97,7 +97,7 @@ export const LoginForm = ({ isLoading }) => {
             name="check"
             onChange={() => setChecked((p) => !p)}
           />
-          Check password
+          Show password
         </LabelCheckbox>
         <ButtonBlock>
           <Button type="submit" disabled={isLoading || !login || pass}>
