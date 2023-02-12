@@ -1,8 +1,8 @@
-﻿using CookieData.Exceptions;
-using CookieData.IRepository.Interfaces;
+﻿using CookieData.IRepository.Interfaces;
 using CookieData.Context;
 using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Exceptions;
 
 namespace CookieData.IRepository
 {

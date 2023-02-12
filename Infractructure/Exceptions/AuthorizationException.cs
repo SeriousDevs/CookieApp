@@ -1,4 +1,4 @@
-﻿namespace CookieData.Exceptions
+﻿namespace Infrastructure.Exceptions
 {
     public class AuthorizationException : Exception
     {
