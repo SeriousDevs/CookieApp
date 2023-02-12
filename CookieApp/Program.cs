@@ -9,27 +9,29 @@ using CookieData.Entities;
 using CookieData.Repository;
 using Microsoft.AspNetCore.Identity;
 using CookieData.Repository.Interfaces;
+using Infrastructure.Services.Interfaces;
+using Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSwaggerGen();
-string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<CookieContext>(options => options.UseSqlServer(connection));
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IStoryRepository, StoryRepository>();
-builder.Services.AddScoped<IRepository<GameAccount>, GameAccountRepository>();
-builder.Services.AddScoped<IRepository<Upgrade>, UpgradeRepository>();
-
-builder.Services.AddScoped<IPasswordHasher<User>, BCryptPasswordHasher<User>>();
-
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ICookieService, CookieService>();
-
-builder.Services.AddAutoMapper(typeof(Program));
-
-builder.Services.AddCors();
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddCors();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IStoryRepository, StoryRepository>();
+builder.Services.AddTransient<IRepository<GameAccount>, GameAccountRepository>();
+builder.Services.AddTransient<IRepository<Upgrade>, UpgradeRepository>();
+
+builder.Services.AddTransient<IPasswordHasher<User>, BCryptPasswordHasher<User>>();
+
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ICookieService, CookieService>();
+
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContextFactory<CookieContext>(options => options.UseSqlServer(connection));
+builder.Services.AddScoped<IDbContextWrapper<CookieContext>, DbContextWrapper<CookieContext>>();
 
 var app = builder.Build();
 

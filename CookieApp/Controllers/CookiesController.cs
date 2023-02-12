@@ -67,7 +67,7 @@ namespace CookieApp.Controllers
         {
             if (HttpContext.Items["User"] is User user)
             {
-                FairyTailModel story = await _cookieService.GetStory(user.GameAccountId);
+                FairyTailModel story = await _cookieService.GetStoryAsync(user.GameAccountId);
                 return Ok(story);
             }
 
