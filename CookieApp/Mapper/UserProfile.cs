@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CookieApp.Model.Responses;
 using CookieData.Entities;
 using CookieData.Model;
 

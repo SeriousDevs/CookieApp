@@ -1,8 +1,7 @@
-﻿using CookieBL.Helper;
-using CookieBL.Service.Interfaces;
+﻿using CookieApp.Helpers;
+using CookieApp.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
-using CookieData.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CookieApp.Controllers

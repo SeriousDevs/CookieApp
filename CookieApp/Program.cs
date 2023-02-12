@@ -1,8 +1,8 @@
-using CookieBL.Helper;
+using CookieApp.Helpers;
 using CookieData.IRepository.Interfaces;
 using CookieData.IRepository;
-using CookieBL.Service.Interfaces;
-using CookieBL.Service;
+using CookieApp.Service.Interfaces;
+using CookieApp.Service;
 using CookieData.Mapper;
 using Microsoft.EntityFrameworkCore;
 using CookieData.Context;

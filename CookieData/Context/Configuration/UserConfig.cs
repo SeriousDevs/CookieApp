@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CookieData.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CookieData.Entities.Configuration
+namespace CookieData.Context.Configuration
 {
     public class UserConfig : IEntityTypeConfiguration<User>
     {

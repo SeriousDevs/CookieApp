@@ -1,5 +1,5 @@
 ﻿using CookieData.Entities;
-using CookieData.Entities.Configuration;
+using CookieData.Context.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace CookieData.Context

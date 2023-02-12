@@ -1,6 +1,6 @@
 ﻿using CookieData.Entities;
 
-namespace CookieData.Model
+namespace CookieApp.Model.Responses
 {
     public class AuthenticateResponse
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CookieData.Model
+namespace CookieApp.Model.Requests
 {
     public class AuthenticateRequest
     {
