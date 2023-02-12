@@ -1,4 +1,5 @@
-﻿using CookieData.Entities;
+﻿#pragma warning disable CS8618
+using CookieData.Entities;
 using CookieData.Context.Configuration;
 using Microsoft.EntityFrameworkCore;
 
