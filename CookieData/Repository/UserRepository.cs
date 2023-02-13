@@ -1,101 +1,101 @@
-﻿using CookieData.IRepository.Interfaces;
+﻿using CookieData.Repository.Interfaces;
 using CookieData.Context;
-using CookieData.Entities;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Exceptions;
+using CookieData.Entities;
+using Infrastructure.Services.Interfaces;
 
-namespace CookieData.IRepository
+namespace CookieData.Repository;
+
+public class UserRepository : IUserRepository
 {
-    public class UserRepository : IUserRepository
+    private readonly CookieContext _context;
+    public UserRepository(IDbContextWrapper<CookieContext> contextFactory)
     {
-        private readonly CookieContext _context;
-        public UserRepository(CookieContext context)
+        _context = contextFactory.DbContext;
+    }
+
+    public async Task AddUserAsync(User user)
+    {
+        bool exists = await ExistWithLoginAsync(user.Login);
+
+        if (exists)
         {
-            _context = context;
+            throw new AuthorizationException("The user with same Login is also created!");
         }
 
-        public async Task AddUserAsync(User user)
+        exists = await ExistWithEmailAsync(user.Email);
+
+        if (exists)
         {
-            bool exists = await ExistWithLoginAsync(user.Login);
+            throw new AuthorizationException("The user with same Email is also created!");
+        }
 
-            if (exists)
-            {
-                throw new AuthorizationException("The user with same Login is also created!");
-            }
+        await _context.AddAsync(user);
+        _context.SaveChanges();
+    }
 
-            exists = await ExistWithEmailAsync(user.Email);
+    public async Task<IEnumerable<User>> GetAllUsersAsync()
+    {
+        IEnumerable<User> users = await _context.Users
+                .Include(u => u.GameAccount)
+                .AsNoTracking()
+                .ToListAsync();
 
-            if (exists)
-            {
-                throw new AuthorizationException("The user with same Email is also created!");
-            }
+        return users;
+    }
 
-            await _context.AddAsync(user);
+    public async Task<User> GetUserByLoginAsync(string login)
+    {
+        User? user = await _context.Users
+            .Include(u => u.GameAccount)
+            .ThenInclude(ga => ga.Upgrades)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Login == login);
+
+        return user!;
+    }
+
+    public async Task<User> GetUserByIdAsync(int id)
+    {
+        User? user = await _context.Users
+            .Include(u => u.GameAccount)
+            .ThenInclude(ga => ga.Upgrades)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Id == id);
+
+        return user!;
+    }
+
+    public async Task RemoveUserAsync(int id)
+    {
+        User? user = await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == id);
+
+        if (user is not null)
+        {
+            _context.Users.Remove(user);
             _context.SaveChanges();
         }
+    }
 
-        public async Task<IEnumerable<User>> GetAllUsersAsync()
-        {
-            IEnumerable<User> users = await _context.Users
-                    .Include(u => u.GameAccount)
-                    .AsNoTracking()
-                    .ToListAsync();
+    public async Task UpdateUserAsync(User user)
+    {
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+    }
 
-            return users;
-        }
+    private async Task<bool> ExistWithLoginAsync(string login)
+    {
+        User? user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login);
+        bool res = user is not null;
+        return res;
+    }
 
-        public async Task<User> GetUserByLoginAsync(string login)
-        {
-            User? user = await _context.Users
-                .Include(u => u.GameAccount)
-                .ThenInclude(ga => ga.Upgrades)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Login == login);
-
-            return user!;
-        }
-
-        public async Task<User> GetUserByIdAsync(int id)
-        {
-            User? user = await _context.Users
-                .Include(u => u.GameAccount)
-                .ThenInclude(ga => ga.Upgrades)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.Id == id);
-
-            return user!;
-        }
-
-        public async Task RemoveUserAsync(int id)
-        {
-            User? user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == id);
-
-            if (user is not null)
-            {
-                _context.Users.Remove(user);
-                _context.SaveChanges();
-            }
-        }
-
-        public async Task UpdateUserAsync(User user)
-        {
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
-        }
-
-        private async Task<bool> ExistWithLoginAsync(string login)
-        {
-            User? user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login);
-            bool res = user is not null;
-            return res;
-        }
-
-        private async Task<bool> ExistWithEmailAsync(string email)
-        {
-            User? user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-            bool res = user is not null;
-            return res;
-        }
+    private async Task<bool> ExistWithEmailAsync(string email)
+    {
+        User? user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        bool res = user is not null;
+        return res;
     }
 }

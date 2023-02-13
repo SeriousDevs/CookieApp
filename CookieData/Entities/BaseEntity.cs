@@ -1,9 +1,8 @@
 ﻿using CookieData.Entities.Interfaces;
 
-namespace CookieData.Entities
+namespace CookieData.Entities;
+
+public class BaseEntity : IEntity
 {
-    public class BaseEntity : IEntity
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

@@ -1,9 +1,8 @@
 ﻿using CookieData.Entities;
 
-namespace CookieData.Repository.Interfaces
+namespace CookieData.Repository.Interfaces;
+
+public interface IStoryRepository
 {
-    public interface IStoryRepository
-    {
-        Task<FairyTail> GetByNetworth(double networth);
-    }
+    Task<FairyTail> GetByNetworth(double networth);
 }

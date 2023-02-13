@@ -1,16 +1,14 @@
-using CookieApp.Helpers;
-using CookieData.IRepository.Interfaces;
-using CookieData.IRepository;
-using CookieApp.Service.Interfaces;
-using CookieApp.Service;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using CookieApp.Service;
+using CookieApp.Service.Interfaces;
+using CookieApp.Helpers;
 using CookieData.Context;
 using CookieData.Entities;
 using CookieData.Repository;
-using Microsoft.AspNetCore.Identity;
 using CookieData.Repository.Interfaces;
-using Infrastructure.Services.Interfaces;
 using Infrastructure.Services;
+using Infrastructure.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,4 +62,24 @@ app.MapControllerRoute(
 
 app.MapFallbackToFile("index.html");
 
+CreateDbIfNotExists(app);
 app.Run();
+
+void CreateDbIfNotExists(IHost host)
+{
+    using (var scope = host.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var context = services.GetRequiredService<CookieContext>();
+
+            DbInitializer.Initialize(context).Wait();
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred creating the DB.");
+        }
+    }
+}
