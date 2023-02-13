@@ -1,14 +1,13 @@
 ﻿using CookieData.Entities;
 
-namespace CookieData.IRepository.Interfaces
+namespace CookieData.Repository.Interfaces;
+
+public interface IUserRepository
 {
-    public interface IUserRepository
-    {
-        Task<IEnumerable<User>> GetAllUsersAsync();
-        Task<User> GetUserByIdAsync(int id);
-        Task<User> GetUserByLoginAsync(string login);
-        Task AddUserAsync(User user);
-        Task UpdateUserAsync(User user);
-        Task RemoveUserAsync(int id);
-    }
+    Task<IEnumerable<User>> GetAllUsersAsync();
+    Task<User> GetUserByIdAsync(int id);
+    Task<User> GetUserByLoginAsync(string login);
+    Task AddUserAsync(User user);
+    Task UpdateUserAsync(User user);
+    Task RemoveUserAsync(int id);
 }

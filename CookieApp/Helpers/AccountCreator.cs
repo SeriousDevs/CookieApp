@@ -16,18 +16,21 @@ namespace CookieApp.Helpers
                     UpgradeInfoId = i,
                     Level = 1,
                     Amount = 0,
+                    CurrentValue = "0"
                 });
             }
 
             var account = new GameAccount()
             {
-                Cookies = 0,
-                Clicks = 0,
+                Networth = "0",
+                Cookies = "0",
+                Clicks = "0",
                 Upgrades = upgrades,
                 ClickUpgrade = new ClickUpgrade()
                 {
                     UpgradeInfoId = 1,
                     Level = 1,
+                    CurrentValue = "0"
                 }
             };
 

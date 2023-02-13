@@ -1,12 +1,11 @@
 ﻿using CookieData.Entities;
 
-namespace CookieData.IRepository.Interfaces
+namespace CookieData.Repository.Interfaces;
+
+public interface IRepository<TEntity>
+    where TEntity : BaseEntity
 {
-    public interface IRepository<TEntity>
-        where TEntity : BaseEntity
-    {
-        Task<IEnumerable<TEntity>> GetAllEntitiesAsync();
-        Task<TEntity> GetEntityByIdAsync(int id);
-        Task UpdateEntityAsync(TEntity entity);
-    }
+    Task<IEnumerable<TEntity>> GetAllEntitiesAsync();
+    Task<TEntity> GetEntityByIdAsync(int id);
+    Task UpdateEntityAsync(TEntity entity);
 }

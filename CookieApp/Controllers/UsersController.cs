@@ -1,10 +1,10 @@
 ﻿using CookieApp.Helpers;
 using CookieApp.Service.Interfaces;
-using CookieData.Entities;
 using CookieData.Model;
 using Microsoft.AspNetCore.Mvc;
 using CookieApp.Model.Requests;
 using Infrastructure.Exceptions;
+using CookieData.Entities;
 
 namespace CookieApp.Controllers
 {
