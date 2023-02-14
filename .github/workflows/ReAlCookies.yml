@@ -2,7 +2,7 @@ name: Build and deploy .NET Core application to Web App ReAlCookies
 on:
   push:
     branches:
-    - dev
+    - main
 env:
   AZURE_WEBAPP_NAME: ReAlCookies
   AZURE_WEBAPP_PACKAGE_PATH: CookieApp\publish
@@ -44,5 +44,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.ReAlCookies_227F }}
+        publish-profile: ${{ secrets.ReAlCookies_DE86 }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
