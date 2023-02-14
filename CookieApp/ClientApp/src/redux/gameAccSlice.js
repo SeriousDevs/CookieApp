@@ -5,6 +5,7 @@ import {
   getStory,
   saveAccRequest,
 } from "services/api";
+import { fromServerFix, toServerFix } from "services/reworkMath";
 // import { toast } from "react-toastify";
 
 export const setGameAcc = createAsyncThunk(
@@ -12,7 +13,8 @@ export const setGameAcc = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const gameAcc = await getGameAcc();
-      return gameAcc;
+      const reworkedData = fromServerFix(gameAcc);
+      return reworkedData;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -29,7 +31,8 @@ export const saveAcc = createAsyncThunk(
       delete obj.usersList;
       delete obj.isLoading;
       delete obj.error;
-      const gameAcc = await saveAccRequest(obj);
+      const reworkedData = toServerFix(obj);
+      const gameAcc = await saveAccRequest(reworkedData);
       return gameAcc;
     } catch (error) {
       return rejectWithValue(error);
@@ -165,7 +168,6 @@ export const gameAccSlice = createSlice({
     });
     builder.addCase(setGameAcc.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-
       if (!payload) return;
 
       state.clicks = payload.clicks;
