@@ -19,7 +19,7 @@ const ClickUpgrade = () => {
   const dispatch = useDispatch();
   const clickInfo = useSelector(getClickUpgr);
   const cookies = useSelector(getCookies);
-  const { level, basePrice, image, baseValue, name } = clickInfo;
+  const { level, basePrice, image, name } = clickInfo;
 
   let upgrPrice = basePrice;
   for (let i = 1; i < level; i++) {
@@ -35,7 +35,7 @@ const ClickUpgrade = () => {
     <Tooltip
       placement="left"
       destroyTooltipOnHide={true}
-      overlay={<ClickHover value={baseValue} />}
+      overlay={<ClickHover value={2 ** (level - 1)} />}
     >
       <ClickUpgradeItem onClick={() => handleClick()}>
         <AdditionalWrapper>
