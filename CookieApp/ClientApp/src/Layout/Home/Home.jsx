@@ -26,9 +26,11 @@ const Home = () => {
 
   useEffect(() => {
     if (counter === 0) return;
+      setTimeout(()=>{
+       dispatch(getUsersList());
+       dispatch(getUserTale());
+      }, 1000);
     dispatch(saveAcc(acc));
-    dispatch(getUsersList());
-    dispatch(getUserTale());
   }, [counter]);
 
   useEffect(() => {
