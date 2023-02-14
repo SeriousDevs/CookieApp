@@ -36,7 +36,7 @@ const Cookie = () => {
 
   const handleClicker = (e) => {
     clearTimeout(emotion);
-    if (!e.clientX && !e.client) return;
+    if (!e.clientX && !e.clientY) return;
 
     setCookieEmotion(true);
     setClicked(true);
