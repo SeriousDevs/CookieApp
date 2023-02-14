@@ -10,6 +10,8 @@ using CookieData.Repository.Interfaces;
 using Infrastructure.Services;
 using Infrastructure.Services.Interfaces;
 
+var configuration = GetConfiguration();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -27,8 +29,8 @@ builder.Services.AddTransient<IPasswordHasher<User>, BCryptPasswordHasher<User>>
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICookieService, CookieService>();
 
-string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContextFactory<CookieContext>(options => options.UseSqlServer(connection));
+string connectionString = configuration["ConnectionString"] !;
+builder.Services.AddDbContextFactory<CookieContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddScoped<IDbContextWrapper<CookieContext>, DbContextWrapper<CookieContext>>();
 
 var app = builder.Build();
@@ -64,6 +66,16 @@ app.MapFallbackToFile("index.html");
 
 CreateDbIfNotExists(app);
 app.Run();
+
+static IConfiguration GetConfiguration()
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("connectionString.json", optional: false, reloadOnChange: true)
+        .AddEnvironmentVariables();
+
+    return builder.Build();
+}
 
 void CreateDbIfNotExists(IHost host)
 {
