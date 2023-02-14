@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookieApp", "CookieApp\Cook
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookieData", "CookieData\CookieData.csproj", "{5EF48188-C63B-43DD-A221-E41E275511EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infractructure\Infrastructure.csproj", "{A6446851-914C-4D9B-AF7A-3C7E560B5CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infractructure\Infrastructure.csproj", "{A6446851-914C-4D9B-AF7A-3C7E560B5CE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
