@@ -28,6 +28,7 @@ export const CookieButton = styled.button`
   background-color: transparent;
 
   user-drag: none;
+  user-select: none;
 
   &.shake {
     animation: ${click} 0.01s;

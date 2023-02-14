@@ -10,15 +10,38 @@ namespace CookieData.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence(
+                name: "click_upgrade_hilo",
+                incrementBy: 10);
+
+            migrationBuilder.CreateSequence(
+                name: "fairy_tail_hilo",
+                incrementBy: 10);
+
+            migrationBuilder.CreateSequence(
+                name: "game_account_hilo",
+                incrementBy: 10);
+
+            migrationBuilder.CreateSequence(
+                name: "upgrade_hilo",
+                incrementBy: 10);
+
+            migrationBuilder.CreateSequence(
+                name: "upgrade_info_hilo",
+                incrementBy: 10);
+
+            migrationBuilder.CreateSequence(
+                name: "user_hilo",
+                incrementBy: 10);
+
             migrationBuilder.CreateTable(
                 name: "FairyTail",
                 columns: table => new
                 {
-                    FairyTailId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Image = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Story = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Trigger = table.Column<double>(type: "float", nullable: false)
+                    FairyTailId = table.Column<int>(type: "integer", nullable: false),
+                    Image = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Story = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
+                    Trigger = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,11 +52,10 @@ namespace CookieData.Migrations
                 name: "GameAccount",
                 columns: table => new
                 {
-                    GameAccountId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Networth = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Cookies = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Clicks = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    GameAccountId = table.Column<int>(type: "integer", nullable: false),
+                    Networth = table.Column<string>(type: "text", nullable: false),
+                    Cookies = table.Column<string>(type: "text", nullable: false),
+                    Clicks = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,13 +66,12 @@ namespace CookieData.Migrations
                 name: "UpgradeInfo",
                 columns: table => new
                 {
-                    UpgradeInfoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    BaseValue = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BasePrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LvlImage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    UpgradeInfoId = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    BaseValue = table.Column<string>(type: "text", nullable: false),
+                    BasePrice = table.Column<string>(type: "text", nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: false),
+                    LvlImage = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,12 +82,11 @@ namespace CookieData.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Login = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    GameAccountId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    Login = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
+                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    GameAccountId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,12 +103,11 @@ namespace CookieData.Migrations
                 name: "ClickUpgrade",
                 columns: table => new
                 {
-                    ClickUpgradeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CurrentValue = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClickUpgradeId = table.Column<int>(type: "integer", nullable: false),
+                    CurrentValue = table.Column<string>(type: "text", nullable: false),
                     Level = table.Column<long>(type: "bigint", nullable: false),
-                    GameAccountId = table.Column<int>(type: "int", nullable: false),
-                    UpgradeInfoId = table.Column<int>(type: "int", nullable: false)
+                    GameAccountId = table.Column<int>(type: "integer", nullable: false),
+                    UpgradeInfoId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,13 +130,12 @@ namespace CookieData.Migrations
                 name: "Upgrade",
                 columns: table => new
                 {
-                    UpgradeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CurrentValue = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpgradeId = table.Column<int>(type: "integer", nullable: false),
+                    CurrentValue = table.Column<string>(type: "text", nullable: false),
                     Level = table.Column<long>(type: "bigint", nullable: false),
                     Amount = table.Column<long>(type: "bigint", nullable: false),
-                    GameAccountId = table.Column<int>(type: "int", nullable: false),
-                    UpgradeInfoId = table.Column<int>(type: "int", nullable: false)
+                    GameAccountId = table.Column<int>(type: "integer", nullable: false),
+                    UpgradeInfoId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -184,6 +202,24 @@ namespace CookieData.Migrations
 
             migrationBuilder.DropTable(
                 name: "GameAccount");
+
+            migrationBuilder.DropSequence(
+                name: "click_upgrade_hilo");
+
+            migrationBuilder.DropSequence(
+                name: "fairy_tail_hilo");
+
+            migrationBuilder.DropSequence(
+                name: "game_account_hilo");
+
+            migrationBuilder.DropSequence(
+                name: "upgrade_hilo");
+
+            migrationBuilder.DropSequence(
+                name: "upgrade_info_hilo");
+
+            migrationBuilder.DropSequence(
+                name: "user_hilo");
         }
     }
 }

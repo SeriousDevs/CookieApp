@@ -24,16 +24,7 @@ public class CookieProfile : Profile
         CreateMap<GameAccountModel, GameAccount>();
         CreateMap<GameAccount, GameAccountModel>();
 
-        CreateMap<UpgradeModel, Upgrade>()
-                .ForMember(u => u.UpgradeInfo, opt => opt.MapFrom(um => new UpgradeInfo()
-                {
-                    Id = um.UpgradeInfoId,
-                    Name = um.Name,
-                    BasePrice = um.BasePrice,
-                    BaseValue = um.BaseValue,
-                    Image = um.Image,
-                    LvlImage = um.LvlImage,
-                }));
+        CreateMap<UpgradeModel, Upgrade>();
 
         CreateMap<Upgrade, UpgradeModel>()
             .ForMember(um => um.Name, opt => opt.MapFrom(u => u.UpgradeInfo.Name))
@@ -42,16 +33,7 @@ public class CookieProfile : Profile
             .ForMember(um => um.Image, opt => opt.MapFrom(u => u.UpgradeInfo.Image))
             .ForMember(um => um.LvlImage, opt => opt.MapFrom(u => u.UpgradeInfo.LvlImage));
 
-        CreateMap<ClickUpgradeModel, ClickUpgrade>()
-               .ForMember(u => u.UpgradeInfo, opt => opt.MapFrom(um => new UpgradeInfo()
-               {
-                   Id = um.UpgradeInfoId,
-                   Name = um.Name,
-                   BasePrice = um.BasePrice,
-                   BaseValue = um.BaseValue,
-                   Image = um.Image,
-                   LvlImage = string.Empty
-               }));
+        CreateMap<ClickUpgradeModel, ClickUpgrade>();
 
         CreateMap<ClickUpgrade, ClickUpgradeModel>()
             .ForMember(um => um.Name, opt => opt.MapFrom(u => u.UpgradeInfo.Name))

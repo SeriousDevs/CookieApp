@@ -7,7 +7,7 @@ import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
 
-const UpgradesListItem = ({ counter, amount = 0, name = 'name', basePrice = 100, baseValue = 0, image, upgradeInfoId = 0 }) => {
+const UpgradesListItem = ({ counter, amount = 0, name = 'name', basePrice = 100, currentValue = 0, image, upgradeInfoId = 0 }) => {
     const dispatch = useDispatch();
     const cookies = useSelector(getCookies);
     
@@ -15,7 +15,7 @@ const UpgradesListItem = ({ counter, amount = 0, name = 'name', basePrice = 100,
 
     useEffect(() => {
         if (amount >= 1 && counter !== 0) {
-            dispatch(upgradeTick(baseValue*amount));
+            dispatch(upgradeTick(currentValue*amount));
         }
     }, [counter])    
 
@@ -26,7 +26,7 @@ const UpgradesListItem = ({ counter, amount = 0, name = 'name', basePrice = 100,
     }
 
     return (
-        <Tooltip placement="left" destroyTooltipOnHide={true} overlay={<Hover upgrade={{ name, baseValue, amount }} />}>
+        <Tooltip placement="left" destroyTooltipOnHide={true} overlay={<Hover upgrade={{ name, currentValue, amount }} />}>
             <UpgradeListItem onClick={() => handlerUpgradesClick()}>
                 <AdditionalWrapper>
                     <UpgradeImage src={image} alt={name} />

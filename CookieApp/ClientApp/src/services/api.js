@@ -1,14 +1,14 @@
 import axios from "axios";
 
 const $publicHost = axios.create({
-    baseURL: "https://localhost:7184/api",
+  baseURL: "https://localhost:7184/api",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 const $privateHost = axios.create({
-    baseURL: "https://localhost:7184/api",
+  baseURL: "https://localhost:7184/api",
   headers: {
     "Content-Type": "application/json",
   },
