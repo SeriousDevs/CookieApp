@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     setInterval(() => {
       setCounter((p) => p + 1);
-    }, 7000);
+    }, 5000);
     setInterval(() => {
       setUpgradesCounter((p) => p + 1);
     }, 1000);
