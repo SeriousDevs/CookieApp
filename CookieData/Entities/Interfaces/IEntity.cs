@@ -1,7 +1,6 @@
-﻿namespace CookieData.Entities.Interfaces
+﻿namespace CookieData.Entities.Interfaces;
+
+public interface IEntity
 {
-    public interface IEntity
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }
