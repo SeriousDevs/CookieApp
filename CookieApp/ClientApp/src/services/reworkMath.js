@@ -23,7 +23,7 @@ export const fromServerFix = (gameAcc) => {
       }),
     ],
   };
-  console.log(result);
+
   return result;
 };
 
