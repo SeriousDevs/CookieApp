@@ -29,7 +29,8 @@ builder.Services.AddTransient<IPasswordHasher<User>, BCryptPasswordHasher<User>>
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ICookieService, CookieService>();
 
-string connectionString = configuration["ConnectionString"] !;
+// string connectionString = configuration["ConnectionString"] !;
+string connectionString = builder.Configuration.GetConnectionString("PostgresConnection") !;
 builder.Services.AddDbContextFactory<CookieContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddScoped<IDbContextWrapper<CookieContext>, DbContextWrapper<CookieContext>>();
 
