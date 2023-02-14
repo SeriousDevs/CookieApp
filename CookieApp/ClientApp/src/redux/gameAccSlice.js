@@ -69,6 +69,7 @@ const initialUpgrades = [
     amount: 0,
     basePrice: 15,
     baseValue: 0.1,
+    currentValue: 0,
     gameAccountId: null,
     id: null,
     image: null,
@@ -119,7 +120,7 @@ export const gameAccSlice = createSlice({
       state.cookiesPerSec =
         Math.round(
           state.upgrades.reduce(
-            (acc, upgrade) => (acc += upgrade.amount * upgrade.baseValue),
+            (acc, upgrade) => (acc += upgrade.amount * upgrade.currentValue),
             0
           ) * 10
         ) / 10;
@@ -135,7 +136,6 @@ export const gameAccSlice = createSlice({
 
     buyClickUpgrade(state, { payload }) {
       state.clickUpgrade.level += 1;
-      state.clickUpgrade.baseValue *= 2;
       state.cookies = Math.round(state.cookies - payload);
     },
 
@@ -144,7 +144,7 @@ export const gameAccSlice = createSlice({
         (el) => el.upgradeInfoId === payload.upgradeInfoId
       );
       el.level += 1;
-      el.baseValue *= 2;
+      el.currentValue *= 2;
       state.cookies = Math.round(state.cookies - payload.price);
     },
 

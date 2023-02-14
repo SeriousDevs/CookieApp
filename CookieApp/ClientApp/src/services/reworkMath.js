@@ -7,20 +7,23 @@ export const fromServerFix = (gameAcc) => {
     clickUpgrade: {
       ...gameAcc.clickUpgrade,
       currentValue: Number(gameAcc.clickUpgrade.currentValue),
-      basePrice: Number(gameAcc.clickUpgrade.basePrice),
       baseValue: Number(gameAcc.clickUpgrade.baseValue),
+      basePrice: Number(gameAcc.clickUpgrade.basePrice),
     },
     upgrades: [
       ...gameAcc.upgrades.map((upgr) => {
         return {
           ...upgr,
-          currentValue: Number(upgr.currentValue),
+          currentValue: Number(
+            upgr.currentValue === "0" ? upgr.baseValue : upgr.currentValue
+          ),
           basePrice: Number(upgr.basePrice),
           baseValue: Number(upgr.baseValue),
         };
       }),
     ],
   };
+  console.log(result);
   return result;
 };
 

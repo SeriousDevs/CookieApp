@@ -36,7 +36,7 @@ const Cookie = () => {
 
   const handleClicker = (e) => {
     clearTimeout(emotion);
-    // clearTimeout(clickEffect);
+    if (!e.clientX && !e.client) return;
 
     setCookieEmotion(true);
     setClicked(true);
@@ -69,6 +69,7 @@ const Cookie = () => {
         <CookieButton
           onClick={handleClicker}
           className={shake ? `shake` : null}
+          type='button'
         >
           <CookieLight></CookieLight>
           <CookieImage
