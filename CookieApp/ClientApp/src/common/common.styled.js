@@ -29,7 +29,7 @@ export const LabelCheckbox = styled.label`
   height: 26px;
   gap: 10px;
   font-weight: 400;
-  width: 150px;
+  width: 180px;
 `;
 
 export const Button = styled.button`
