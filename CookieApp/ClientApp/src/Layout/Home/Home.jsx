@@ -26,8 +26,7 @@ const Home = () => {
     }, 1000);
     setInterval(() => {
       setGoldCounter((p) => p + 1);
-    }, Math.floor(Math.random() * 180000) + 60000);
-    // }, (Math.floor(Math.random() * 1000)+ 6000));
+    }, Math.floor(Math.random() * 180000) + 90000);
   }, []);
 
   useEffect(() => {

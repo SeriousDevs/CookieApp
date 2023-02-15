@@ -151,8 +151,7 @@ export const gameAccSlice = createSlice({
     },
 
     clickGoldenCookie(state, { payload }) {
-      state.goldenCookie = !state.goldenCookie;
-      state.cookies = Math.round(state.cookies - payload.price);
+      state.goldenCookie = payload;
     },
 
     logOutFromAcc(state) {
@@ -260,5 +259,4 @@ export const getNetWorth = (state) => state.gameAcc.networth;
 export const getClickUpgr = (state) => state.gameAcc.clickUpgrade;
 export const getPerSec = (state) => state.gameAcc.cookiesPerSec;
 export const getUserStory = (state) => state.gameAcc.fairyTail;
-export const getGoldenCookieClicked = (state) =>
-  state.gameAcc.clickGoldenCookie;
+export const getGoldenCookieClicked = (state) => state.gameAcc.goldenCookie;
