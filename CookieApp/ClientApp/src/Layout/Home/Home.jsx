@@ -26,16 +26,16 @@ const Home = () => {
     }, 1000);
     setInterval(() => {
       setGoldCounter((p) => p + 1);
-    }, (Math.floor(Math.random() * 180000)+ 60000));
+    }, Math.floor(Math.random() * 180000) + 60000);
     // }, (Math.floor(Math.random() * 1000)+ 6000));
   }, []);
 
   useEffect(() => {
     if (counter === 0) return;
-      setTimeout(()=>{
-       dispatch(getUsersList());
-       dispatch(getUserTale());
-      }, 1000);
+    setTimeout(() => {
+      dispatch(getUsersList());
+      dispatch(getUserTale());
+    }, 1000);
     dispatch(saveAcc(acc));
   }, [counter]);
 
@@ -55,6 +55,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default WithAuthRedirect(Home, "/login");
-// export default Home;
