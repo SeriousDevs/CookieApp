@@ -9,6 +9,7 @@ const COUNT_ABBRS = [
   "aa",
   "bb",
   "cc",
+  "G_O_L_D",
   "R_X_Y",
   "A_L_G",
 ];

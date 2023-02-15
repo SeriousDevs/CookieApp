@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const LogOutButton = styled.button`
   position: absolute;
-  left: 20px;
-  top: 23px;
+  top: 20px;
+  right: 24vw;
+  padding: 5px 10px;
   display: flex;
   justify-content: center;
   align-items: center;

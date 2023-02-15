@@ -14,7 +14,6 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <MainProfileBlock user={user} />
-      {/* <Statistics /> */}
       <MainLeadership users={usersList} />
     </Wrapper>
   );
