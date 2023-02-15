@@ -5,7 +5,7 @@ import { UserStory } from "./UserStory/UserStory";
 const MainProfileBlock = ({ user }) => {
   return (
     <ProfileBlock>
-      <UserName>{user.toUpperCase()}</UserName>
+      <UserName>{user?.toUpperCase()}</UserName>
       <UserStory />
     </ProfileBlock>
   );
