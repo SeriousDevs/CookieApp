@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const url = "https://realcookies.azurewebsites.net/api";
-const url = "https://localhost:7184";
+const url = "https://localhost:7184/api";
 
 const $publicHost = axios.create({
   baseURL: url,

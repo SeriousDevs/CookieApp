@@ -31,6 +31,7 @@ export const saveAcc = createAsyncThunk(
       delete obj.usersList;
       delete obj.isLoading;
       delete obj.error;
+      delete obj.goldenCookie;
       const reworkedData = toServerFix(obj);
       const gameAcc = await saveAccRequest(reworkedData);
       return gameAcc;
@@ -100,6 +101,7 @@ export const gameAccSlice = createSlice({
       story:
         "My life was not the best, and I decided that it was my time to change it all",
     },
+    goldenCookie: false,
     id: null,
     networth: 0,
     upgrades: initialUpgrades,
@@ -145,6 +147,11 @@ export const gameAccSlice = createSlice({
       );
       el.level += 1;
       el.currentValue *= 2;
+      state.cookies = Math.round(state.cookies - payload.price);
+    },
+
+    clickGoldenCookie(state, { payload }) {
+      state.goldenCookie = !state.goldenCookie;
       state.cookies = Math.round(state.cookies - payload.price);
     },
 
@@ -239,6 +246,7 @@ export const {
   buyClickUpgrade,
   buyLevelUpgrade,
   logOutFromAcc,
+  clickGoldenCookie,
 } = gameAccSlice.actions;
 
 //Selector
@@ -252,3 +260,5 @@ export const getNetWorth = (state) => state.gameAcc.networth;
 export const getClickUpgr = (state) => state.gameAcc.clickUpgrade;
 export const getPerSec = (state) => state.gameAcc.cookiesPerSec;
 export const getUserStory = (state) => state.gameAcc.fairyTail;
+export const getGoldenCookieClicked = (state) =>
+  state.gameAcc.clickGoldenCookie;
