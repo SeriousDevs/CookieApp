@@ -1,5 +1,5 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getUsersList, getUserTale, setGameAcc } from "redux/gameAccSlice";
 import Dashboard from "./Dashboard/Dashboard";
 import Main from "./Main/Main";
@@ -63,4 +63,4 @@ const Home = () => {
   );
 };
 
-export default memo(Home);
+export default WithAuthRedirect(Home, '/login');
