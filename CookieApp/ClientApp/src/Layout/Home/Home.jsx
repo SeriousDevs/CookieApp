@@ -30,15 +30,15 @@ const Home = () => {
     }, 1000);
     setInterval(() => {
       setGoldCounter((p) => p + 1);
-    }, (Math.floor(Math.random() * 180000)+ 90000));
+    }, Math.floor(Math.random() * 180000) + 90000);
   }, []);
 
   useEffect(() => {
     if (counter === 0) return;
-      setTimeout(()=>{
-       dispatch(getUsersList());
-       dispatch(getUserTale());
-      }, 1000);
+    setTimeout(() => {
+      dispatch(getUsersList());
+      dispatch(getUserTale());
+    }, 1000);
     dispatch(saveAcc(acc));
   }, [counter]);
 
@@ -60,6 +60,3 @@ const Home = () => {
   </>
   );
 };
-
-export default WithAuthRedirect(Home, "/login");
-// export default Home;
