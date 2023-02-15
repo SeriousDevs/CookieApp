@@ -11,4 +11,8 @@ export const Container = styled.div`
     props.bgChange
       ? "#" + Math.floor(Math.random() * 16777215).toString(16)
       : " #fce671"};
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
 `;

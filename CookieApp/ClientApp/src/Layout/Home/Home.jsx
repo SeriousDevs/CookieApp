@@ -59,6 +59,7 @@ const Home = () => {
           <Upgrades counter={upgradesCounter} />
         </div>
       )}
+      {isMobScreen && <Main />}
     </>
   );
 };

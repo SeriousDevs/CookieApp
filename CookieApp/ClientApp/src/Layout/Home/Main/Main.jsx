@@ -5,16 +5,25 @@ import Cookie from "./Cookie/Cookie";
 import { Logout } from "./Logout/Logout";
 import { Container } from "./main.styled";
 import Statistics from "./Statistics/Statistics";
+import { useMediaQuery } from "react-responsive";
 
 const Main = () => {
   const goldCookie = useSelector(getGoldenCookieClicked);
-
-  return (
-    <Container bgChange={goldCookie}>
+  const isMobScreen = useMediaQuery({ query: "(max-width: 767.98px)" });
+  const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
+  const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
+  return (<>
+    {isDescScreen && <Container bgChange={goldCookie}>
       <Cookie />
       <Statistics />
       <Logout />
-    </Container>
+    </Container>}
+    
+    {isMobScreen && <Container bgChange={goldCookie}>
+      <Cookie />
+    </Container>}
+    
+    </>
   );
 };
 export default memo(Main);
