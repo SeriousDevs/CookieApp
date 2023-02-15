@@ -4,6 +4,7 @@ import {
   addCookie,
   getClickUpgr,
   getCookies,
+  getGoldenCookieClicked,
   getPerSec,
 } from "redux/gameAccSlice";
 import {
@@ -28,11 +29,11 @@ const Cookie = () => {
   const [clicked, setClicked] = useState(false);
   const [cookieEmotion, setCookieEmotion] = useState(false);
   const [emotion, setEmotion] = useState(null);
-
+  const goldCookie = useSelector(getGoldenCookieClicked);
   useEffect(() => {
     const { level } = clickUpgrade;
-    setPerClick(2 ** (level - 1));
-  }, [clickUpgrade]);
+    setPerClick(goldCookie? 5* 2 ** (level - 1): 2 ** (level - 1));
+  }, [clickUpgrade, goldCookie]);
 
   const handleClicker = (e) => {
     clearTimeout(emotion);
