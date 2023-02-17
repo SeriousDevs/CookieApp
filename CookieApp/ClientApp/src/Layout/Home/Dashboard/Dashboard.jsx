@@ -5,7 +5,6 @@ import { getUser } from "redux/userSlice";
 import { Wrapper } from "./Dashboard.styled";
 import MainLeadership from "./Leadership/MainLeadershipBlock";
 import MainProfileBlock from "./Profile/MainProfileBlock";
-import Statistics from "../Main/Statistics/Statistics";
 
 const Dashboard = () => {
   const user = useSelector(getUser);

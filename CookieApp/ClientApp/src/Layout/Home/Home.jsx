@@ -1,5 +1,5 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { getUsersList, getUserTale, setGameAcc } from "redux/gameAccSlice";
 import Dashboard from "./Dashboard/Dashboard";
 import Main from "./Main/Main";
@@ -8,6 +8,7 @@ import { getAcc, saveAcc } from "redux/gameAccSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GoldenCookie } from "common/components/GoldenCookie/GoldenCookie";
 import { useMediaQuery } from "react-responsive";
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -50,18 +51,23 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div style={{position: 'relative'}}>
       {isDescScreen && (
         <div style={{ display: "flex" }}>
           <Dashboard />
           <Main />
-          <GoldenCookie counter={goldCounter} />
           <Upgrades counter={upgradesCounter} />
         </div>
       )}
-      {isMobScreen && <Main />}
-    </>
+      {isMobScreen &&
+        <Suspense fallback={null}>
+          <Outlet/>
+          <Main/>
+        </Suspense>}
+      <GoldenCookie counter={goldCounter} />
+    </div>
   );
 };
 
+         
 export default WithAuthRedirect(Home, '/login');

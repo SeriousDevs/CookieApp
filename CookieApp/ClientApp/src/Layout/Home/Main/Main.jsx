@@ -6,6 +6,7 @@ import { Logout } from "./Logout/Logout";
 import { Container } from "./main.styled";
 import Statistics from "./Statistics/Statistics";
 import { useMediaQuery } from "react-responsive";
+import { AppBar } from "../Mobile/AppBar/AppBar";
 
 const Main = () => {
   const goldCookie = useSelector(getGoldenCookieClicked);
@@ -21,6 +22,7 @@ const Main = () => {
     
     {isMobScreen && <Container bgChange={goldCookie}>
       <Cookie />
+      <AppBar/>
     </Container>}
     
     </>

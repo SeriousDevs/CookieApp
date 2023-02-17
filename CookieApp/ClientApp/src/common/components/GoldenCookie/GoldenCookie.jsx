@@ -13,8 +13,8 @@ export const GoldenCookie = ({ counter }) => {
         if (counter === 0 || counter % 2) return;
         setShowMe(true);
         setCoordinates({
-            top: `${Math.floor(Math.random() * height)}px`,
-            left: `${Math.floor(Math.random() * width)}px`,
+            top: `${Math.floor(Math.random() * (height-80))+80}px`,
+            left: `${Math.floor(Math.random() * (width-80))+80}px`,
         })
         setTimeout(() => {
             setShowMe(false);

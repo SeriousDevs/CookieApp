@@ -17,19 +17,26 @@ import {
 } from "./Cookie.styled";
 import { ClickEffect } from "./ClickEffect/ClickEffect";
 import { seriousNumbers } from "common/ConvertFunc/convertFunc";
+// import { useMediaQuery } from "react-responsive";
 
 const Cookie = () => {
   const dispatch = useDispatch();
   const cookie = useSelector(getCookies);
   const perSec = useSelector(getPerSec);
   const clickUpgrade = useSelector(getClickUpgr);
+  const goldCookie = useSelector(getGoldenCookieClicked);
+
   const [shake, setShake] = useState(false);
   const [perClick, setPerClick] = useState(1);
   const [mouseCoordinates, setMouseCoordinates] = useState({});
   const [clicked, setClicked] = useState(false);
   const [cookieEmotion, setCookieEmotion] = useState(false);
   const [emotion, setEmotion] = useState(null);
-  const goldCookie = useSelector(getGoldenCookieClicked);
+
+  // const isMobScreen = useMediaQuery({ query: "(max-width: 767.98px)" });
+  // const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
+  // const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
+  
   useEffect(() => {
     const { level } = clickUpgrade;
     setPerClick(goldCookie? 5* 2 ** (level - 1): 2 ** (level - 1));
@@ -60,8 +67,7 @@ const Cookie = () => {
   };
 
   return (
-    <>
-      <CookieContainer>
+    <><CookieContainer>
         <CookieQuantity>
           {seriousNumbers(Math.round(cookie))} Cookies
         </CookieQuantity>
