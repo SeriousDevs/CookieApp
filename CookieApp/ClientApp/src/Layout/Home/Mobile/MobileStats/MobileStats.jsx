@@ -1,8 +1,9 @@
+import { MobileContainer } from "common/common.styled"
 import { memo } from "react"
 
  const MobileStats = () => {
   return (
-    <div>MobileStats</div>
+    <MobileContainer>MobileStats</MobileContainer>
   )
 }
 

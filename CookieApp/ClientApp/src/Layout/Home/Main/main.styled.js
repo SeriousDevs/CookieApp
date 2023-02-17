@@ -16,6 +16,6 @@ export const Container = styled.div`
     position: relative;
     width: 100vw;
     flex-direction: column;
-    justify-content space-between;
+    justify-content: center;
   }
 `;

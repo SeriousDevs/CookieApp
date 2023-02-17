@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -102,4 +102,18 @@ export const BoxStyleList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+`;
+
+const mount = keyframes`
+0%  { transform: translate(0px, 100%);  }
+100%{ transform:translate(0px, 0px); }`;
+
+export const MobileContainer = styled.div`
+  position: absolute;
+  z-index: 5;
+  height: 90%;
+  width: 100%;
+  bottom: 0;
+  background-color: tomato;
+  animation: ${mount} 0.7s linear;
 `;

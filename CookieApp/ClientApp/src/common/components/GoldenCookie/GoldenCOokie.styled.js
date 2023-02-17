@@ -20,7 +20,7 @@ export const GoldenBtn = styled.button`
   cursor: pointer;
   border-radius: 50%;
   animation: ${click} 2s linear infinite;
-  z-index: 10;
+  z-index: 4;
 `;
 
 export const GoldenImg = styled.img`

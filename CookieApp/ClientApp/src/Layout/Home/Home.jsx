@@ -59,11 +59,13 @@ const Home = () => {
           <Upgrades counter={upgradesCounter} />
         </div>
       )}
-      {isMobScreen &&
+      {isMobScreen &&<>
         <Suspense fallback={null}>
-          <Outlet/>
+          <Outlet />
+          </Suspense>
           <Main/>
-        </Suspense>}
+      </>
+        }
       <GoldenCookie counter={goldCounter} />
     </div>
   );

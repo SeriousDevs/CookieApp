@@ -1,8 +1,9 @@
+import { MobileContainer } from "common/common.styled"
 import { memo } from "react"
 
 const MobileDashboard = () => {
   return (
-    <div>MobileDashboard</div>
+    <MobileContainer>MobileDashboard</MobileContainer>
   )
 }
 
