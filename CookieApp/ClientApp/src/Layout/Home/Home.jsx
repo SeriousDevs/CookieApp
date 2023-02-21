@@ -1,5 +1,5 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState, Suspense, useLayoutEffect } from "react";
 import { getUsersList, getUserTale, setGameAcc } from "redux/gameAccSlice";
 import Dashboard from "./Dashboard/Dashboard";
 import Main from "./Main/Main";
@@ -23,33 +23,46 @@ const Home = () => {
   const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
 
   useEffect(() => {
-    setInterval(() => {
-      setCounter((p) => p + 1);
-    }, 2000);
-    setInterval(() => {
-      setUpgradesCounter((p) => p + 1);
-    }, 1000);
-    setInterval(() => {
-      setGoldCounter((p) => p + 1);
-    }, Math.floor(Math.random() * 180000) + 90000);
-  }, []);
+  const intervalId = setInterval(() => {
+    setCounter((p) => p + 1);
+  }, 2000);
+    
+  const intervalUpgrades = setInterval(() => {
+    setUpgradesCounter((p) => p + 1);
+  }, 1000);
 
-  useEffect(() => {
-    if (counter === 0) return;
-    setTimeout(() => {
-      dispatch(getUsersList());
-      dispatch(getUserTale());
-    }, 1000);
-    dispatch(saveAcc(acc));
-  }, [counter]);
+  const randomIntervalId = setInterval(() => {
+    setGoldCounter((p) => p + 1);
+  }, Math.floor(Math.random() * 180000) + 90000);
 
-  useEffect(() => {
-    if (!token) return;
-    dispatch(getUserTale());
-    dispatch(setGameAcc());
+  return () => {
+    clearInterval(intervalId);
+    clearInterval(randomIntervalId);
+    clearInterval(intervalUpgrades);
+  };
+}, []);
+
+useLayoutEffect(() => {
+  if (counter === 0) return;
+
+  const timeoutId = setTimeout(() => {
     dispatch(getUsersList());
-  }, []);
+    dispatch(getUserTale());
+    dispatch(saveAcc(acc));
+  }, 1000);
 
+  return () => clearTimeout(timeoutId);
+}, [counter]);
+
+useEffect(() => {
+  if (!token) return;
+
+  dispatch(getUserTale());
+  dispatch(setGameAcc());
+  dispatch(getUsersList());
+}, [token]);
+
+  
   return (
     <div style={{position: 'relative'}}>
       {isDescScreen && (

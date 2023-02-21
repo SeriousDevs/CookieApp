@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCookie,
@@ -17,7 +17,6 @@ import {
 } from "./Cookie.styled";
 import { ClickEffect } from "./ClickEffect/ClickEffect";
 import { seriousNumbers } from "common/ConvertFunc/convertFunc";
-// import { useMediaQuery } from "react-responsive";
 
 const Cookie = () => {
   const dispatch = useDispatch();
@@ -33,16 +32,12 @@ const Cookie = () => {
   const [cookieEmotion, setCookieEmotion] = useState(false);
   const [emotion, setEmotion] = useState(null);
 
-  // const isMobScreen = useMediaQuery({ query: "(max-width: 767.98px)" });
-  // const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
-  // const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
-  
   useEffect(() => {
-    const { level } = clickUpgrade;
-    setPerClick(goldCookie? 5* 2 ** (level - 1): 2 ** (level - 1));
+    const {level} = clickUpgrade;
+    setPerClick(goldCookie ? 5 * 2 ** (level - 1) : 2 ** (level - 1));
   }, [clickUpgrade, goldCookie]);
 
-  const handleClicker = (e) => {
+  const handleClicker = useCallback((e) => {
     clearTimeout(emotion);
     if (!e.clientX && !e.clientY) return;
 
@@ -50,6 +45,7 @@ const Cookie = () => {
     setClicked(true);
 
     dispatch(addCookie(perClick));
+
     //Animation
     setEmotion(
       setTimeout(() => {
@@ -64,10 +60,11 @@ const Cookie = () => {
 
     setShake(true);
     setTimeout(() => setShake(false), 10);
-  };
+  }, [dispatch, perClick]);
 
   return (
-    <><CookieContainer>
+    <>
+      <CookieContainer>
         <CookieQuantity>
           {seriousNumbers(Math.round(cookie))} Cookies
         </CookieQuantity>
@@ -76,9 +73,9 @@ const Cookie = () => {
         <CookieButton
           onClick={handleClicker}
           className={shake ? `shake` : null}
-          type='button'
+          type="button"
         >
-          <CookieLight></CookieLight>
+          <CookieLight />
           <CookieImage
             src={
               cookieEmotion

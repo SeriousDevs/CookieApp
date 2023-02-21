@@ -26,12 +26,15 @@ export const saveAcc = createAsyncThunk(
   async (acc, { rejectWithValue }) => {
     try {
       const obj = { ...acc };
-      delete obj.cookiesPerSec;
-      delete obj.fairyTail;
-      delete obj.usersList;
-      delete obj.isLoading;
-      delete obj.error;
-      delete obj.goldenCookie;
+      const deletable = [
+        "cookiesPerSec",
+        "fairyTail",
+        "usersList",
+        "isLoading",
+        "error",
+        "goldenCookie",
+      ];
+      deletable.forEach((prop) => delete obj[prop]);
       const reworkedData = toServerFix(obj);
       const gameAcc = await saveAccRequest(reworkedData);
       return gameAcc;

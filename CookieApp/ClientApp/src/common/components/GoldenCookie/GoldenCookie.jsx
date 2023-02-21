@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { clickGoldenCookie } from "redux/gameAccSlice";
-import { GoldenBtn, GoldenImg } from "./GoldenCOokie.styled"
+import { GoldenBtn, GoldenImg } from "./GoldenCookie.styled"
 
-export const GoldenCookie = ({ counter }) => {
+export const GoldenCookie = memo(({ counter }) => {
     const [showMe, setShowMe] = useState(false);
     const [coordinates, setCoordinates] = useState({});
     const dispatch = useDispatch();
@@ -13,14 +13,14 @@ export const GoldenCookie = ({ counter }) => {
         if (counter === 0 || counter % 2) return;
         setShowMe(true);
         setCoordinates({
-            top: `${Math.floor(Math.random() * (height-80))+80}px`,
-            left: `${Math.floor(Math.random() * (width-80))+80}px`,
-        })
+            top: `${Math.floor(Math.random() * (height - 80)) + 80}px`,
+            left: `${Math.floor(Math.random() * (width - 80)) + 80}px`,
+        });
         setTimeout(() => {
             setShowMe(false);
-        dispatch(clickGoldenCookie(false));
+            dispatch(clickGoldenCookie(false));
         }, 30000);
-    }, [counter]);
+    }, [counter, dispatch]);
 
     const handleClick = () => {
         setShowMe(false);
@@ -32,4 +32,4 @@ export const GoldenCookie = ({ counter }) => {
             <GoldenImg src="images/Cookies/GoldenCookie.png" alt="" />
         </GoldenBtn >}</>
     )
-}
+})

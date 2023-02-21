@@ -1,14 +1,8 @@
-import { lazy} from "react";
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "Layout/Layout";
 import { GlobalStyle } from "./App.styled";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
-// import { MobileStory } from "Layout/Home/Mobile/MobileStory/MobileStory";
-// import { MobileStore } from "Layout/Home/Mobile/MobileStore/MobileStore";
-// import MobileStats from "Layout/Home/Mobile/MobileStats/MobileStats";
-// import MobileDashboard from "Layout/Home/Mobile/MobileDashboard/MobileDashboard";
-
 
 const LazySignUpView = lazy(() => import("Layout/SignUp/SignUp"));
 const LazyLoginView = lazy(() => import("Layout/Login/Login"));
@@ -19,7 +13,6 @@ const LazyMobileStore = lazy(() => import("Layout/Home/Mobile/MobileStore/Mobile
 const LazyMobileStory = lazy(() => import("Layout/Home/Mobile/MobileStory/MobileStory"));
 
 const App = () => {
-  
   return (
     <>
       <Routes>
@@ -37,7 +30,21 @@ const App = () => {
         <Route path='*' element={<Navigate to="home" />} />
       </Routes>
       <GlobalStyle />
-      <ToastContainer />
+      <Suspense fallback={null}>
+        {process.env.NODE_ENV === 'production' ? (
+          <>
+            {import('react-toastify').then((Toastify) => (
+              <Toastify.ToastContainer />
+            ))}
+            {import('react-toastify/dist/ReactToastify.min.css')}
+          </>
+        ) : (
+          <>
+            <ToastContainer />
+            <link rel="stylesheet" href="react-toastify/dist/ReactToastify.min.css" />
+          </>
+        )}
+      </Suspense>
     </>
   );
 };

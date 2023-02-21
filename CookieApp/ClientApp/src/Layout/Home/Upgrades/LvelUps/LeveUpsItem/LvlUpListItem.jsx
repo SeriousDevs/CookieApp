@@ -17,10 +17,10 @@ const LvlUpListItem = ({ onHover, upgrade }) => {
   const { amount, upgradeInfoId, level, basePrice, lvlImage, name } = upgrade;
 
   useEffect(() => {
-    if (!isHovering) return;
-    const obj = { ...upgrade, price };
-    onHover(obj);
-  }, [isHovering]);
+  if (!isHovering) return;
+  const obj = { ...upgrade, price };
+  onHover(obj);
+}, [isHovering, upgrade]);
 
   if (amount < 1) return;
 
