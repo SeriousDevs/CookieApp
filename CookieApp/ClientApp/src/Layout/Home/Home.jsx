@@ -8,12 +8,11 @@ import { getAcc, saveAcc } from "redux/gameAccSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GoldenCookie } from "common/components/GoldenCookie/GoldenCookie";
 import { useMediaQuery } from "react-responsive";
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
   const acc = useSelector(getAcc);
-  const navigate = useNavigate();
 
   const [counter, setCounter] = useState(0);
   const [upgradesCounter, setUpgradesCounter] = useState(0);
@@ -65,10 +64,6 @@ useEffect(() => {
   dispatch(getUsersList());
 }, [token]);
   
-   const handleClick = () => {
-    // navigate('/home');
-     console.log('clicked');
-  }
 
   
   return (
@@ -84,7 +79,7 @@ useEffect(() => {
         <Suspense fallback={null}>
           <Outlet />
           </Suspense>
-        <Main onClick={ handleClick} />
+        <Main/>
       </>
         }
       <GoldenCookie counter={goldCounter} />
