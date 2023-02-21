@@ -7,12 +7,21 @@ import { Container } from "./main.styled";
 import Statistics from "./Statistics/Statistics";
 import { useMediaQuery } from "react-responsive";
 import { AppBar } from "../Mobile/AppBar/AppBar";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Main = () => {
   const goldCookie = useSelector(getGoldenCookieClicked);
   const isMobScreen = useMediaQuery({ query: "(max-width: 767.98px)" });
   const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
   const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = () => {
+    if (location.pathname === '/home') return;
+    navigate('/home');
+  }
   return (<>
     {isDescScreen && <Container bgChange={goldCookie}>
       <Cookie />
@@ -20,10 +29,13 @@ const Main = () => {
       <Logout />
     </Container>}
     
-    {isMobScreen && <Container bgChange={goldCookie}>
+    {isMobScreen &&<>
+       <Container onClick={handleClick}  bgChange={goldCookie}>
       <Cookie />
+    </Container>
       <AppBar/>
-    </Container>}
+    </>
+    }
     
     </>
   );
