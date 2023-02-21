@@ -13,7 +13,7 @@ import ClickUpgrade from './ClickUpgrade/ClickUpgrade';
 import { memo } from 'react';
 
 
-const Upgrades = ({counter}) => {
+const Upgrades = () => {
     const upgrades = useSelector(getUpgrades);
     
     return (
@@ -27,7 +27,7 @@ const Upgrades = ({counter}) => {
                 <ClickUpgrade/>
                 <UpgradeList>
                     {upgrades.map(({ id, ...props }) => {
-                        return <UpgradesListItem key={id} counter={counter} {...props} />
+                        return <UpgradesListItem key={id} {...props} />
                     })}
                 </UpgradeList>
             </UpgradesLarge>

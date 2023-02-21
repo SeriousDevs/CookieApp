@@ -1,6 +1,6 @@
 import WithAuthRedirect from "HOC/WithAuthRedirect";
 import { useEffect, useState, Suspense, useLayoutEffect } from "react";
-import { getUsersList, getUserTale, setGameAcc } from "redux/gameAccSlice";
+import { getUpgrades, getUsersList, getUserTale, setGameAcc, upgradeTick } from "redux/gameAccSlice";
 import Dashboard from "./Dashboard/Dashboard";
 import Main from "./Main/Main";
 import Upgrades from "./Upgrades/Upgrades";
@@ -13,6 +13,7 @@ import { Outlet } from 'react-router-dom';
 const Home = () => {
   const dispatch = useDispatch();
   const acc = useSelector(getAcc);
+  const upgrades = useSelector(getUpgrades)
 
   const [counter, setCounter] = useState(0);
   const [upgradesCounter, setUpgradesCounter] = useState(0);
@@ -24,6 +25,12 @@ const Home = () => {
   const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
   const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
 
+  useLayoutEffect(() => {
+    if (upgradesCounter === 0) return;
+    const totalTick = upgrades.reduce((acc, upgr) => (acc += upgr.currentValue * upgr.amount), 0)
+     dispatch(upgradeTick(totalTick));
+}, [upgradesCounter]); 
+  
   useEffect(() => {
   const intervalId = setInterval(() => {
     setCounter((p) => p + 1);
@@ -64,15 +71,13 @@ useEffect(() => {
   dispatch(getUsersList());
 }, [token]);
   
-
-  
   return (
     <div style={{position: 'relative'}}>
       {isDescScreen && (
         <div style={{ display: "flex" }}>
           <Dashboard />
           <Main />
-          <Upgrades counter={upgradesCounter} />
+          <Upgrades/>
         </div>
       )}
       {isMobScreen &&<>

@@ -1,9 +1,19 @@
 import { MobileContainer } from "common/common.styled"
 import { memo } from "react"
+import { useSelector } from "react-redux"
+import { getUserList } from "redux/gameAccSlice"
+import MobileDshaboardListItem from "./MobileDshaboardListItem/MobileDshaboardListItem"
 
 const MobileDashboard = () => {
+  const users = useSelector(getUserList);
+  if (users.length <= 0) return;
+
   return (
-    <MobileContainer>MobileDashboard</MobileContainer>
+    <MobileContainer>
+      <ul>
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+      </ul>
+    </MobileContainer>
   )
 }
 
