@@ -14,8 +14,7 @@ export const BackgroundBlock = styled.div`
   left: 0;
   height: 50px;
   width: 50px;
-  background-color: ${(props) =>
-    !props?.condition ? "rgba(0,0,0, 0.2)" : "rgba(0,0,0, 0.0)"};
+  background-color: ${(props) => !props?.condition ? "rgba(0,0,0, 0.2)" : "rgba(0,0,0, 0.0)"};
   cursor: ${(props) => (!props?.condition ? "default" : "pointer")};
 `;
 

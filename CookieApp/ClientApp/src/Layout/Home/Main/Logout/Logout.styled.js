@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HiLogout } from "react-icons/hi";
 
 export const LogOutButton = styled.button`
   position: absolute;
@@ -14,4 +15,15 @@ export const LogOutButton = styled.button`
   color: white;
   font-size: 18px;
   cursor: pointer;
+  @media screen and (max-width: 1279.97px) {
+    right: 10px;
+    padding: 0;
+    background: rgba(159, 159, 168, 0.5);
+  }
+`;
+
+export const LogOutIcon = styled(HiLogout)`
+  fill: white;
+  width: 40px;
+  height: 40px;
 `;

@@ -22,3 +22,4 @@ const MobileDashboard = () => {
 }
 
 export default memo(MobileDashboard);
+

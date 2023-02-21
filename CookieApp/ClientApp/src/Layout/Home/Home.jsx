@@ -21,8 +21,7 @@ const Home = () => {
   
   const token = localStorage.getItem("token");
 
-  const isMobScreen = useMediaQuery({ query: "(max-width: 767.98px)" });
-  const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
+  const isTabScreen = useMediaQuery({ query: "(max-width: 1279.97px)" });
   const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
 
   useLayoutEffect(() => {
@@ -80,7 +79,7 @@ useEffect(() => {
           <Upgrades/>
         </div>
       )}
-      {isMobScreen &&<>
+      {isTabScreen &&<>
         <Suspense fallback={null}>
           <Outlet />
           </Suspense>

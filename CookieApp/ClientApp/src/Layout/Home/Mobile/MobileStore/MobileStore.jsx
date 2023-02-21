@@ -1,22 +1,26 @@
-import { MobileContainer, MobileTitle } from "common/common.styled"
+import { MobileTitle } from "common/common.styled"
 import { memo } from "react"
 import { useSelector } from "react-redux";
 import { getUpgrades } from "redux/gameAccSlice";
-import { MobileLvlUpList, MobileLvlUps } from "./MobileStore.styled"
+import MobileClickUpgrade from "./MobileClickUpgrade/MobileClickUpgrade";
+import { MobileStoreContainer, UpgradeList } from "./MobileStore.styled";
+import MobileListItem from "./MobileStoreListItem/MobileListItem";
+import MobileLevelUps from "./MobileStoreLvlUps/MobileLevelUps";
 
 const MobileStore = () => {
-  const upgradeList = useSelector(getUpgrades);
+  const upgrades = useSelector(getUpgrades);
 
   return (
-    <MobileContainer>
-      <MobileTitle>Store</MobileTitle>
-      <MobileLvlUps>
-        <MobileLvlUpList>
-          {/* <MobileStoreLvlUpItem key={} levelUp ={} /> */}
-        </MobileLvlUpList>
-      </MobileLvlUps>
-    </MobileContainer>
-  )
-}
+    <MobileStoreContainer>
+      <MobileTitle>Upgrades X2 Multiplier</MobileTitle>
+      <MobileLevelUps/>
+      <MobileTitle>Upgrades</MobileTitle>
+      <UpgradeList>
+        <MobileClickUpgrade/>
+        {upgrades.map((upgrade) => <MobileListItem key={upgrade.id} upgrade={upgrade} />)}
+      </UpgradeList>
+    </MobileStoreContainer>
+  );
+};
 
 export default memo(MobileStore)

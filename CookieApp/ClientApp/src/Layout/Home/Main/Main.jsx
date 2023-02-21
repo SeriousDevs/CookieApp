@@ -11,8 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const Main = () => {
   const goldCookie = useSelector(getGoldenCookieClicked);
-  const isMobScreen = useMediaQuery({ query: "(max-width: 767.98px)" });
-  const isTabScreen = useMediaQuery({ query: "(min-width: 768px)" });
+  const isTabScreen = useMediaQuery({ query: "(max-width: 1279.97px)" });
   const isDescScreen = useMediaQuery({ query: "(min-width: 1279.98px)" });
   
   const navigate = useNavigate();
@@ -29,9 +28,10 @@ const Main = () => {
       <Logout />
     </Container>}
     
-    {isMobScreen &&<>
+    {isTabScreen &&<>
        <Container onClick={handleClick}  bgChange={goldCookie}>
       <Cookie />
+       <Logout />
     </Container>
       <AppBar/>
     </>

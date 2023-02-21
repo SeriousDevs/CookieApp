@@ -5,7 +5,7 @@ export const CookieContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279.97px) {
     margin-bottom: 60px;
   }
 `;
@@ -37,7 +37,7 @@ export const CookieButton = styled.button`
     animation: ${click} 0.01s;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279.97px) {
     height: 200px;
     width: 200px;
   }
@@ -49,7 +49,7 @@ export const CookieQuantity = styled.p`
   font-family: serif;
   font-weight: 700;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279.97px) {
     font-size: 24px;
   }
 `;
@@ -60,7 +60,7 @@ export const PerSecond = styled.p`
   font-family: serif;
   font-weight: 700;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279.97px) {
     font-size: 16px;
   }
 `;
@@ -86,7 +86,7 @@ export const CookieLight = styled.div`
   transform: translate(-50%, -50%);
   z-index: 0;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279.97px) {
     width: 150px;
     height: 150px;
   }

@@ -1,22 +1,9 @@
 import styled from "styled-components";
 import { LevelUpList } from "Layout/Home/Upgrades/LvelUps/LevelUps.styled";
+import { MobileContainer } from "common/common.styled";
 
-export const MobileLvlUps = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  flex-wrap: wrap;
-  border-bottom: 1px solid black;
-  //   border-top: 1px solid black;
-`;
-
-export const MobileLvlUpList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: stretch;
-  gap: 1px;
-  padding: 5px 5px 5px 0;
-  margin: 0;
+export const MobileStoreContainer = styled(MobileContainer)`
+  overflow: auto;
   ::-webkit-scrollbar {
     width: 3px;
   }
@@ -32,4 +19,12 @@ export const MobileLvlUpList = styled.ul`
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+`;
+
+export const UpgradeList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 `;
