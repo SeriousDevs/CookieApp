@@ -12,7 +12,7 @@ export const Container = styled.div`
       ? "#" + Math.floor(Math.random() * 16777215).toString(16)
       : " #fce671"};
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279.97px) {
     position: relative;
     width: 100vw;
     flex-direction: column;

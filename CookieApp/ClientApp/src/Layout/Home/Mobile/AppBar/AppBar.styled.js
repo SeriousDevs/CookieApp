@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { TbHandClick } from "react-icons/tb";
+import { MdHistoryEdu, MdOutlineLeaderboard } from "react-icons/md";
+import { ImStatsDots } from "react-icons/im";
+import { GiUpgrade } from "react-icons/gi";
 
 export const Menu = styled.ul`
   position: absolute;
@@ -30,9 +34,39 @@ export const Menu = styled.ul`
 export const MenuItem = styled.li`
   border: 1px solid black;
   border-radius: 5px 5px 0 0;
-  background-color: yellowgreen;
+  background-color: #8acb88;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+`;
+
+export const DashboardIcon = styled(MdOutlineLeaderboard)`
+  width: 40px;
+  height: 40px;
+  fill: white;
+`;
+
+export const StatsIcon = styled(ImStatsDots)`
+  width: 40px;
+  height: 40px;
+  fill: white;
+`;
+
+export const StoreIcon = styled(GiUpgrade)`
+  width: 40px;
+  height: 40px;
+  fill: white;
+`;
+
+export const StoryIcon = styled(MdHistoryEdu)`
+  width: 40px;
+  height: 40px;
+  fill: white;
+`;
+
+export const ClickerIcon = styled(TbHandClick)`
+  width: 40px;
+  height: 40px;
+  fill: white;
 `;

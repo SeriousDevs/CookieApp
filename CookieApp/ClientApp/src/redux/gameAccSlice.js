@@ -6,7 +6,6 @@ import {
   saveAccRequest,
 } from "services/api";
 import { fromServerFix, toServerFix } from "services/reworkMath";
-// import { toast } from "react-toastify";
 
 export const setGameAcc = createAsyncThunk(
   "user/setGameAcc",

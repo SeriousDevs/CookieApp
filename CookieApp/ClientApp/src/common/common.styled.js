@@ -129,7 +129,7 @@ export const MobileContainer = styled.div`
   height: 90%;
   width: 100%;
   bottom: 0;
-  background-color: tomato;
+  background-color: #8acb88;
   animation: ${mount} 0.7s linear;
   padding: 20px 20px 70px 20px;
 `;
