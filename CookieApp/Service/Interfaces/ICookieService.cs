@@ -8,5 +8,6 @@ namespace CookieApp.Service.Interfaces
         Task SaveGameAccountAsync(GameAccountModel gameAccountModel);
         Task UpdateUpgradeAsync(UpgradeModel upgradeModel);
         Task<FairyTailModel> GetStoryAsync(int id);
+        Task<IEnumerable<FairyTailModel>> GetStoriesAsync(int id);
     }
 }

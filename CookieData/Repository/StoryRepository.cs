@@ -21,4 +21,11 @@ public class StoryRepository : IStoryRepository
 
         return item!;
     }
+
+    public async Task<IEnumerable<FairyTail>> GetStoriesByNetworth(double networth)
+    {
+        var item = await _context.FairyTails.Where(i => i.Trigger <= networth).ToListAsync();
+
+        return item!;
+    }
 }
