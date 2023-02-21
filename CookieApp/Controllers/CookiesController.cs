@@ -3,12 +3,13 @@ using CookieApp.Model.Responses;
 using CookieApp.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CookieApp.Controllers
 {
-    [Route(ComponentsDefault.DefaultRoute)]
     [ApiController]
+    [Route(ComponentDefaults.DefaultRoute)]
     public class CookiesController : ControllerBase
     {
         private readonly ICookieService _cookieService;
