@@ -2,11 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   getAllUsers,
   getGameAcc,
-  getStory,
+  getStories,
   saveAccRequest,
 } from "services/api";
 import { fromServerFix, toServerFix } from "services/reworkMath";
-// import { toast } from "react-toastify";
 
 export const setGameAcc = createAsyncThunk(
   "user/setGameAcc",
@@ -28,7 +27,7 @@ export const saveAcc = createAsyncThunk(
       const obj = { ...acc };
       const deletable = [
         "cookiesPerSec",
-        "fairyTail",
+        "fairyTails",
         "usersList",
         "isLoading",
         "error",
@@ -59,7 +58,7 @@ export const getUserTale = createAsyncThunk(
   "user/getUserTale",
   async (_, { rejectWithValue }) => {
     try {
-      const story = await getStory();
+      const story = await getStories();
       return story;
     } catch (error) {
       return rejectWithValue(error);
@@ -99,11 +98,13 @@ export const gameAccSlice = createSlice({
     cookiesPerSec: 0,
     clicks: 0,
     cookies: 0,
-    fairyTail: {
-      image: "images/Profile/1.png",
-      story:
-        "My life was not the best, and I decided that it was my time to change it all",
-    },
+    fairyTails: [
+      {
+        image: "images/Profile/1.png",
+        story:
+          "My life was not the best, and I decided that it was my time to change it all",
+      },
+    ],
     goldenCookie: false,
     id: null,
     networth: 0,
@@ -231,7 +232,7 @@ export const gameAccSlice = createSlice({
 
       if (!payload) return;
 
-      state.fairyTail = payload;
+      state.fairyTails = payload;
     });
     builder.addCase(getUserTale.rejected, (state, { payload }) => {
       state.isLoading = false;
@@ -261,5 +262,5 @@ export const getUserList = (state) => state.gameAcc.usersList;
 export const getNetWorth = (state) => state.gameAcc.networth;
 export const getClickUpgr = (state) => state.gameAcc.clickUpgrade;
 export const getPerSec = (state) => state.gameAcc.cookiesPerSec;
-export const getUserStory = (state) => state.gameAcc.fairyTail;
+export const getUserStories = (state) => state.gameAcc.fairyTails;
 export const getGoldenCookieClicked = (state) => state.gameAcc.goldenCookie;
