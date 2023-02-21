@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "Layout/Layout";
 import { GlobalStyle } from "./App.styled";
@@ -19,10 +19,10 @@ const App = () => {
         <Route exact path="/" element={<Layout />}>
           <Route index element={<Navigate to="home" />} />
           <Route exact path="home" element={<LazyHomeView />} >
-            <Route path="story" element={<LazyMobileStory/>} />
-            <Route path="store" element={<LazyMobileStore/>} />
-            <Route path="statistics" element={<LazyMobileStats/>} />
-            <Route path="dashboard" element={<LazyMobileDashboard/>} />
+            <Route path="story" element={<LazyMobileStory />} />
+            <Route path="store" element={<LazyMobileStore />} />
+            <Route path="statistics" element={<LazyMobileStats />} />
+            <Route path="dashboard" element={<LazyMobileDashboard />} />
           </Route>
           <Route exact path="login" element={<LazyLoginView />} />
           <Route exact path="sign-up" element={<LazySignUpView />} />
@@ -30,21 +30,7 @@ const App = () => {
         <Route path='*' element={<Navigate to="home" />} />
       </Routes>
       <GlobalStyle />
-      <Suspense fallback={null}>
-        {process.env.NODE_ENV === 'production' ? (
-          <>
-            {import('react-toastify').then((Toastify) => (
-              <Toastify.ToastContainer />
-            ))}
-            {import('react-toastify/dist/ReactToastify.min.css')}
-          </>
-        ) : (
-          <>
-            <ToastContainer />
-            <link rel="stylesheet" href="react-toastify/dist/ReactToastify.min.css" />
-          </>
-        )}
-      </Suspense>
+      <ToastContainer />
     </>
   );
 };
