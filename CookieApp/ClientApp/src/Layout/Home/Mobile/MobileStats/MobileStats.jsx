@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useSelector } from "react-redux";
-import { MobileContainer } from "common/common.styled";
+import { MobileContainer, MobileTitle } from "common/common.styled";
 import {
   getNetWorth,
   getPerSec,
@@ -27,8 +27,7 @@ const MobileStats = () => {
 
   return (
     <MobileContainer>
-      <MobileStatsWrapper>
-        <MobileStatsTitle>Statistics</MobileStatsTitle>
+        <MobileTitle>Statistics</MobileTitle>
         <MobileStatsList>
           <MobileStatsItem>
             <MobileStatsName>Net Worth:</MobileStatsName>
@@ -49,7 +48,6 @@ const MobileStats = () => {
             <MobileStatsValue>{totalUpgrades}</MobileStatsValue>
           </MobileStatsItem>
         </MobileStatsList>
-      </MobileStatsWrapper>
     </MobileContainer>
   );
 };

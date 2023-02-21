@@ -1,16 +1,5 @@
 import styled from "styled-components";
 
-export const MobileStatsWrapper = styled.div`
-  padding: 20px;
-`;
-
-export const MobileStatsTitle = styled.h2`
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-`;
-
 export const MobileStatsList = styled.ul`
   display: flex;
   flex-direction: column;

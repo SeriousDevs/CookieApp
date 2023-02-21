@@ -16,12 +16,6 @@ const MobileDashboard = () => {
       </MobileTitle>
       <MobileUserList>
        {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
       </MobileUserList>
     </MobileContainer>
   )
