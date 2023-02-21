@@ -5,11 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using CookieApp.Model.Requests;
 using Infrastructure.Exceptions;
 using CookieData.Entities;
+using Infrastructure;
 
 namespace CookieApp.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route(ComponentDefaults.DefaultRoute)]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -19,7 +20,7 @@ namespace CookieApp.Controllers
             _userService = userService;
         }
 
-        [HttpPost("authenticate")]
+        [HttpPost]
         public async Task<IActionResult> Authenticate(AuthenticateRequest model)
         {
             try
@@ -34,7 +35,7 @@ namespace CookieApp.Controllers
             }
         }
 
-        [HttpPost("register")]
+        [HttpPost]
         public async Task<IActionResult> Register(UserModel userModel)
         {
             try
@@ -63,7 +64,7 @@ namespace CookieApp.Controllers
         }
 
         [Authorize]
-        [HttpGet("return")]
+        [HttpPost]
         public async Task<IActionResult> GetUser()
         {
             if (HttpContext.Items["User"] is User user)

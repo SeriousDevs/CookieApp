@@ -1,4 +1,5 @@
 ﻿using CookieApp.Helpers;
+using CookieApp.Model.Responses;
 using CookieApp.Service.Interfaces;
 using CookieData.Entities;
 using CookieData.Model;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CookieApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(ComponentsDefault.DefaultRoute)]
     [ApiController]
     public class CookiesController : ControllerBase
     {
@@ -17,7 +18,7 @@ namespace CookieApp.Controllers
         }
 
         [Authorize]
-        [HttpGet("user")]
+        [HttpPost]
         public async Task<IActionResult> GetGameAccount()
         {
             if (HttpContext.Items["User"] is User user)
@@ -30,7 +31,7 @@ namespace CookieApp.Controllers
         }
 
         [Authorize]
-        [HttpPost("user")]
+        [HttpPost]
         public async Task<IActionResult> SaveGameAccount(GameAccountModel gameAccountModel)
         {
             try
@@ -46,7 +47,7 @@ namespace CookieApp.Controllers
         }
 
         [Authorize]
-        [HttpPost("upgrade")]
+        [HttpPost]
         public async Task<IActionResult> UpdateUpgrade(UpgradeModel upgradeModel)
         {
             try
@@ -62,13 +63,13 @@ namespace CookieApp.Controllers
         }
 
         [Authorize]
-        [HttpGet("story")]
-        public async Task<IActionResult> GetStory()
+        [HttpPost]
+        public async Task<IActionResult> GetStories()
         {
             if (HttpContext.Items["User"] is User user)
             {
-                FairyTailModel story = await _cookieService.GetStoryAsync(user.GameAccountId);
-                return Ok(story);
+                IEnumerable<FairyTailModel> stories = await _cookieService.GetStoriesAsync(user.GameAccountId);
+                return Ok(new DataResponse<FairyTailModel> { Data = stories });
             }
 
             return NotFound(new { Message = "Account not found!" });

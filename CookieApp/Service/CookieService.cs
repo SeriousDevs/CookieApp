@@ -74,6 +74,18 @@ public class CookieService : BaseDataService<CookieContext>, ICookieService
         });
     }
 
+    public async Task<IEnumerable<FairyTailModel>> GetStoriesAsync(int id)
+    {
+        return await ExecuteSafeAsync(async () =>
+        {
+            var gameAccount = await _accountsRepository.GetEntityByIdAsync(id);
+            IEnumerable<FairyTail> stories = await _storyRepository.GetStoriesByNetworth(StringToDouble(gameAccount.Networth));
+            IEnumerable<FairyTailModel> storyModels = stories.Select(_mapper.Map<FairyTailModel>);
+
+            return storyModels;
+        });
+    }
+
     private static double StringToDouble(string num)
     {
         if (!double.TryParse(num, out double result))
