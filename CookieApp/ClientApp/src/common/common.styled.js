@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -102,4 +102,74 @@ export const BoxStyleList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+`;
+
+const mount = keyframes`
+0%  { transform: translate(0px, 100%);  }
+100%{ transform:translate(0px, 0px); }`;
+
+export const MobileContainer = styled.div`
+  position: absolute;
+  z-index: 5;
+  height: 90%;
+  width: 100%;
+  bottom: 0;
+  background-color: #8acb88;
+  animation: ${mount} 0.7s linear;
+  padding: 20px 20px 70px 20px;
+`;
+
+export const LeadershipItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  max-height: 50px;
+  background-color: rgba(180, 180, 180, 0.5);
+  cursor: pointer;
+  border: 1px solid white;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+`;
+
+export const LeadershipItemUser = styled(LeadershipItem)`
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid gold;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+`;
+
+export const Position = styled.p`
+  //   font-size: 36px;
+`;
+
+export const NetWorth = styled.p`
+  //   font-size: 24px;
+`;
+
+export const MobileTitle = styled.h2`
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
 `;

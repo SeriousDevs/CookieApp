@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useHover = (ref) => {
   const [isHovering, setisHovering] = useState(false);
-  const on = () => setisHovering(true);
-  const off = () => setisHovering(false);
+  const on = useCallback(() => {
+    setisHovering(true);
+  }, []);
+
+  const off = useCallback(() => {
+    setisHovering(false);
+  }, []);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -17,7 +22,7 @@ export const useHover = (ref) => {
       node.removeEventListener("mousemove", on);
       node.removeEventListener("mouseleave", off);
     };
-  }, [ref.current]);
+  }, [ref.current, on, off]);
 
   return isHovering;
 };

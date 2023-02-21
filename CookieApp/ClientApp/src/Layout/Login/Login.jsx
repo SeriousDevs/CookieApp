@@ -11,21 +11,26 @@ const Login = () => {
   const dispatch = useDispatch();
   const error = useSelector(getErrorUser);
 
+    const toastError = (message) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+  
   useEffect(() => {
     if (!error) return;
-    if (error.errorMessage === "User not found") {
-      dispatch(clearError());
-      toast.error("User not found!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      return;
-    }
-    if (error.errorMessage === "Incorrect password") {
-      dispatch(clearError());
-      toast.error("Incorrect password!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      return;
+
+    switch (error.errorMessage) {
+      case "User not found":
+        dispatch(clearError());
+        toastError("User not found!");
+        break;
+      case "Incorrect password":
+        dispatch(clearError());
+        toastError("Incorrect password!");
+        break;
+      default:
+        break;
     }
   }, [error]);
 
@@ -36,6 +41,7 @@ const Login = () => {
     </WelcomePage>
   );
 };
+
 
 export default WithNoAuthRedirect(Login, "/home");
 // export default Login;

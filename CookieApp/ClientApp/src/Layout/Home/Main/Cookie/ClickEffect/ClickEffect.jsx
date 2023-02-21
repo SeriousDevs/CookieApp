@@ -6,11 +6,13 @@ export const ClickEffect = ({ obj, value }) => {
  
   const [unmountMe, setUnmountMe] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
+ useEffect(() => {
+    const timeoutId = setTimeout(() => {
       setUnmountMe(false);
     }, 1000);
-  }, []);
+    return () => clearTimeout(timeoutId);
+ }, []);
+  
   return (
     <>
       {unmountMe && (
