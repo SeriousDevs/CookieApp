@@ -1,10 +1,9 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCookie,
   getClickUpgr,
   getCookies,
-  getGoldenCookieClicked,
   getPerSec,
 } from "redux/gameAccSlice";
 import {
@@ -23,8 +22,6 @@ const Cookie = () => {
   const cookie = useSelector(getCookies);
   const perSec = useSelector(getPerSec);
   const clickUpgrade = useSelector(getClickUpgr);
-  const goldCookie = useSelector(getGoldenCookieClicked);
-
   const [shake, setShake] = useState(false);
   const [perClick, setPerClick] = useState(1);
   const [mouseCoordinates, setMouseCoordinates] = useState({});
@@ -33,11 +30,11 @@ const Cookie = () => {
   const [emotion, setEmotion] = useState(null);
 
   useEffect(() => {
-    const {level} = clickUpgrade;
-    setPerClick(goldCookie ? 5 * 2 ** (level - 1) : 2 ** (level - 1));
-  }, [clickUpgrade, goldCookie]);
+    const { level } = clickUpgrade;
+    setPerClick(2 ** (level - 1));
+  }, [clickUpgrade]);
 
-  const handleClicker = useCallback((e) => {
+  const handleClicker = (e) => {
     clearTimeout(emotion);
     if (!e.clientX && !e.clientY) return;
 
@@ -45,7 +42,6 @@ const Cookie = () => {
     setClicked(true);
 
     dispatch(addCookie(perClick));
-
     //Animation
     setEmotion(
       setTimeout(() => {
@@ -60,7 +56,7 @@ const Cookie = () => {
 
     setShake(true);
     setTimeout(() => setShake(false), 10);
-  }, [dispatch, perClick]);
+  };
 
   return (
     <>
@@ -75,7 +71,7 @@ const Cookie = () => {
           className={shake ? `shake` : null}
           type="button"
         >
-          <CookieLight />
+          <CookieLight></CookieLight>
           <CookieImage
             src={
               cookieEmotion
