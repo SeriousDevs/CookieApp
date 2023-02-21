@@ -1,11 +1,12 @@
-import { NetWorth, LeadershipItem, Position, LeadershipItemUser } from "common/common.styled";
 import { seriousNumbers } from "common/ConvertFunc/convertFunc";
 import { memo } from "react";
 import { useSelector } from "react-redux";
 import { getUser } from "redux/userSlice";
 // import { NetWorth, LeadershipItem, Position, LeadershipItemUser } from "./LeadershipItem.styled";
+import { NetWorth, LeadershipItem, Position, LeadershipItemUser } from "common/common.styled";
 
-const LeadershipElement = ({name, position, networth}) => {
+
+const MobileDshaboardListItem = ({name, position, networth}) => {
     const user = useSelector(getUser);
 
     if (user === name) {
@@ -27,4 +28,4 @@ const LeadershipElement = ({name, position, networth}) => {
     )
 };
 
-export default memo(LeadershipElement);
+export default memo(MobileDshaboardListItem);

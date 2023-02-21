@@ -1,23 +1,17 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { buyUpgrade, getCookies, upgradeTick } from 'redux/gameAccSlice';
+import { buyUpgrade, getCookies } from 'redux/gameAccSlice';
 import { AdditionalWrapper, UpgradeName, ListItemCentralDiv, Amount, UpgradeImage, UpgradeListItem, UpgradePrice } from './UpgradesListItem.styled';
 import Hover from 'common/components/Hover/Hover.jsx';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import { seriousNumbers } from 'common/ConvertFunc/convertFunc';
 
-const UpgradesListItem = ({ counter, amount = 0, name = 'name', basePrice = 100, currentValue = 0, image, upgradeInfoId = 0 }) => {
+const UpgradesListItem = ({ amount = 0, name = 'name', basePrice = 100, currentValue = 0, image, upgradeInfoId = 0 }) => {
     const dispatch = useDispatch();
     const cookies = useSelector(getCookies);
     
-    const upgrPrice = Math.ceil(basePrice * (1.15 ** amount));
-
-    useEffect(() => {
-        if (amount >= 1 && counter !== 0) {
-            dispatch(upgradeTick(currentValue*amount));
-        }
-    }, [counter])    
+    const upgrPrice = Math.ceil(basePrice * (1.15 ** amount)); 
 
     const handlerUpgradesClick = () => {
         if (upgrPrice <= cookies) {
