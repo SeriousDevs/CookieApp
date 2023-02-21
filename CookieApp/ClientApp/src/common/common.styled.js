@@ -116,6 +116,7 @@ export const MobileContainer = styled.div`
   bottom: 0;
   background-color: tomato;
   animation: ${mount} 0.7s linear;
+  padding: 20px 20px 70px 20px;
 `;
 
 export const LeadershipItem = styled.li`
@@ -149,4 +150,9 @@ export const Position = styled.p`
 
 export const NetWorth = styled.p`
   //   font-size: 24px;
+`;
+
+export const MobileTitle = styled.h2`
+  font-size: 24px;
+  text-align: center;
 `;
