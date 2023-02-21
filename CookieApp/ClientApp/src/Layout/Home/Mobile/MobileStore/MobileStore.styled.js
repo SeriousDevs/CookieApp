@@ -23,6 +23,7 @@ export const MobileStoreContainer = styled(MobileContainer)`
 
 export const UpgradeList = styled.ul`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
