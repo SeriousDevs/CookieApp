@@ -1,10 +1,6 @@
-import { useSelector } from "react-redux";
-import { getUserStory } from "redux/gameAccSlice";
 import { ProfileImage, ProfileStory, UserImageBlock } from "./UserStory.styled";
 
-export const UserStory = () => {
-  const userStory = useSelector(getUserStory);
-  if (!userStory.image) return;
+export const UserStory = ({ userStory }) => {
   const { story, image } = userStory;
 
   return (
