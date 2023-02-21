@@ -26,7 +26,7 @@ $privateHost.interceptors.request.use(authInterceptor);
 
 export const signUpRequest = async (formData) => {
   try {
-    const { data } = await $publicHost.post("/users/register", formData);
+    const { data } = await $publicHost.post("v1/users/register", formData);
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
@@ -35,7 +35,7 @@ export const signUpRequest = async (formData) => {
 
 export const loginRequest = async (formData) => {
   try {
-    const { data } = await $publicHost.post("/users/authenticate", formData);
+    const { data } = await $publicHost.post("v1/users/authenticate", formData);
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
@@ -44,7 +44,7 @@ export const loginRequest = async (formData) => {
 
 export const getAuth = async () => {
   try {
-    const { data } = await $privateHost.get("/users/return");
+    const { data } = await $privateHost.post("v1/users/getuser", {});
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
@@ -53,7 +53,7 @@ export const getAuth = async () => {
 
 export const getGameAcc = async () => {
   try {
-    const { data } = await $privateHost.get("/cookies/user");
+    const { data } = await $privateHost.post("v1/cookies/getgameaccount", {});
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
@@ -62,7 +62,7 @@ export const getGameAcc = async () => {
 
 export const getAllUsers = async () => {
   try {
-    const { data } = await $privateHost.get("/users");
+    const { data } = await $privateHost.post("v1/users/getusers", {});
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
@@ -71,7 +71,7 @@ export const getAllUsers = async () => {
 
 export const saveAccRequest = async (acc) => {
   try {
-    const { data } = await $privateHost.post("/cookies/user", acc);
+    const { data } = await $privateHost.post("v1/cookies/savegameaccount", acc);
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
@@ -80,7 +80,7 @@ export const saveAccRequest = async (acc) => {
 
 export const getStory = async () => {
   try {
-    const { data } = await $privateHost.get("/cookies/story");
+    const { data } = await $privateHost.post("v1/cookies/getstories", {});
     return data;
   } catch (error) {
     return { errorMessage: error.response.data, error: error.message };
