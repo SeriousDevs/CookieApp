@@ -1,7 +1,8 @@
-import { MobileContainer } from "common/common.styled"
+import { MobileContainer, MobileTitle } from "common/common.styled"
 import { memo } from "react"
 import { useSelector } from "react-redux"
 import { getUserList } from "redux/gameAccSlice"
+import { MobileUserList } from "./MobileDashboard.styled"
 import MobileDshaboardListItem from "./MobileDshaboardListItem/MobileDshaboardListItem"
 
 const MobileDashboard = () => {
@@ -10,11 +11,20 @@ const MobileDashboard = () => {
 
   return (
     <MobileContainer>
-      <ul>
+      <MobileTitle>
+        Dashboard
+      </MobileTitle>
+      <MobileUserList>
        {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
-      </ul>
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+       {[...users].sort((a,b) => b.networth - a.networth).map((el, idx) => <MobileDshaboardListItem key={el.id} name={el.login} position={idx + 1} networth={el.networth} />)}
+      </MobileUserList>
     </MobileContainer>
   )
 }
 
-export default memo(MobileDashboard)
+export default memo(MobileDashboard);

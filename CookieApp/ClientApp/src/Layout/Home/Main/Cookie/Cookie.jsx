@@ -69,7 +69,7 @@ const Cookie = () => {
         <CookieButton
           onClick={handleClicker}
           className={shake ? `shake` : null}
-          type="button"
+          type='button'
         >
           <CookieLight></CookieLight>
           <CookieImage

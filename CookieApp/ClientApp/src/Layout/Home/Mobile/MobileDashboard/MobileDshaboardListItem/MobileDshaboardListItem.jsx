@@ -2,7 +2,6 @@ import { seriousNumbers } from "common/ConvertFunc/convertFunc";
 import { memo } from "react";
 import { useSelector } from "react-redux";
 import { getUser } from "redux/userSlice";
-// import { NetWorth, LeadershipItem, Position, LeadershipItemUser } from "./LeadershipItem.styled";
 import { NetWorth, LeadershipItem, Position, LeadershipItemUser } from "common/common.styled";
 
 

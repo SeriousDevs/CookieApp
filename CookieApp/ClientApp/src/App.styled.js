@@ -18,6 +18,22 @@ html {
   user-select: none;
 }
 
+  *::-webkit-scrollbar {
+    width: 3px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+     box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
   body {
     margin: 0;
   }
